@@ -1,5 +1,7 @@
+
 db접속
 
+호스트 이름 :hankkeut.csqutft2bzky.ap-northeast-2.rds.amazonaws.com
 마스터 사용자 이름
 admin
 
