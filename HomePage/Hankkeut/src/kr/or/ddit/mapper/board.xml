@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+	<sqlMap namespace="board">
+		<typeAlias alias="boardVo" type="kr.or.ddit.vo.JdbcBoardVO"/>
+		<!-- 새글작성  -->
+		<select id="insertBoard" parameterClass="boardVo">
+		insert into jdbc_board (board_no, board_title,
+		board_writer, board_date, board_cnt, board_content) 
+		values (board_seq.nextVal, #board_title#, #board_writer#
+		, sysdate, 0, #board_content#)
+		</select>
+		
+		<!-- 글삭제  -->
+		<delete id="deleteBoard" parameterClass="int">
+		delete from jdbc_board where board_no = #board_no#
+		</delete>
+		
+		<!-- 업데이트  -->
+		<update id="updateBoard" parameterClass="boardVo">
+		update jdbc_board set board_title = #board_title# ,
+		board_date = sysdate, board_content = #board_content# 
+		where board_no = #board_no#
+		</update>
+		
+		<!-- 조회수 증가  -->
+		<update id="increment" parameterClass="int">
+		update jdbc_board set board_cnt = board_cnt + 1
+		where board_no = #board_no#
+		</update>
+		
+		<!-- 게시물지정해서 보기  -->
+		<select id="getBoard" parameterClass="int" resultClass="boardVo">
+		select board_no, board_title, board_writer,
+		to_char(board_date, 'YYYY-MM-DD') board_date, 
+		board_cnt, board_content from jdbc_board
+		where board_no = #board_no#
+		</select>
+		
+		<!-- 게시물 전체 보기 -->
+		<select id="getBoardAll" resultClass="boardVo">
+		select board_no, board_title, board_writer,
+		 to_char(board_date, 'YYYY-MM-DD') board_date,
+		  board_cnt, board_content from jdbc_board 
+		  order by board_no desc
+		</select>
+		
+		<!-- 게시물제목으로찾기 -->
+		<select id="searchBoard" parameterClass="String" resultClass="boardVo">
+		select board_no, board_title, board_writer, 
+		to_char(board_date, 'YYYY-MM-DD') board_date,
+		 board_cnt, board_content from jdbc_board
+		  where board_title like '%' || #jBoardTitle# || '%' 
+		  order by board_no desc 
+		</select>
+		
+	</sqlMap>
+	
+	
+	
+	
+	
