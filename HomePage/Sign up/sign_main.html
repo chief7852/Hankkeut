@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <style>
+        legend{
+            color: gray;
+            text-align: center;
+        }
+        fieldset{
+            border: 2px solid orange;
+        }
+    </style>
+</head>
+<body>
+    <form name=fom>
+		<fieldset>
+			<legend>한끝 회원가입</legend>
+			<table>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" id="id" name="id"></td>
+				</tr><br>
+				<tr>
+					<td>비밀번호<br>재확인
+					</td>
+					<td><input type="password" id="pass1" name="pass1" placeholder="8자 이상 & "><br>
+						<input type="password" id="pass2" name="pass2"></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td><input type="radio" value="male" name="gender"
+						class="gender">남 <input type="radio" value="female"
+						name="gender" class="gender">여</td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td><input type="date" id="birth" name="birth"></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td><input type="text" id="email" name="email"> @ <select
+						id="url">
+							<option>naver.com</option>
+							<option>daum.net</option>
+							<option>nate.com</option>
+					</select></td>
+				</tr>
+				<tr>
+				    <td>통신사</td>
+				    <td><input type="radio" value="skt" name="">SKT</td>
+				    <td><input type="radio" value="skt" name="">KT</td>
+				    <td><input type="radio" value="skt" name="">LGU+</td>
+				    <td><input type="radio" value="skt" name="">알뜰폰</td>
+				</tr>
+				<tr>
+					<td>메모</td>
+					<td><textarea id="memo" rows="3" cols="50"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" id="signup"
+						value="signup"> <input type="reset" value="reset">
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>
