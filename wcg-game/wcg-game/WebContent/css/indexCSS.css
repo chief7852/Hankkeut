@@ -8,14 +8,15 @@ li {
 }
 
 a, a:hover{
-	text-decoration: none;	
+	text-decoration: none;
+	color: black;	
 }
-/* #menu {
+#menu {
 	background: #000000;
 	height: 91px;
 	padding: 20px 17px 0;
 	text-align: center
-} */
+}
 #menu {
 	background: #000000;
 	height: 91px;
@@ -39,7 +40,7 @@ a, a:hover{
 	box-sizing: border-box;
 	float: left;
 	width: 130px;
-	height: 50%;
+	height: 100%;
 	line-height: 50px;	
 	background: #000000;
 	text-align: center;
@@ -55,7 +56,6 @@ a, a:hover{
 	color: #f8f8f8;
 	display: inline-block;
 	font-size: 17px;
-	
 }
 #menu ul li a:hover {
 	text-decoration: none;	
