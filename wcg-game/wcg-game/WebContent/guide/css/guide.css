@@ -1,0 +1,62 @@
+@charset "EUC-KR";
+ /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+    
+   #slider{
+    list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+}
+.slide-content .slide-content{
+    margin-bottom: 60px;
+}
+.slider li{
+    text-align: center;
+    color: #FFF;
+    background-size:cover;
+    background-position: center;
+}
+.slider h3 {
+    margin: 0;
+    padding: 100px 0;
+    height:250px;
+}
+.slide-content{
+    width: 100%;
+    height:300px;
+}
+.item1{background-image:url('http://han3283.cafe24.com/images/apple.jpg');}
+.item2{background-image:url('http://han3283.cafe24.com/images/cherry.jpg');}
+.item3{background-image:url('http://han3283.cafe24.com/images/strawberry.jpg');}
+.item4{background-image:url('http://han3283.cafe24.com/images/grape.jpg');}
+.item5{background-image:url('http://han3283.cafe24.com/images/lemon.jpg');}
+.item6{background-image:url('http://han3283.cafe24.com/images/grapefruit.jpg');}
