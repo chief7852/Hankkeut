@@ -1,19 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<<<<<<< HEAD
-    <meta charset="UTF-8">
-    <meta name="author" content="webstoryboy">
-    <meta name="description" content="웹 표준을 준수한 사이트 예제입니다.">
-    <meta name="keywords" content="웹스토리보이, 웹표준, 웹접근성, 사이트 만들기">
-    <meta name="generator" content="brakets">
-    <title>WEBSTROYBOY SITE</title>
-
-    <!-- CSS STYLE -->
-    <link rel="stylesheet" href="../css/resetCSS.css">
-    <link rel="stylesheet" href="../css/noticeCSS.css">
-</head>
-=======
 <title>HAN KKEUT</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,74 +15,70 @@
 <link rel="stylesheet" href="../css/indexCSS.css">
 <link rel="stylesheet" href="https://static-hid.gslb.toastoven.net/css/members/hangame_join.css?v=494f495ee8f6ef563e71d9dc5af9b6811707b319">
 </head>	
->>>>>>> fa1940f70ef7a5c32a3f77bf5ca0cb1817242941
 <body>
- 
-    <div id="wrap">
-        <div id="header">
-            <div class="container">
-            	<h2>전체메뉴</h2>
-            	<div class="nav">
-            		<div></div>
-            		<div></div>
-            		<div></div>
-            	</div>
-                <div class="header">
-                    <div class="header-menu">
-                        <a href="https://wiss.tistory.com">Desinger</a>
-                        <a href=https://wtss.tistory.com/185>Publisher</a>
-                        <a href="https://www.youtube.com/channel/UCsvQSv7EeCMHyYb9ENKAJZw">Youtube</a>
-                    </div>
-               <!-- //헤더 메뉴 -->
-                    <div class="header-tit">
-                        
-                       
-                    </div>
-                    <!-- //헤더 타이틀 -->
-                    
-                    <!-- 이미지를 표현하는 방법 ]
-                    	1.img 태그로 표현(의미가 있을때 ) /alt태그-대체문자표현
-                    	
-                    -->
-                       <div class="header-icon">
-                        <a href="#" class="icon1"><span class="ir_pm">icon1</span></a>
-                        <a href="#" class="icon2"><span class="ir_pm">icon2</span></a>
-                        <a href="#" class="icon3"><span class="ir_pm">icon3</span></a>
-                        <a href="#" class="icon4"><span class="ir_pm">icon4</span></a>
-                  
-                    	
-                    	
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- //header -->
-        
-        <div id="contents">
-            <div id="cont_nav">
-                <div class="container">cont_nav</div>
-            </div>
-            <!-- //cont_nav -->
-            <div id="cont_tit">
-                <div class="container">con_tit</div>
-            </div>
-            <!-- //con_tit -->
-            <div id="cont_ban">
-                <div class="container">con_ban</div>
-            </div>
-            <!-- //con_ban -->
-            <div id="cont_cont">
-                <div class="container">cont_cont</div>
-            </div>
-            <!-- //cont_cont -->
-        </div>
-        <!-- //contents -->
+	<div id="logo" style="text-align: center">
+		<img alt="" src="../img/ganKKeut.png" style="width: 150px; height: 150px;">
+	</div>
+	<div id="demo" class="carousel slide" data-ride="carousel">
+		<nav id="menu">
+			<ul>
+				<li><a href="../component/noticeBoard.html" target="ifr">공지사항</a></li>
+				<li><a href="../component/noticeBoard.html" target="ifr">이벤트</a></li>
+				<li><a href="../component/noticeBoard.html" target="ifr">자유 게시판</a></li>
+				<li><a href="../component/noticeBoard.html" target="ifr">Q & A</a></li>
+				<li><a href="../component/noticeBoard.html" target="ifr">도움말</a></li>
+			</ul>
+			<div id="gameBtn">
+				<a href='../component/noticeBoard.html' onClick="window.open('../component/noticeBoard.html', '','width= 1700, height= 800px, resizable=no')" target="_blank"><img src="../img/gameBtn.PNG"></a>
+			</div>
+		</nav>
+		<!-- Indicators -->
+		<ul class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0" class="active"></li>
+			<li data-target="#demo" data-slide-to="1"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+		</ul>
 
-        <div id="footer">
-            <div class="container">footer</div>
-        </div>
-        <!-- //footer -->
-    </div>
-    <!-- //wrap -->
+		<!-- The slideshow -->
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="../img/cloud03.jpg" alt="Los Angeles" width="1100"
+					height="500">
+			</div>
+			<div class="carousel-item">
+				<img src="../img/Desert.jpg" alt="Chicago" width="1100" height="500">
+			</div>
+			<div class="carousel-item">
+				<img src="../img/maxresdefault.jpg" alt="New York" width="1100"
+					height="500">
+			</div>
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="carousel-control-prev" href="#demo" data-slide="prev"> <span
+			class="carousel-control-prev-icon"></span>
+		</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</a>
+	</div>
+	<div id="board">
+		<div id="notice" class="boardList">
+			<a href="#">공지사항</a>
+			<span class="boardAdd"><img img src="../img/board1.PNG" onmouseover="this.src='../img/board_hover.PNG'" onmouseout="this.src='../img/board1.PNG'"></span>
+		</div>
+		<div id="notice" class="boardList">
+			<a href="#">이벤트</a>
+			<span class="boardAdd"><img img src="../img/board1.PNG" onmouseover="this.src='../img/board_hover.PNG'" onmouseout="this.src='../img/board1.PNG'"></span>
+		</div>
+		<div id="notice" class="boardList">
+			<a href="#">자유게시판</a>
+			<span class="boardAdd"><img img src="../img/board1.PNG" onmouseover="this.src='../img/board_hover.PNG'" onmouseout="this.src='../img/board1.PNG'"></span>
+		</div>
+		<div id="notice" class="boardList">
+			<a href="#">Q & A</a>
+			<span class="boardAdd"><img img src="../img/board1.PNG" onmouseover="this.src='../img/board_hover.PNG'" onmouseout="this.src='../img/board1.PNG'"></span>
+		</div>
+	</div>
+
 </body>
 </html>
