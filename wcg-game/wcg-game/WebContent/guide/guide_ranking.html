@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/guide.css">
+  
+  <link rel="stylesheet"  href="https://han3283.cafe24.com/js/lightslider/css/lightslider.css"/>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script src="https://han3283.cafe24.com/js/lightslider/js/lightslider.js"></script>
+  
+</head>
+<script>
+$(document).ready(function() {
+    $("#slider").lightSlider({
+        mode:'slide',    // 이미지가 표시되는 형식 (fade / slide)
+        loop:true,       // 무한반복 할 것인지
+        auto:true,       // 자동 슬라이드
+        keyPress:true,   // 키보드 탐색 허용
+        pager:false,     // 페이지 표시
+        speed:1500,      // 슬라이드 되는 속도
+        pause:3000       // 이미지가 머무는 시간
+    });
+});
+
+</script>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+    <p><a href="guide_main.html">메인</a></p>
+    <p><a href="guide_ch.html">캐릭터 생성</a></p>
+      <p><a href="guide_kkeutmal.html">끝말잇기</a></p>
+      <p><a href="guide_shop.html">상점</a></p>
+      <p><a href="guide_ranking.html">랭킹</a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>랭킹</h1>
+      <hr>
+      <h3>랭킹(슬라이드형식)</h3>
+      
+       <div class="slide-wrap">
+        <div class="slide-content">
+            <ul id="slider" class="slider">
+                <li class="item1">
+                    <h3>사과</h3>
+                </li>
+                <li class="item2">
+                    <h3>체리</h3>
+                </li>
+                <li class="item3">
+                    <h3>딸기</h3>
+                </li>
+                <li class="item4">
+                    <h3>포도</h3>
+                </li>
+                <li class="item5">
+                    <h3>레몬</h3>
+                </li>
+                <li class="item6">
+                    <h3>자몽</h3>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    </div>
+    <div class="col-sm-2 sidenav">
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+</footer>
+
+</body>
+</html>
