@@ -1,4 +1,4 @@
-package kr.or.ddit.web;
+package action;
 
 import java.io.IOException;
 
@@ -7,17 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface IAction {
-	// 이 IAction인터페이스를 implements한 클래스에서 View(jsp문서)를 
-	// 결정하고, 해당 View로 redirect할 것인지, forward를 할 것인지를
-	// 결정하는 메서드 선언	
-	//   반환값이 true이면 ==> redirect
-	// 	 반환값이 false이면 ==> forward
+	// �씠 IAction�씤�꽣�럹�씠�뒪瑜� implements�븳 �겢�옒�뒪�뿉�꽌 View(jsp臾몄꽌)瑜� 
+	// 寃곗젙�븯怨�, �빐�떦 View濡� redirect�븷 寃껋씤吏�, forward瑜� �븷 寃껋씤吏�瑜�
+	// 寃곗젙�븯�뒗 硫붿꽌�뱶 �꽑�뼵	
+	//   諛섑솚媛믪씠 true�씠硫� ==> redirect
+	// 	 諛섑솚媛믪씠 false�씠硫� ==> forward
 	public boolean isRedirect();
 	
 	
-	// 이 IAction인터페이스를 implements한 클래스의 process()메서드를
-	// 호출해서 URI를 기준으로  1개의 요청 처리를 위임하고 view페이지를 
-	// 반환하는 메서드
+	// �씠 IAction�씤�꽣�럹�씠�뒪瑜� implements�븳 �겢�옒�뒪�쓽 process()硫붿꽌�뱶瑜�
+	// �샇異쒗빐�꽌 URI瑜� 湲곗��쑝濡�  1媛쒖쓽 �슂泥� 泥섎━瑜� �쐞�엫�븯怨� view�럹�씠吏�瑜� 
+	// 諛섑솚�븯�뒗 硫붿꽌�뱶
 	public String process(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException;
 	
 }
