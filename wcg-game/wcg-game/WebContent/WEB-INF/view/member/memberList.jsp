@@ -1,4 +1,4 @@
-<%@page import="kr.or.ddit.vo.MemberVO"%>
+
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -25,24 +25,12 @@
 		<tbody>
 			<%
 				//서블릿에서 보내온 데이터를 출력한다.
-				List<MemberVO> memList = (List<MemberVO>)request.getAttribute("memList");
 			
-				if(memList==null || memList.size()==0){
-			%>
-				<tr><td colspan="4">회원이 하나도 없습니다.</td></tr>
+			
+				
+				%>
 			<%
-				}else{
-					for(MemberVO mvo : memList){
-			%>
-				<tr>
-					<td><%=mvo.getMem_id() %></td>
-					<td><%=mvo.getMem_name() %></td>
-					<td><%=mvo.getMem_tel() %></td>
-					<td><%=mvo.getMem_addr() %></td>				
-				</tr>
-			<%
-					}
-				}
+				
 			%>
 			
 		</tbody>
