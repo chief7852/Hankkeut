@@ -9,7 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-	
   <servlet>
     <servlet-name>webFrontServlet</servlet-name>
     <servlet-class>kr.or.ddit.controller.web.WebController</servlet-class>
@@ -18,5 +17,4 @@
     <servlet-name>webFrontServlet</servlet-name>
     <url-pattern>*.ddit</url-pattern>
   </servlet-mapping>
- 
 </web-app>
