@@ -9,7 +9,7 @@
 		<!-- DB와 연결하는 정보를 properties 파일에 설정해 놓고 
 			properties 파일의 내용을 읽어 올 수 있도록 설정한다.
 		  -->
-		<properties resource = "kr/or/ddit/ibatis/config/dbinfo.properties"></properties>  
+		<properties resource = "config/dbinfo.properties"></properties>  
 		
 		<!-- 
 			각각의 sqlMap파일의 네임스페이스와 id속성값을 연결해서
@@ -27,7 +27,7 @@
 		 	형식: <typeAlias alias="alias명" type="클래스의 전체이름"/>
 		 	
 		  -->
-		  
+		  <typeAlias alias="memberVO" type="vo.MemberVO"/>
 		  <!-- DB와의 연결을 처리하는 부분 -->
 		  <transactionManager type="JDBC">
 		  	<dataSource type="SIMPLE">
@@ -43,5 +43,5 @@
 		  		그 xml 문서를 아래와 같이 등록한다.
 		  		형식 : <sqlMap resource = "경로명/파일명.xml"/> 
 		   -->
-	 	
+	 	<sqlMap resource = "mapper/member.xml"/>
 	</sqlMapConfig>

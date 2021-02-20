@@ -120,14 +120,14 @@ chk :$(function () {
         console.log(datas); */
 
         /* console.log($('#ff').serialize())
-        console.log($('#ff').serializeArray())
-        console.log($('#ff').serializeJSON()) */
+        console.log($('#ff').serializeArray())*/
+        console.log($('#ff').serializeJSON()) 
         $.ajax({
-            url: '/member/insert.do',
+            url: '/wcg-game/insertMember.do',
             method: 'post',
             data: $('#ff').serializeJSON(),
             success: function (res) {
-                $('#subspan').html(res.sw).css('color', 'red').css();
+                alert("안되냐? : ");
             },
             error: function (xhr) {
                 alert("상태 : " + xhr.status);

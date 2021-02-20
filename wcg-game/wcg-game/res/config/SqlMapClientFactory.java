@@ -8,23 +8,23 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 public class SqlMapClientFactory {
-	private static SqlMapClient smc;		// smc ¼±¾ð
+	private static SqlMapClient smc;		// smc ï¿½ï¿½ï¿½ï¿½
 	
 	static{
 		
 		try {
-			// 1-1. ¹®ÀÚ ÀÎÄÚµù ÄÉ¸¯ÅÍ¼Â ¼³Á¤
+			// 1-1. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½É¸ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 			Charset charset = Charset.forName("UTF-8");
 			Resources.setCharset(charset);
 			
-			// 1-2. È¯°æ ¼³Á¤ ÆÄÀÏ ÀÐ¾î¿À±â
-			Reader rd = Resources.getResourceAsReader("kr/or/ddit/ibatis/config/sqlMapConfig.xml");
+			// 1-2. È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ï¿½ï¿½ï¿½
+			Reader rd = Resources.getResourceAsReader("config/sqlMapConfig.xml");
 			
-			// 1-3. À§¿¡¼­ ÀÐ¾î¿Â Reader°´Ã¼¸¦ ÀÌ¿ëÇÏ¿© ½ÇÁ¦ È¯°æ ¼³Á¤À»
-			//		ÁøÇàÇÑ ÈÄ SQL¹®À» È£ÃâÇØ¼­ ½ÇÇàÇÒ °´Ã¼¸¦ »ý¼ºÇÑ´Ù.
+			// 1-3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ï¿½ Readerï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ SQLï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			
-			 smc = SqlMapClientBuilder.buildSqlMapClient(rd); 		//smc »ý¼º
-			// smc : Äõ¸®¹®À» ÀÐ¾î¿Í ½ÇÇàÇÒ °´Ã¼
+			 smc = SqlMapClientBuilder.buildSqlMapClient(rd); 		//smc ï¿½ï¿½ï¿½ï¿½
+			// smc : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼
 			
 		}catch(Exception e){
 			e.printStackTrace();

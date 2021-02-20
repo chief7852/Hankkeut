@@ -1,9 +1,11 @@
-package service;
+package common.service;
 
+import java.sql.SQLException;
+
+import common.dao.IMemberDao;
+import common.dao.MemberDaoImpl;
 import dao.BoardDaoImpl;
 import dao.IBoardDao;
-import dao.IMemberDao;
-import dao.MemberDaoImpl;
 import vo.MemberVO;
 
 public class MemberServiceImpl implements IMemberService {
@@ -22,15 +24,23 @@ public class MemberServiceImpl implements IMemberService {
 	}
 
 	@Override
-	public int insertMember(MemberVO vo) {
-		
-		return dao.insertMember(vo);
+	public String insertMember(MemberVO vo) {
+		String inputId = null;
+
+		try {
+			inputId = dao.insertMember(vo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return inputId;
 	}
 
 	@Override
 	public int deleteMember(String mem_id) {
-
-		return dao.deleteMember(mem_id);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

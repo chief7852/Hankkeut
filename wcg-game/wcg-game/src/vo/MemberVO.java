@@ -6,10 +6,11 @@ public class MemberVO {
 	private String gender     ;    //성별
 	private String mem_bir    ;    //생년월일
 	private String mem_mail   ;    //이메일주소
-	private String mem_addr1  ;    //주소1
+	private String mem_add1  ;    //주소1
 	private String mem_add2   ;    //주소2
 	private String zip_code   ;    //우편번호
 	private String mem_hp     ;    //휴대폰번호
+	
 	public String getMem_id() {
 		return mem_id;
 	}
@@ -40,11 +41,11 @@ public class MemberVO {
 	public void setMem_mail(String mem_mail) {
 		this.mem_mail = mem_mail;
 	}
-	public String getMem_addr1() {
-		return mem_addr1;
+	public String getMem_add1() {
+		return mem_add1;
 	}
-	public void setMem_addr1(String mem_addr1) {
-		this.mem_addr1 = mem_addr1;
+	public void setMem_add1(String mem_addr1) {
+		this.mem_add1 = mem_addr1;
 	}
 	public String getMem_add2() {
 		return mem_add2;
