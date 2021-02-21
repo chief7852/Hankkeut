@@ -16,7 +16,7 @@ public interface IAction {
 	
 	
 	// �씠 IAction�씤�꽣�럹�씠�뒪瑜� implements�븳 �겢�옒�뒪�쓽 process()硫붿꽌�뱶瑜�
-	// �샇異쒗빐�꽌 URI瑜� 湲곗��쑝濡�  1媛쒖쓽 �슂泥� 泥섎━瑜� �쐞�엫�븯怨� view�럹�씠吏�瑜� 
+	// �샇異쒗빐�꽌 URI瑜� 湲곗��쑝濡�  1媛쒖쓽 �슂泥� 섎━瑜� �쐞�엫�븯怨� view�럹�씠吏�瑜� 
 	// 諛섑솚�븯�뒗 硫붿꽌�뱶
 	public String process(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException;
 	
