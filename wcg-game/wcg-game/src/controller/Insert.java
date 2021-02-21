@@ -23,7 +23,7 @@ public class Insert extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		// 클라이언트 데이터 받기
+		// �겢�씪�씠�뼵�듃 �뜲�씠�꽣 諛쏄린
 		BoardVO vo = new BoardVO();
 		
 		vo.setSubject(request.getParameter("subject"));
@@ -32,19 +32,19 @@ public class Insert extends HttpServlet {
 		vo.setPassword(request.getParameter("password"));
 		vo.setContent(request.getParameter("content"));
 		
-		String wip = request.getRemoteAddr();	// 글 쓴 사람 ip 얻어옴
+		String wip = request.getRemoteAddr();	// 湲� �벖 �궗�엺 ip �뼸�뼱�샂
 		vo.setWip(wip);
 		
-		// 서비스 객체 생성
+		// �꽌鍮꾩뒪 媛앹껜 �깮�꽦
 		IBoardService service = BoardServiceImpl.getService();
 		
-		// 서비스 메소드 호출 - 메소드 값 저장
+		// �꽌鍮꾩뒪 硫붿냼�뱶 �샇異� - 硫붿냼�뱶 媛� ���옣
 		int insertBoard = service.insertBoard(vo);
 				
-		// 결과값 request에 저장
+		// 寃곌낵媛� request�뿉 ���옣
 		request.setAttribute("boardStatus", insertBoard);
 		
-		// reuqest 저장 값 전송
+		// reuqest ���옣 媛� �쟾�넚
 		RequestDispatcher rd = request.getRequestDispatcher("board/result.jsp");
 		rd.forward(request, response);
 	}
