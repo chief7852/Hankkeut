@@ -37,11 +37,15 @@ public class InsertMember extends HttpServlet {
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
+		
+		
+		System.out.println(vo.getMem_mail());
 		IMemberService service = MemberServiceImpl.getService();
 		String result = service.insertMember(vo);
 		
 		request.setAttribute("result", result);
-		request.getRequestDispatcher("home_sign/insert_mem.jsp").forward(request, response);;
+		
+		request.getRequestDispatcher("WEB-INF/view/member/insert_mem.jsp").forward(request, response);;
 	}
 
 }

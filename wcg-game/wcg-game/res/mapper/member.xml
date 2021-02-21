@@ -4,6 +4,10 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="member">
+	<select id="selectById" parameterClass="String" resultClass="String">
+	select mem_id from member where mem_id = #data#
+	</select>
+	
 	<insert id="insertMember" parameterClass="memberVO">
 		insert into member(
 		mem_id,

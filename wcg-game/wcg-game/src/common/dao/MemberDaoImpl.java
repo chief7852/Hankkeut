@@ -28,10 +28,7 @@ public class MemberDaoImpl implements IMemberDao {
 	
 	@Override
 	public String insertMember(MemberVO vo) throws SQLException {
-		System.out.println(vo.getMem_add1());
-		System.out.println(vo.getMem_add2());
-		System.out.println(vo.getMem_id());
-		System.out.println(vo.getMem_mail());
+		
 		return (String)client.insert("member.insertMember", vo);
 	}
 
@@ -45,6 +42,11 @@ public class MemberDaoImpl implements IMemberDao {
 			e.printStackTrace();
 		}
 		return cnt;
+	}
+	@Override
+	public String selectById(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		return (String) client.queryForObject("member.selectById",id);
 	}
 
 }
