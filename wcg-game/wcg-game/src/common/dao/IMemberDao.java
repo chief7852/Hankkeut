@@ -6,6 +6,9 @@ import java.util.List;
 import vo.MemberVO;
 
 public interface IMemberDao {
+	
+	// 아이디 체크
+	public String selectById(String id) throws SQLException;
 	//회원가입
 	public String insertMember(MemberVO vo) throws SQLException;
 	//탈퇴

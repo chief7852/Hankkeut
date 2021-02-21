@@ -1,8 +1,13 @@
 package common.service;
 
+import java.sql.SQLException;
+
 import vo.MemberVO;
 
 public interface IMemberService {
+	
+	// 아이디 체크
+	public String selectById(String id);
 	// 회원가입
 	public String insertMember(MemberVO vo);
 

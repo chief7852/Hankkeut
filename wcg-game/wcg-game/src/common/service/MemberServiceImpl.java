@@ -23,10 +23,11 @@ public class MemberServiceImpl implements IMemberService {
 		return service;
 	}
 
+	// 아이디 만들기
 	@Override
 	public String insertMember(MemberVO vo) {
 		String inputId = null;
-
+		
 		try {
 			inputId = dao.insertMember(vo);
 		} catch (SQLException e) {
@@ -37,10 +38,26 @@ public class MemberServiceImpl implements IMemberService {
 		return inputId;
 	}
 
+	//회원 탈퇴
 	@Override
 	public int deleteMember(String mem_id) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	// 아이디 체크
+	@Override
+	public String selectById(String mem_id) {
+		String resId = null;
+		
+		try {
+			resId = dao.selectById(mem_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return resId;
 	}
 
 }
