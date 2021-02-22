@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "UTF-8";
 
 body {
@@ -67,4 +68,75 @@ body {
 }
 .modal-room #option select[name="gameStart"] {
 	margin-bottom: 12px;
+=======
+@charset "UTF-8";
+
+body {
+	text-align: center;
+	margin: 0 auto;
+}
+.nav-tabs.nav-justified>li {
+	display: table-cell;
+	width: auto;
+}
+
+.nav-tabs.nav-justified>.li_width {
+	width: 250px;
+}
+
+#Setting {
+	width: 50px;
+}
+
+.modal-friend table {
+	margin: 0 auto;
+}
+#thead {
+	font-weight: bold;
+}
+#thead tr{
+	border-bottom: 1px solid lightgrey;
+	height: 50px;
+}
+.modal-friend table tbody td {
+	width: 100px;
+	height: 50px;
+}
+.modal-setting, .modal-room {
+	display: grid;
+	grid-template-columns: 100px 175px;
+}
+.modal-setting #label, .modal-body #option {
+	display: inline-block;
+}
+.modal-setting #label label {
+	height: 25px;
+}
+.modal-setting #option input {
+    margin-bottom: 14px;
+}
+.modal-setting input[type="range"] {
+	display: inline-block;
+	width: 160px;
+}
+.modal-setting input[type="checkbox"] {
+	display: inline-block;
+}
+
+.modal-room #label label{
+	display: block;
+	height: 30px;
+}
+.modal-room #option {
+	text-align: left;
+}
+.modal-room #option input {
+	margin-bottom: 7px;
+}
+.modal-room #option input[name="number"] {
+	margin-bottom: 14px;
+}
+.modal-room #option select[name="gameStart"] {
+	margin-bottom: 12px;
+>>>>>>> 905bcd0e96953ec6241d19c7f53abe8c07c2a2e3
 }

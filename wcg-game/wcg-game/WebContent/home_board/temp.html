@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+ <style>
+ p{
+   box-sizing : border-box;
+ }
+ .p1{
+   width : 80%;
+   float : left;
+ }
+ 
+ .p2{
+   width : 20%;
+   float : right ;
+ }
+ .p3{
+   clear : both;
+ }
+ 
+ button[name=reply]{
+   height : 45px;
+   vertical-align: top;
+ }
+ 
+ .panel-heading:hover{
+    background : lightblue;
+ }
+ </style>
+
+</head>
+<body>
+
+<div class="container">
+  <h2>Accordion Example</h2>
+  <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
+           <p class="p1">
+                       작성자  :  홍길동   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     이메일 : 123@sddd.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     작성일 : 2021.01.23 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     조회수 : 0
+          </p>
+          
+          <p class="p2">
+            <button type="button" name="modify" class="action">수정 </button>
+            <button type="button" name="delete" class="action">삭제 </button>
+          </p>
+          
+          <p class="p3">
+                    내용  내용  내용  내용  내용  내용  내용  내용 <br>
+                    내용  내용  내용  내용  내용  내용  내용  내용  내용  <br>       
+          </p>
+          
+          <p class="p4">
+            <textarea cols="60"></textarea>
+            <button type="button" name="reply" class="action">등록</button>
+          </p>
+        
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body"> 
+           <p class="p1">
+                       작성자  :  홍길동   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     이메일 : 123@sddd.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     작성일 : 2021.01.23 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     조회수 : 0
+          </p>
+          
+          <p class="p2">
+            <button type="button" name="modify" class="action">수정 </button>
+            <button type="button" name="delete" class="action">삭제 </button>
+          </p>
+          
+          <p class="p3">
+                    내용  내용  내용  내용  내용  내용  내용  내용 <br>
+                    내용  내용  내용  내용  내용  내용  내용  내용  내용  <br>       
+          </p>
+          
+          <p class="p4">
+            <textarea cols="60"></textarea>
+            <button type="button" name="reply" class="action">등록</button>
+          </p>
+        
+        
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+           <p class="p1">
+                       작성자  :  홍길동   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     이메일 : 123@sddd.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     작성일 : 2021.01.23 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     조회수 : 0
+          </p>
+          
+          <p class="p2">
+            <button type="button" name="modify" class="action">수정 </button>
+            <button type="button" name="delete" class="action">삭제 </button>
+          </p>
+          
+          <p class="p3">
+                    내용  내용  내용  내용  내용  내용  내용  내용 <br>
+                    내용  내용  내용  내용  내용  내용  내용  내용  내용  <br>       
+          </p>
+          
+          <p class="p4">
+            <textarea cols="60"></textarea>
+            <button type="button" name="reply" class="action">등록</button>
+          </p>
+        
+        
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+    
+</body>
+</html>
