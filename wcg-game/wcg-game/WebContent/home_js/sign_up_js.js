@@ -1,4 +1,15 @@
 chk :$(function () {
+
+	
+	$('#mail').on('change', function(){
+		if($(this).val()=='none'){
+			$('#goalbang').replaceWith
+			( '<div class="col-sm-3"><input type="text" class="form-control" id="mail"></div>' );
+			
+		}
+	})	
+
+	
     $('#idbtn').on('click', function () {
         idvalue = $('#id').val().trim();
 
@@ -14,7 +25,12 @@ chk :$(function () {
                 "id": idvalue
             },
             success: function (res) {
+		      var result = $('#idspan').html(res.sw);
+		      if(result == "사용불가능한 아이디"){		      
                 $('#idspan').html(res.sw).css('color', 'red').css();
+		      }else{		      
+                $('#idspan').html(res.sw).css('color', 'green').css();
+		      }
             },
             error: function (xhr) {
                 alert("상태 : " + xhr.status);
@@ -87,47 +103,23 @@ chk :$(function () {
 
 
     //제출버튼 클릭 이벤트
-    /* $('button[type:submit]').on('click', function() {})
-    $('button:submit').on('click', function(){}) */
 
-    $('#ff').on('submit', function () {
+
+    $('#signUp').on('submit', function () {
         //submit의 고유 기능을 방지 한다
         event.preventDefault();
-
-        /* //입력한 모든값(9개)을 가져온다 - val()
-        idvalue = $('#id').val().trim();
-        namevalue = $('#name').val().trim();
-        passvalue = $('#pwd').val().trim();
-        emailvalue = $('#email').val().trim();
-        hpvalue = $('#hp').val().trim();
-        birvalue = $('#bir').val().trim();
-        zipvalue = $('#zip').val().trim();
-        add1value = $('#add1').val().trim();
-        add2value = $('#add2').val().trim();
-        
-        datas = {"mem_id" : idvalue,"mem_name" : namevalue,
-        		"mem_pass" : passvalue,"mem_email" : emailvalue,
-        		"mem_hp" : hpvalue,"mem_bir" : birvalue,
-        		"mem_zip" : zipvalue,"mem_add1" : add1value,
-        		"mem_add2" : add2value}
-        
-        console.log(datas);
-        datas = "mem_id=" + idvalue+ "&mem_name=" + namevalue+
-        "&mem_pass=" + passvalue+"&mem_email=" + emailvalue+
-        "&mem_hp=" + hpvalue+"&mem_bir=" + birvalue+
-        "&mem_zip=" + zipvalue+"&mem_add1=" + add1value+
-        "&mem_add2=" + add2value;
-        console.log(datas); */
-
-        /* console.log($('#ff').serialize())
-        console.log($('#ff').serializeArray())
-        console.log($('#ff').serializeJSON()) */
+		emailback = $('#mail').val().trim();
+		emailfront = $('#email').val().trim();
+		$('#email').val(emailfront + emailback);
+		console.log($('#signUp').serializeJSON());
         $.ajax({
-            url: '/member/insert.do',
+            url: '/wcg-game/insertMember.do',
             method: 'post',
-            data: $('#ff').serializeJSON(),
+            data: $('#signUp').serializeJSON(),
             success: function (res) {
-                $('#subspan').html(res.sw).css('color', 'red').css();
+                alert("회원가입 되었습니다.");
+                window.location.href = "../home_main/index.html";
+
             },
             error: function (xhr) {
                 alert("상태 : " + xhr.status);
@@ -136,4 +128,47 @@ chk :$(function () {
         })
     })
 
+
+
+// 모든 버튼 css 이벤트
+
+	$('#idbtn').on('click', function(){
+			idval = $('$id').val().trim();
+				if (idval.length < 1) {
+						$(this).css("-webkit-animation",
+									"bounce-top 0.9s both").css(
+									"animation", "bounce-top 0.9s both");
+		}
+	})
+	
+// 정규식
+// 아이디
+	$(function() {
+		$('#id').on('keyup', function() {
+
+			idvalue = $('#id').val().trim();
+
+			//형식
+			regid = /^[a-z][a-zA-Z0-9]{3,11}$/;
+		
+			//비교 test() : true 또는 false를 리턴
+			if (regid.test(idvalue)) {
+			okpro(this);
+			} else {
+				nopro(this);
+			}
+
+		})
+	})
+
+	function okpro(vinput) {
+		$(vinput).parents('.form-group').find('#id').css('border-color', 'green');
+				
+
+
+	}
+	function nopro(vinput) {
+		$(vinput).parents('.form-group').find('#id').css('border-color', 'red');
+
+	}
 })

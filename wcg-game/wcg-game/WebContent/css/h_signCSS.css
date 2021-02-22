@@ -1,11 +1,21 @@
 @charset "EUC-KR";
 
+
+.asterisk{
+	color : red;
+}
+
+#home{
+		font-size: 4em;
+	}
+
 .ziptr:hover {
 	background: crimson;
 }
 
 .container {
-	margin: 8% 33%;
+	width: 50%;
+	height: 50%;
 }
 
 #goalbang {
