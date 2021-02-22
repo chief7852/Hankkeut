@@ -1,5 +1,16 @@
 chk :$(function () {
 
+	$("#pressDownButton").on("submit", function(){
+		var memId = $("#id").val();
+		var idChk = $("#idspan").html().trim();
+		
+		if(chkMemId != memId || idChk!="사용가능ID"){
+			alert("ID가 중복됩니다. 새로운 ID를 입력하세요.");
+			return false;	// 서버로 전송을 취소한다.
+		}
+		return true;
+	});
+	
 	
 	$('#mail').on('change', function(){
 		if($(this).val()=='none'){
@@ -19,16 +30,18 @@ chk :$(function () {
         }
 
         $.ajax({
-            url: '/member/ID.do',
+            url: '/wcg_game/ID.do',
             type: 'post',
             data: {
                 "id": idvalue
             },
             success: function (res) {
 		      var result = $('#idspan').html(res.sw);
-		      if(result == "사용불가능한 아이디"){		      
+		      if(result == "사용불가능한 아이디"){	
+		      	$('#idspan').html().empty();
                 $('#idspan').html(res.sw).css('color', 'red').css();
 		      }else{		      
+                $('#idspan').html().empty();
                 $('#idspan').html(res.sw).css('color', 'green').css();
 		      }
             },
@@ -113,7 +126,7 @@ chk :$(function () {
 		$('#email').val(emailfront + emailback);
 		console.log($('#signUp').serializeJSON());
         $.ajax({
-            url: '/wcg-game/insertMember.do',
+            url: '/wcg_game/insertMember.do',
             method: 'post',
             data: $('#signUp').serializeJSON(),
             success: function (res) {
@@ -133,7 +146,7 @@ chk :$(function () {
 // 모든 버튼 css 이벤트
 
 	$('#idbtn').on('click', function(){
-			idval = $('$id').val().trim();
+			idval = $('#id').val().trim();
 				if (idval.length < 1) {
 						$(this).css("-webkit-animation",
 									"bounce-top 0.9s both").css(
@@ -149,7 +162,7 @@ chk :$(function () {
 			idvalue = $('#id').val().trim();
 
 			//형식
-			regid = /^[a-z][a-zA-Z0-9]{3,11}$/;
+			re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z]$)/
 		
 			//비교 test() : true 또는 false를 리턴
 			if (regid.test(idvalue)) {
@@ -171,4 +184,16 @@ chk :$(function () {
 		$(vinput).parents('.form-group').find('#id').css('border-color', 'red');
 
 	}
+	
+	$('#pwd').on('keyup', function(){
+		 emailPattern = /^[0-9a-zA-Z]$/
+		 pwd1 = $('#pwd').val().trim();
+		 if(
+	})
+	$('#pwd2').on('keyup', function(){
+		 
+		 pwd1 = $('#pwd').val().trim();
+		 pwd2 = $('#pwd2').val().trim();
+		 
+	})
 })
