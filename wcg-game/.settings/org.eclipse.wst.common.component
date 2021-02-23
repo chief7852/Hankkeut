@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="wcg_game">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/res"/>
+<<<<<<< HEAD:wcg-game/wcg-game/.settings/org.eclipse.wst.common.component
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
+        <property name="context-root" value="wcg-game"/>
+        <property name="java-output-path" value="/wcg-game/build/classes"/>
+=======
+        <property name="context-root" value="wcg_game"/>
+        <property name="java-output-path" value="/wcg_game/build/classes"/>
+>>>>>>> dfb9d75599e28a7ec4af92f59b1ff5657757e482:wcg-game/.settings/org.eclipse.wst.common.component
+    </wb-module>
+</project-modules>

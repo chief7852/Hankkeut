@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+C:\Users\PC-11\Documents\GitHub\중간프로젝트\210209\wcg-game\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2361370273.index
+\wcg-game\src

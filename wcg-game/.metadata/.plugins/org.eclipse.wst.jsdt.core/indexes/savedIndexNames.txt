@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\PC-11\Documents\GitHub\중간프로젝트\210209\wcg-game\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2875760742.index
+120784336.index
+2335504653.index
+822660057.index
+1080775418.index
+3467207697.index

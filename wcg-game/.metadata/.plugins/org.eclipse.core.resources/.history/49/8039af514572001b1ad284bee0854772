@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>HAN KKEUT</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/indexCSS.css">
+<link rel="stylesheet" href="https://static-hid.gslb.toastoven.net/css/members/hangame_join.css?v=494f495ee8f6ef563e71d9dc5af9b6811707b319">
+</head>	
+<body>
+	<div id="logo" style="text-align: center">
+		<img alt="" src="../img/ganKKeut.png" style="width: 150px; height: 150px;">
+	</div>
+	
+	<section>
+	  	<article>
+	  		<iframe title="" name="ifr" src="index.html"></iframe>
+	  	</article>
+	</section>
+	<div id="board">
+		<div id="notice" class="boardList">
+			<a href="#">공지사항</a>
+			<span class="boardAdd"><img img src="../img/board1.PNG" onmouseover="this.src='../img/board_hover.PNG'" onmouseout="this.src='../img/board1.PNG'"></span>
+		</div>
+		<div id="notice" class="boardList">
+			<a href="#">이벤트</a>
+			<span class="boardAdd"><img img src="../img/board1.PNG" onmouseover="this.src='../img/board_hover.PNG'" onmouseout="this.src='../img/board1.PNG'"></span>
+		</div>
+		<div id="notice" class="boardList">
+			<a href="#">자유게시판</a>
+			<span class="boardAdd"><img img src="../img/board1.PNG" onmouseover="this.src='../img/board_hover.PNG'" onmouseout="this.src='../img/board1.PNG'"></span>
+		</div>
+		<div id="notice" class="boardList">
+			<a href="#">Q & A</a>
+			<span class="boardAdd"><img img src="../img/board1.PNG" onmouseover="this.src='../img/board_hover.PNG'" onmouseout="this.src='../img/board1.PNG'"></span>
+		</div>
+	</div>
+
+</body>
+</html>
