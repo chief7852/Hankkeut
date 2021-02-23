@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
 	<item value="D:\C_Lib\beanUtil" key="org.eclipse.jdt.ui.lastextjar"/>
 	<section name="RefactoringWizard.preview">
 		<item value="600" key="width"/>
@@ -28,6 +29,8 @@
 	</section>
 	<section name="completion_proposal_size">
 	</section>
+=======
+>>>>>>> 09ba8e8263e42b618c7b0c468cf83059bdfa8bca
 	<section name="JavaElementSearchActions">
 	</section>
 </section>
