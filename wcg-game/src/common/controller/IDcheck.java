@@ -34,20 +34,20 @@ public class IDcheck extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//1. 클라이언트 요청시 전송되는 값을 리턴
-		// 입력한 ID값을 받아온다
+		//1. �겢�씪�씠�뼵�듃 �슂泥��떆 �쟾�넚�릺�뒗 媛믪쓣 由ы꽩
+		// �엯�젰�븳 ID媛믪쓣 諛쏆븘�삩�떎
 		String userId = request.getParameter("id");
 		
-		//2. service객체를 얻는다
+		//2. service媛앹껜瑜� �뼸�뒗�떎
 		IMemberService service = MemberServiceImpl.getService();
 		
-		//3. service메소드 호출 - 결과값 받기
+		//3. service硫붿냼�뱶 �샇異� - 寃곌낵媛� 諛쏄린
 		String result = service.selectById(userId); 
 		
-		//4. 결과값을 request에 저장
+		//4. 寃곌낵媛믪쓣 request�뿉 ���옣
 		request.setAttribute("idcheck",result);
 		
-		//5. view페이지로 forward한다
+		//5. view�럹�씠吏�濡� forward�븳�떎
 		RequestDispatcher disp = request.getRequestDispatcher("WEB-INF/view/member/idcheck.jsp");
 		disp.forward(request, response);
 		
