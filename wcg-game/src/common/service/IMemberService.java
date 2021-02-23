@@ -1,8 +1,10 @@
 package common.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import vo.MemberVO;
+import vo.noticeBoardVO;
 
 public interface IMemberService {
 	
@@ -15,4 +17,7 @@ public interface IMemberService {
 	public int deleteMember(String mem_id);
 	// 내정보 수정
 
+	
+	
+	
 }

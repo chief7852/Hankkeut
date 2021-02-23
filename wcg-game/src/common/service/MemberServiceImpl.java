@@ -1,12 +1,14 @@
 package common.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import common.dao.IMemberDao;
 import common.dao.MemberDaoImpl;
 import dao.BoardDaoImpl;
 import dao.IBoardDao;
 import vo.MemberVO;
+import vo.noticeBoardVO;
 
 public class MemberServiceImpl implements IMemberService {
 	private static IMemberService service = null;
@@ -59,5 +61,7 @@ public class MemberServiceImpl implements IMemberService {
 		
 		return resId;
 	}
+
+
 
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import dao.BoardDaoImpl;
 import dao.IBoardDao;
 import vo.BoardVO;
+import vo.noticeBoardVO;
 
 public class BoardServiceImpl implements IBoardService{
 	private static IBoardService service = null;
@@ -20,23 +21,9 @@ public class BoardServiceImpl implements IBoardService{
 	}
 	
 	@Override
-	public List<BoardVO> selectAll() {
+	public List<noticeBoardVO> selectAll() {
 		return dao.selectAll();
 	}
-	@Override
-	public int listCount() {
-		return dao.listCount();
-	}
-	@Override
-	public List<BoardVO> selectByPage(Map<String, Integer> map) {
-		return dao.selectByPage(map);
-	}
-	@Override
-	public int insertBoard(BoardVO vo) {
-		return dao.insertBoard(vo);
-	}
-	@Override
-	public int deleteBoard(int num) {
-		return dao.deleteBoard(num);
-	}
+	
+	
 }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import service.BoardServiceImpl;
 import service.IBoardService;
 import vo.BoardVO;
+import vo.noticeBoardVO;
 
 /**
  * Servlet implementation class ListAll
@@ -43,7 +44,7 @@ public class ListAll extends HttpServlet {
 		IBoardService serivce = BoardServiceImpl.getService();
 		
 		// 3. service메소드 호출 - 결과값 받기
-		List<BoardVO> boards = serivce.selectAll();
+		List<noticeBoardVO> boards = serivce.selectAll();
 		
 		// 4. 결과값을 request에 저장
 		request.setAttribute("board", boards);
@@ -56,49 +57,7 @@ public class ListAll extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 페이지별 리스트 가져오기
-		// 1. 클라이언트 용청 시 전송 데이터 받기 - 페이지 번호
-		int cPage = Integer.parseInt(request.getParameter("cPage"));
-		System.out.println("cPage : " + cPage);
-		// 2. service객체 생성
-		IBoardService service = BoardServiceImpl.getService();
 		
-		// 전체 글 갯수 가져오기
-		int totalCnt = service.listCount();
-				
-		// 한 페이지에 출력할 글 갯수 - 3
-		int perList = 5;
-		
-		// 한 화면에 출력할 페이지 수 - 2
-		int perPage = 3;
-		
-		// 전체 페이지 수 구하기 - 7
-		int totalPage = (int) Math.ceil(totalCnt / (double) perList);
-		
-		// start와 end 값 구하기  1 => 1,2,3 | 2 => 4,5,6 | 3 => 7,8,9
-		// 7 => 19, 20
-		int start = (cPage-1) * perList + 1;
-		int end = start + perList - 1;
-		if(end > totalCnt) end = totalCnt;
-		
-		// startPage와 endPage 구하기
-		int startPage = ((cPage - 1) / perPage * perPage) + 1;
-		int endPage = startPage + perPage - 1;
-		if(endPage > totalPage) endPage = totalPage;
-		
-		// start-Page와 end-Page
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("start", start);
-		map.put("end", end);
-		
-		List<BoardVO> list = service.selectByPage(map);
-		
-		request.setAttribute("boardPage", list);	// 게시판 데이터 값
-		request.setAttribute("tPage", totalPage);	// 전체 페이지
-		request.setAttribute("sPage", startPage);	// 시작 페이지
-		request.setAttribute("ePage", endPage);		// 마지막 페이지
-		
-		request.getRequestDispatcher("board/listPage.jsp").forward(request, response);;
 	}
 
 }

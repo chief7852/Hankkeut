@@ -8,6 +8,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
 import vo.BoardVO;
+import vo.noticeBoardVO;
 
 public class BoardDaoImpl implements IBoardDao{
 	private static IBoardDao dao = null;
@@ -22,60 +23,17 @@ public class BoardDaoImpl implements IBoardDao{
 	}
 	
 	@Override
-	public List<BoardVO> selectAll() {
-		List<BoardVO> boardList = null;
+	public List<noticeBoardVO> selectAll() {
+		List<noticeBoardVO> boardList = null;
 		try {
 			boardList = smc.queryForList("board.selectAll");
-			System.out.println("boardList : " + boardList);
+			
 		} catch (SQLException e) {
 			boardList = null;
 			e.printStackTrace();
 		}
 		return boardList;
 	}
-	@Override
-	public int listCount() {
-		int cnt = 0;
-		try {
-			cnt = (Integer) smc.queryForObject("board.listCount");
-		} catch (SQLException e) {
-			cnt = 0;
-			e.printStackTrace();
-		}
-		return cnt;
-	}
-	@Override
-	public List<BoardVO> selectByPage(Map<String, Integer> map) {
-		List<BoardVO> boardList = null;
-		try {
-			boardList = smc.queryForList("board.selectByPage",map);
-		} catch (SQLException e) {
-			boardList = null;
-			e.printStackTrace();
-		}
-		return boardList;
-	}
-	@Override
-	public int insertBoard(BoardVO vo) {
-		int cnt = 0;
-		try {
-			cnt = (Integer) smc.insert("board.insertBoard",vo);
-		} catch (SQLException e) {
-			cnt = 0;
-			e.printStackTrace();
-		}
-		return cnt;
-	}
-	@Override
-	public int deleteBoard(int num) {
-		int cnt = 0;
-		try {
-			cnt = smc.delete("board.deleteBoard", num);
-		} catch (SQLException e) {
-			cnt = 0;
-			e.printStackTrace();
-		}
-		return cnt;
-	}
+	
 
 }
