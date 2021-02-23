@@ -1,7 +1,0 @@
-package dao;
-
-import vo.BoardVO;
-
-public interface IBoardDao {
-	public int insertBoard(BoardVOdVO);
-}
