@@ -1,12 +1,14 @@
 package common.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
 
 import vo.MemberVO;
+import vo.noticeBoardVO;
 
 public class MemberDaoImpl implements IMemberDao {
 
@@ -48,5 +50,7 @@ public class MemberDaoImpl implements IMemberDao {
 		// TODO Auto-generated method stub
 		return (String) client.queryForObject("member.selectById",id);
 	}
+	
+
 
 }
