@@ -1,0 +1,101 @@
+footer {
+	text-align: center;
+	height: 100px;
+}
+section {
+	width: 100%;
+	height: 100%;
+}
+
+section article, section iframe {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.carousel-inner img {
+	width: 100%;
+	height: 500;
+}
+
+li {
+	list-style: none;
+}
+
+a, a:hover{
+	text-decoration: none;
+	color: black;	
+}
+#menu {
+	background: #000000;
+	height: 91px;
+	padding: 20px 17px 0;
+	text-align: center
+}
+#menu {
+	background: #000000;
+	height: 91px;
+	padding: 20px 17px 0;
+	display: grid;
+	grid-template-columns: auto 800px;
+}
+#menu ul {
+	width: 1000px;
+	margin: 0 0 0 400px;
+	overflow: hidden;
+	text-align: center;	
+}
+#menu ul #startBtn {
+	float: right;
+}
+#menu ul #startBtn img{
+	
+}
+#menu ul li{
+	box-sizing: border-box;
+	float: left;
+	width: 130px;
+	height: 100%;
+	line-height: 50px;	
+	background: #000000;
+	text-align: center;
+}
+.nav li a #option_img {
+	width: 15px;
+	vertical-align: bottom;
+}
+#menu ul li:hover {
+	border-bottom : 5px solid orange;	
+}
+#menu ul li a {
+	color: #f8f8f8;
+	display: inline-block;
+	font-size: 17px;
+}
+#menu ul li a:hover {
+	text-decoration: none;	
+}
+
+#board {
+	text-align: center;
+	margin: 30px 150px 0px 0px;
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+}
+
+#board .boardList {
+	font-size: 23px;
+}
+#board .boardList a:visited {
+	color: black;
+}
+#board .boardList .boardAdd {
+	float: right;
+}
+#board .boardList .boardAdd img {
+	height: 23px;
+	vertical-align: top;
+}
+#board .boardList .boardAdd img:hover{
+	cursor: pointer;
+}

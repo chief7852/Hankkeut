@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="vo.BoardVO"/>
+<fullyQualifiedTypeName name="com.ibatis.sqlmap.client.SqlMapClient"/>
+<fullyQualifiedTypeName name="com.ibatis.common.resources.Resources"/>
+</qualifiedTypeNameHistroy>
+=======
 <qualifiedTypeNameHistroy/>
+>>>>>>> 09ba8e8263e42b618c7b0c468cf83059bdfa8bca
