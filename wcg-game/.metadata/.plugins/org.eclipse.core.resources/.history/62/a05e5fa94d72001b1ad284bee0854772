@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HAN KKEUT</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/indexCSS.css">
+<link rel="stylesheet" href="https://static-hid.gslb.toastoven.net/css/members/hangame_join.css?v=494f495ee8f6ef563e71d9dc5af9b6811707b319">
+</head>	
+<body>
+	<div id="logo" style="text-align: center">
+		<a href="index.html"><img alt="" src="../img/ganKKeut.png" style="width: 150px; height: 150px;"></a>
+	</div>
+	
+	<nav id="menu">
+		<ul>
+			<li><a href="../component/noticeBoard.html" target="ifr">공지사항</a></li>
+			<li><a href="../component/noticeBoard.html" target="ifr">이벤트</a></li>
+			<li><a href="../component/noticeBoard.html" target="ifr">자유 게시판</a></li>
+			<li><a href="../component/noticeBoard.html" target="ifr">Q & A</a></li>
+			<li><a href="../component/noticeBoard.html" target="ifr">도움말</a></li>
+		</ul>
+		<div id="gameBtn">
+			<a href='../component/noticeBoard.html' onClick="window.open('../component/noticeBoard.html', '','width= 1700, height= 800px, resizable=no')" target="_blank"><img src="../img/gameBtn.PNG"></a>
+		</div>
+	</nav>
+	
+	<section>
+	  	<article>
+	  		<iframe title="" name="ifr" src="main.html"></iframe>
+	  	</article>
+	</section>
+	
+	<footer>
+		<p>서울시 성동구 성수일로8길 5 서울숲 SK V1 A동 2층 (우.04793) ㈜무하유 | 대표이사 신동호 | 사업자등록번호 206-86-55577 | 통신판매업신고번호 제2011-서울성동-0831호</p>
+		<p>대전 중구 중앙로 76 (우.34940) 대흥동 500 | 팀장 최희수 | 팀원 양지수 전형섭 정이삭</p>
+		<p>Copyright © MUHAYU Inc. All rights reserved. Since 2021</p>
+	</footer>
+	
+
+</body>
+</html>

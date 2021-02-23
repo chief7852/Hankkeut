@@ -1,4 +1,4 @@
-package config;
+package res.config;
 
 import java.io.Reader;
 import java.nio.charset.Charset;
