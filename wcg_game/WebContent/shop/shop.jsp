@@ -27,7 +27,6 @@
  
 </style>
 
-
    <!-- The Modal -->
     <div id="myModal" class="modal">
  

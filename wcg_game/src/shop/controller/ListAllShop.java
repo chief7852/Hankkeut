@@ -26,7 +26,7 @@ public class ListAllShop extends HttpServlet {
 
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1.전체목록 가져오기
+		//1.요청시 글번호 가져오기
 		
 		//2. service객체얻기
 		IShopService service = ShopServiceImpl.getService();
@@ -34,10 +34,10 @@ public class ListAllShop extends HttpServlet {
 		//3. service 매서드 호출
 		List<ShopVO> list = service.selectAll();
 		
-		//4. 결과값을 request에 저장
+		//4.결과값 request에 저장
 		request.setAttribute("list", list);
 		
-		//5. view페이지로 froward
+		//5. view페이지로 forward - result.jsp
 		request.getRequestDispatcher("shop/listAll.jsp").forward(request, response); 
 	
 	}
