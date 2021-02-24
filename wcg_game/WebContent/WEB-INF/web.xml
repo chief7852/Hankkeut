@@ -9,4 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-</web-app>
+
+
+  <servlet>
+    <servlet-name>webFrontServlet</servlet-name>
+    <servlet-class>web.WebController</servlet-class>
+  </servlet>
+    <servlet-mapping>
+    <servlet-name>webFrontServlet</servlet-name>
+    <url-pattern>*.ddit</url-pattern>
+  </servlet-mapping>
+  
+  </web-app>
