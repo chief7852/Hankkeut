@@ -1,42 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="../css/gameCSS.css">
-	<script src="../shop.js/shop.js"></script>
-</head>
-<script>
-$('shop').on('click',)
-</script>
-<body>
-
-	<div class="container">
-		<ul class="nav nav-tabs nav-justified">
-			<li id="Setting">
-				<button type="button" class="btn btn-info btn-lg"
-					data-toggle="modal" data-target="#setting">
-					<span class="material-icons">build</span>
-				</button>
-			</li>
-			<li>
-				<button type="button" class="btn btn-info btn-lg"
-					data-toggle="modal" data-target="#friend">
-					<span class="material-icons">face</span>
-				</button>
-			</li>
-			<li class="active li_width"><a data-toggle="tab" href="#waiting">대기실</a></li>
-			<li class="li_width"><a data-toggle="modal" href="#createRoom">방 만들기</a></li>
-			<li id="shop" class="li_width"><a data-toggle="tab" href="../shop/shop.html">상점</a></li>
-			<li class="li_width"><a data-toggle="tab" href="#rank">랭킹</a></li>
-		</ul>
-	</div>
 
 
 	<!-- Friend Modal -->
@@ -164,24 +128,50 @@ $('shop').on('click',)
 
 		</div>
 	</div>
+	
+	<!-- shop modal생성 -->
+	<div class="modal fade" id="create" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
 
-	<div class="tab-content">
-		<div id="waiting" class="tab-pane fade in active">
-			<h3>Waiting</h3>
-			<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-				laboris nisi ut aliquip ex ea commodo consequat.</p>
-		</div>
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">방 생성</h4>
+				</div>
+				<div class="modal-room">
+					<div id="label">
+						<label>제목</label>
+						<label>비밀번호</label>
+						<label>인원 수</label>
+						<label>게임 시간</label>
+						<label>게임 유형</label>
+					</div>
+					<div id="option">
+						<input type="text" name="roomTitle"><br>
+						<input type="password" name="roomPw"><br>
+						<input type="text" name="number"><br>
+						
+						<select name="gameStart" id="gStart">
+							<option value="60">60초</option>
+							<option value="80">80초</option>
+							<option value="120">120초</option>
+						</select>
+						<br>
+						<select name="gameType" id="gType">
+							<option value="쿵쿵따">쿵쿵따</option>
+							<option value="끝말잇기">끝말잇기</option>
+						</select>
+					</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">생성</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+				</div>
+			</div>
 
-		<div id="shop" class="tab-pane fade">
-			<h3>Shop</h3>
-			<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-				laboris nisi ut aliquip ex ea commodo consequat.</p>
-		</div>
-		<div id="rank" class="tab-pane fade">
-			<h3>Rank</h3>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-				accusantium doloremque laudantium, totam rem aperiam.</p>
 		</div>
 	</div>
-</body>
-</html>
+
+
