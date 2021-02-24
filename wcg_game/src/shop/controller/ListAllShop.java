@@ -27,6 +27,7 @@ public class ListAllShop extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1.요청시 글번호 가져오기
+		request.setCharacterEncoding("utf-8");
 		
 		//2. service객체얻기
 		IShopService service = ShopServiceImpl.getService();
@@ -34,11 +35,15 @@ public class ListAllShop extends HttpServlet {
 		//3. service 매서드 호출
 		List<ShopVO> list = service.selectAll();
 		
+		for(ShopVO vo : list)
+		{
+			System.out.println(vo.item_no);
+		}
 		//4.결과값 request에 저장
 		request.setAttribute("list", list);
 		
 		//5. view페이지로 forward - result.jsp
-		request.getRequestDispatcher("shop/listAll.jsp").forward(request, response); 
+		request.getRequestDispatcher("WEB-INF/view/shop/listAll.jsp").forward(request, response); 
 	
 	}
 

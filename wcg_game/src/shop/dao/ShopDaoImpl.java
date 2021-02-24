@@ -27,7 +27,6 @@ public class ShopDaoImpl implements IShopDao {
 		List<ShopVO> list = null;
 		try {
 			list = smc.queryForList("shop.selectAll");
-			System.out.println("shopList : " + list);
 		} catch (SQLException e) {
 			list = null;
 			// TODO Auto-generated catch block
