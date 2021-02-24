@@ -5,10 +5,9 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 	
 <sqlMap namespace="shop">
-	<select id="selectAll" resultClass="shopVO">
+	<select id="selectAll" resultClass="shopVO" >
 		select *
 		from shop
-		order by item_no desc
 	</select>
 	
 	
