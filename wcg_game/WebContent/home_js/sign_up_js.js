@@ -30,7 +30,7 @@ chk :$(function () {
         }
 
         $.ajax({
-            url: '/wcg_game/ID.do',
+            url: '/wcggame/ID.do',
             type: 'post',
             data: {
                 "id": idvalue
@@ -126,7 +126,7 @@ chk :$(function () {
 		$('#email').val(emailfront + emailback);
 		console.log($('#signUp').serializeJSON());
         $.ajax({
-            url: '/wcg_game/insertMember.do',
+            url: '/wcggame/insertMember.do',
             method: 'post',
             data: $('#signUp').serializeJSON(),
             success: function (res) {
@@ -165,7 +165,7 @@ chk :$(function () {
 			re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z]$)/
 		
 			//비교 test() : true 또는 false를 리턴
-			if (regid.test(idvalue)) {
+			if (re2.test(idvalue)) {
 			okpro(this);
 			} else {
 				nopro(this);
@@ -188,7 +188,7 @@ chk :$(function () {
 	$('#pwd').on('keyup', function(){
 		 emailPattern = /^[0-9a-zA-Z]$/
 		 pwd1 = $('#pwd').val().trim();
-		 if(
+		 /*if()*/
 	})
 	$('#pwd2').on('keyup', function(){
 		 
