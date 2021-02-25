@@ -44,7 +44,38 @@ public class ListAllShop extends HttpServlet {
 		
 		//5. view페이지로 forward - result.jsp
 		request.getRequestDispatcher("WEB-INF/view/shop/listAll.jsp").forward(request, response); 
-	
 	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

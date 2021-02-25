@@ -1,6 +1,8 @@
 package shop.service;
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import shop.dao.IShopDao;
 import shop.dao.ShopDaoImpl;
@@ -35,6 +37,23 @@ public class ShopServiceImpl implements IShopService {
 		return dao.deleteItem(no);
 	}
 
+	@Override
+	public List<ShopVO> selectCategoryImg(Map<String, Integer> map) {
+		List<ShopVO> list = null;
+		
+		try {
+			list = dao.selectCategoryImg(map);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	
+
+	
 	
 
 }
