@@ -2,6 +2,7 @@ package shop.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -63,9 +64,15 @@ public class ShopDaoImpl implements IShopDao {
 		return cnt;
 	}
 
+	@Override
+	public List<ShopVO> selectCategoryImg(Map<String, Integer> map) throws SQLException {
+		
+		return smc.queryForList("shop.selectCategoryImg",map);
+	}
 
+	
+	
 
 
 	
-
-}
+}	

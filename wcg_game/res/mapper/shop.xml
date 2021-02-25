@@ -5,9 +5,16 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 	
 <sqlMap namespace="shop">
+
 	<select id="selectAll" resultClass="shopVO" >
 		select *
 		from shop
+	</select>
+	
+	<select id="selectByCategory" resultClass="shopVO" parameterClass="map">
+		select *
+		from shop
+		where ITEMP_CATEGORY like #category#
 	</select>
 	
 	

@@ -7,6 +7,7 @@
     
    [
  <%
+ //controller에서 request에 저장된 값을 가져온다.
    List<ShopVO> list = (List<ShopVO>)request.getAttribute("list");
  
    for(int i=0; i<list.size(); i++){
@@ -16,11 +17,7 @@
 %>
 
 	 {
-	        "no" :"<%= vo.getItem_no() %>",
 	      "link" : "<%= vo.getItem_link() %>",
-	      "name" : "<%= vo.getItem_name() %>",
-	     "point" : "<%= vo.getItem_point() %>",
-	     "category" : "<%= vo.getItemp_category() %>"
 	 }   
 	   
  <% 

@@ -12,9 +12,15 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../css/gameCSS.css">
-	<script src="../shop.js/shop.js"></script>
+	<script src="../shop_js/shop.js"></script>
 </head>
 <script>
+
+$(function(){	//shop버튼을 눌렀을때 shop로 이동
+	$('#shopmove').on('click',function(){
+		$('#result').load("../shop/view.html")
+	})
+})
 </script>
 <body>
   <jsp:include page="header.jsp"></jsp:include>

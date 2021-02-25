@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-
+	<div id="result"> </div>
 	<!-- Friend Modal -->
 	<div class="modal fade" id="friend" data-backdrop="static">
 		<div class="modal-dialog modal-sm">
