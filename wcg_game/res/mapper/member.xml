@@ -35,4 +35,8 @@
     </selectKey>
 
 	</insert>
+	
+	<select id="loginMember" resultClass="String" parameterClass="memberVO">
+	select mem_id, mem_pass from member where mem_id = #mem_id# and mem_pass = #mem_pass#
+	</select>
 </sqlMap>

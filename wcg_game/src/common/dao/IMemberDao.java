@@ -14,7 +14,8 @@ public interface IMemberDao {
 	public String insertMember(MemberVO vo) throws SQLException;
 	//탈퇴
 	public int deleteMember(String mem_id) throws SQLException;
-	//내정보 수정
+	//로그인
+	public String loginMember(MemberVO vo) throws SQLException;
 	
 	
 	
