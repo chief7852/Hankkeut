@@ -6,6 +6,7 @@ public class ShopVO {
 	public String item_link     ;
 	public String item_name     ;
 	public int item_point    ;
+	public String itemp_category;
 	
 	public int getItem_no() {
 		return item_no;
@@ -31,6 +32,14 @@ public class ShopVO {
 	public void setItem_point(int item_point) {
 		this.item_point = item_point;
 	}
+	public String getItemp_category() {
+		return itemp_category;
+	}
+	public void setItemp_category(String itemp_category) {
+		this.itemp_category = itemp_category;
+	}
+	
+	
 	
 	
 	

@@ -17,8 +17,6 @@ public interface IShopService {
 	//삭제
 	public int deleteItem(int no);
 	
-	//카테고리별 이미지 가져오기
-	public List<ShopVO> selectCategoryImg(Map<String, Integer> map);
 	
 	
 	

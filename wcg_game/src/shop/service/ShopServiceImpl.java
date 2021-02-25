@@ -37,19 +37,6 @@ public class ShopServiceImpl implements IShopService {
 		return dao.deleteItem(no);
 	}
 
-	@Override
-	public List<ShopVO> selectCategoryImg(Map<String, Integer> map) {
-		List<ShopVO> list = null;
-		
-		try {
-			list = dao.selectCategoryImg(map);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
 
 	
 
