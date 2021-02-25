@@ -1,4 +1,3 @@
-<%@page import="vo.noticeBoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,49 +16,52 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://static-hid.gslb.toastoven.net/css/members/hangame_join.css?v=494f495ee8f6ef563e71d9dc5af9b6811707b319">
 <link rel="stylesheet" href="../css/css.css">
+<script type="text/javascript">
+	$(function() {
+		$('#addBtn').on('click', function() {
+			cont = $(".cont textarea").val();
+			
+			cont = cont.replace(/\n/g, "<br>");
+			$(".cont textarea").val(cont);
+			
+			var Form = $('#noticeBoard').get(0);
+			Form.action = "<%=request.getContextPath()%>/notice/boardInsert.ddit";
+			Form.submit();
+		});
+	});
+</script>
 </head>
 <body>
-<%
-	noticeBoardVO boardVo = (noticeBoardVO) request.getAttribute("boardVo");
-%>
+<form id="noticeBoard" action="<%=request.getContextPath()%>/notice/boardInsert.ddit">
 	<div class="board_wrap">
 		<div class="board_title">
 			<strong>공지사항</strong>
+
 		</div>
-		<div class="board_view_wrap">
-			<div class="board_view">
+		<div class="board_list_wrap">
+			<div class="board_write">
 				<div class="title">
-					<%=boardVo.getN_board_title()%>
-				</div>
-				<div class="info">
 					<dl>
-						<dt>번호</dt>
-						<dd><%=boardVo.getN_board_num()%></dd>					
-					</dl>
-					<dl>
-						<dt>글쓴이</dt>
-						<dd><%=boardVo.getManager_id()%></dd>					
-					</dl>
-					<dl>
-						<dt>작성일</dt>
-						<dd><%=boardVo.getN_board_date()%></dd>					
-					</dl>
-					<dl>
-						<dt>조회</dt>
-						<dd><%=boardVo.getN_board_views()%></dd>					
+						<dt>제목</dt>
+						<dd>
+							<input type="text" name="n_board_title" placeholder="제목입력">
+						</dd>
 					</dl>
 				</div>
+				<hr>
 				<div class="cont">
-					<%=boardVo.getN_board_contents()%>
+					<textarea name="n_board_contents" placeholder="내용입력"></textarea>
 				</div>
 			</div>
-		
+
+
 			<div class="bt_wrap">
-				<a href="<%=request.getContextPath()%>/notice/boardUpdateForm.ddit?boardNum=<%=boardVo.getN_board_num()%>">수정</a>
-				<a href="<%=request.getContextPath()%>/notice/boardList.ddit" class="on">목록</a>
-				<a href="<%=request.getContextPath()%>/notice/boardDelete.ddit?boardNum=<%=boardVo.getN_board_num()%>">삭제</a>
+				<input id="addBtn" type="button" class="on" value="등록">
+				<a href="<%=request.getContextPath()%>/notice/boardList.ddit">취소</a>
 			</div>
+
 		</div>
 	</div>
+</form>
 </body>
 </html>
