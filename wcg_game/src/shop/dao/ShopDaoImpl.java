@@ -64,11 +64,6 @@ public class ShopDaoImpl implements IShopDao {
 		return cnt;
 	}
 
-	@Override
-	public List<ShopVO> selectCategoryImg(Map<String, Integer> map) throws SQLException {
-		
-		return smc.queryForList("shop.selectCategoryImg",map);
-	}
 
 	
 	

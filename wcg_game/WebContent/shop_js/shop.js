@@ -8,38 +8,42 @@
 				
 				
 				code = '<div class="container">';
-				code += ' <h2>SHOP</h2>                                         ';
+				code += ' <h2>SHOP</h2>';
+				result = '';
 				$.each(res, function(i, v){
-					code += '  <table class="table">                                              ';
-					code += '    </thead>                                                         ';
-					code += '    <tbody>                                                          ';
-					code += '      <tr>                                                           ';
-					code += '        <td></td>                                             ';
-					code += '        <td></td>                                    ';
-					code += '        <td></td>                                    ';
-					code += '      </tr>                                                          ';
-					code += '      <tr class="success">                                           ';
-					code += '        <td><img id="imges" src="'+v.link+'"></td>                                             ';
-					code += '      </tr>                                                          ';
-					code += '      <tr class="danger">                                            ';
-					code += '        <td>'+v.category+'</td>                                              ';
-					code += '      </tr>                                                          ';
-					code += '      <tr class="info">                                              ';
-					code += '        <td>'+v.name+'</td>                                                ';
-					code += '      </tr>                                                          ';
-					code += '      <tr class="warning">                                           ';
-					code += '        <td> '+v.point+'</td>                                             ';
-					code += '      </tr>                                                          ';
-					code += '      <tr class="active">                                            ';
-					code += '        <td><button type="button"></td>                                              ';
-					code += '      </tr>                                                          ';
-					code += '    </tbody>                                                         ';
-					code += '  </table>                                                           ';
+//					result = v.link;
+					code += '  <table class="table">';
+					code += '    </thead>';
+					code += '    <tbody>';
+					code += '      <tr>';
+					code += '        <td></td>';
+					code += '        <td></td>';
+					code += '        <td></td>';
+					code += '      </tr>';
+					code += '      <tr class="success">';
+					code += '        <td><img id="imges" src="'+v.link+'"></td>';
+					code += '			<button type="button" id="showItem" class="btn btn-danger">show</button>'
+					code += '			<button type="button" id="buyItem" class="btn btn-danger">buy</button>'
+					code += '      </tr>';
+					code += '      <tr class="danger">';
+					code += '        <td>'+v.category+'</td>';
+					code += '      </tr>';
+					code += '      <tr class="info">';
+					code += '        <td>'+v.name+'</td>';
+					code += '      </tr>';
+					code += '      <tr class="warning">';
+					code += '        <td> '+v.point+'</td>';
+					code += '      </tr>';
+					code += '      <tr class="active">';
+					code += '      </tr>';
+					code += '    </tbody>';
+					code += '  </table>';
 				})
 						code += '</div>';
 					
 				
 				$('#res').append().html(code)
+//				$('#res').append().html(result)
 			},
 				
 			error:function(xhr){
@@ -49,6 +53,10 @@
 			
 		})
 	}
+	
+	
+	
+	
 	
 	
 	
