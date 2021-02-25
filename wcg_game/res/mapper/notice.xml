@@ -4,9 +4,48 @@
 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 	
-	<sqlMap namespace="board" >
+	<sqlMap namespace="notice" >
 		<select id="selectAll" resultClass="noticeBoardVO">
-			select * from NOTICEBOARD order by N_BOARD_NUM desc;
+			select * from noticeboard order by n_board_num desc
 		</select>
-	
+		<select id="selectAllCnt" resultClass="int">
+			select count(*) from noticeboard
+		</select>
+		<select id="selectByPage" parameterClass="map" resultClass="noticeBoardVO">
+			select A.* from (
+	      		select rownum as rnum, B.*  from (
+	          		select * from noticeboard 
+	          		order by n_board_num desc) B
+	       <![CDATA[
+	      		where rownum <= #end#) A 
+	   		where A.rnum >= #start#
+	       ]]>
+		</select>
+		
+		
+		<select id="selectBoard" parameterClass="int" resultClass="noticeBoardVO">
+			select * from noticeboard where n_board_num = #num#
+		</select>
+		
+		<insert id="insertBoard" parameterClass="noticeBoardVO">
+			insert into noticeboard values (
+				notice_seq.nextval,
+				#n_board_title#,
+				#n_board_contents#,
+				sysdate,
+				0,
+				#manager_id#
+			)
+		</insert>
+		<update id="updateBoard" parameterClass="noticeBoardVO">
+			update noticeboard set n_board_title = #n_board_title#, n_board_contents = #n_board_contents#
+			where n_board_num = #n_board_num#
+		</update>
+		<delete id="deleteBoard" parameterClass="int">
+			delete from noticeboard where n_board_num = #n_board_num#
+		</delete>
+		
+		<update id="updateViews" parameterClass="int">
+			update noticeboard set n_board_views = n_board_views+1 where n_board_num = #num#
+		</update>
 	</sqlMap>
