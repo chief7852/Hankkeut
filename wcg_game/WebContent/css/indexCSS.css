@@ -1,3 +1,7 @@
+body {
+	text-align: center;
+	overflow: hidden;
+}
 footer {
 	text-align: center;
 	height: 100px;
@@ -8,6 +12,7 @@ footer {
 section {
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 }
 
 section article, section iframe {
@@ -19,6 +24,7 @@ section article, section iframe {
 .carousel-inner img {
 	width: 100%;
 	height: 500;
+	
 }
 
 li {
@@ -100,5 +106,9 @@ a, a:hover{
 	vertical-align: top;
 }
 #board .boardList .boardAdd img:hover{
+	cursor: pointer;
+}
+
+#event:hover {
 	cursor: pointer;
 }

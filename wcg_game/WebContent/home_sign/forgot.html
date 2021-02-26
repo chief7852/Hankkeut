@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- <script src="/webjars/jquery/1.12.4/jquery.min.js"></script> -->
+<script type="text/javascript" src="../home_js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('.container .nav li').on('click', function() {
+			liAttr = $(this).attr('id');
+			if(liAttr == 'findUserPW') {
+				$('#forgotIDForm').css("display", 'none');
+				$('#forgotPWForm').css("display", 'block');
+			} else if(liAttr == 'findUserId') {
+				$('#forgotIDForm').css("display", 'block');
+				$('#forgotPWForm').css("display", 'none');
+			}
+		})
+	});
+</script>
+<style type="text/css">
+	#forgotPWForm {
+		display: none;
+	}
+</style>
+</head>
+<body>
+
+	<div class="container">
+		<ul class="nav nav-pills">
+			<li id="findUserId" class="active"><a href="#forgotID" data-toggle="tab">아이디찾기</a></li>
+			<li id="findUserPW"><a href="#forgotPW" data-toggle="tab">비밀번호 찾기</a></li>
+		</ul>
+
+		<div class="tab-content">
+		
+			<form id="forgotIDForm" action="/wcggame/login/forgot.ddit">
+				<div id="forgotID" class="tab-pane fade in active">
+					<h3>이메일 입력</h3>
+					<input type="text" class="form-control" name="mem_mail"> 
+					<input id="findID" type="submit" value="전송">
+				</div>
+			</form>
+
+			<form id="forgotPWForm" action="/wcggame/login/forgot.ddit">
+				<div id="forgotPW" class="tab-pane fade">
+					<h3>아이디 입력</h3>
+					<input type="text" class="form-control" name="mem_id">
+					<h3>이메일 입력</h3>
+					<input type="text" class="form-control" name="mem_mail"> 
+					<input id="findPW" type="submit" value="전송">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

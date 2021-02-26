@@ -97,7 +97,7 @@ chk :$(function () {
             dataType: 'json'
         })
     })
-
+    
     //modal결과에서 원하는 행(주소)를 선택했을때 이벤트
     //동적으로 새롭게 생성된 요소 - delegate방식
     $('#result1').on('click', '.ziptr', function () {
@@ -131,7 +131,7 @@ chk :$(function () {
             data: $('#signUp').serializeJSON(),
             success: function (res) {
                 alert("회원가입 되었습니다.");
-                window.location.href = "../home_main/index.html";
+                window.location.href = "";
 
             },
             error: function (xhr) {
@@ -146,11 +146,11 @@ chk :$(function () {
 // 모든 버튼 css 이벤트
 
 	$('#idbtn').on('click', function(){
-			idval = $('#id').val().trim();
-				if (idval.length < 1) {
-						$(this).css("-webkit-animation",
-									"bounce-top 0.9s both").css(
-									"animation", "bounce-top 0.9s both");
+		idval = $('#id').val().trim();
+		if (idval.length < 1) {
+			$(this).css("-webkit-animation",
+						"bounce-top 0.9s both").css(
+						"animation", "bounce-top 0.9s both");
 		}
 	})
 	

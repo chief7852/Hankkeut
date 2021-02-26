@@ -75,6 +75,16 @@ public class MemberServiceImpl implements IMemberService {
 		return resId;
 	}
 
+	@Override
+	public MemberVO isMember(MemberVO vo) {
+		return dao.isMember(vo);
+	}
+
+	@Override
+	public int updatePass(MemberVO vo) {
+		return dao.updatePass(vo);
+	}
+
 
 
 }
