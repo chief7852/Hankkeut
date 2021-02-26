@@ -48,4 +48,6 @@
 		<update id="updateViews" parameterClass="int">
 			update noticeboard set n_board_views = n_board_views+1 where n_board_num = #num#
 		</update>
+		
+	
 	</sqlMap>
