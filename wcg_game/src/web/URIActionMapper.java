@@ -16,7 +16,7 @@ public class URIActionMapper {
 	
 	static {
 		// properties파일을 읽어와 Bundle객체를 생성한다.
-		ResourceBundle bundle = ResourceBundle.getBundle("web/uri_mapping");
+		ResourceBundle bundle = ResourceBundle.getBundle("config/uri_mapping");
 		
 		// Bundle 객체의 key값들 가져오기
 		Enumeration<String> en = bundle.getKeys();

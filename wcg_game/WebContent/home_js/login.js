@@ -1,0 +1,58 @@
+$(function() {
+	//캐릭터 기본정보들 담는 그릇
+	nick = '';
+	char_login = '';
+
+
+
+	//로그인
+	$('#btnConnect2').on('click', function() {
+		idvalue = $('#userId').val().trim();
+		passvalue = $('#userPass').val().trim();
+		console.log(idvalue + passvalue);
+		$.ajax({
+			url: '/wcggame/loginMember.do',
+			type: 'post',
+			data: {
+				"id": idvalue,
+				"pass": passvalue
+			},
+			success: function(res) {
+				alert(res.sw);
+				if (res.sw == "로그인완료") {
+					$('#btnConnect').attr("disabled", false);
+					
+				}
+			},
+			error: function(xhr) {
+				alert("상태 : " + xhr.status);
+			},
+
+			dataType: 'json'
+		})
+		
+		// if 닉네임이없으면 캐릭터생성하게 만들어야함
+		// 로그인후 진행되면 캐릭터값을 아이디를 파라미터로 다 들고옴
+		$.ajax({
+			url: '/wcggame/SelectChar.do',
+			type: 'post',
+			data: {
+				"id": idvalue
+			},
+			success: function(res) {
+				nick = res.char_nickname;
+
+			},
+			error: function(xhr) {
+				alert("상태 : " + xhr.status);
+				
+			},
+
+			dataType: 'json'
+		})
+
+	})
+	
+	
+
+})

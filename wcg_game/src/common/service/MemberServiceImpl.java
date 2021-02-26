@@ -60,6 +60,21 @@ public class MemberServiceImpl implements IMemberService {
 		return resId;
 	}
 
+	@Override
+	public String loginMember(MemberVO vo) {
+		String resId = null;
+		
+		try {
+			resId = dao.loginMember(vo);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return resId;
+	}
+
 
 
 }

@@ -49,6 +49,12 @@ public class MemberDaoImpl implements IMemberDao {
 		// TODO Auto-generated method stub
 		return (String) client.queryForObject("member.selectById",id);
 	}
+	//로그인
+	@Override
+	public String loginMember(MemberVO vo) throws SQLException {
+		
+		return (String) client.queryForObject("member.loginMember",vo);
+	}
 	
 
 
