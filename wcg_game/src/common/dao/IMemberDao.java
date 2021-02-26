@@ -17,9 +17,11 @@ public interface IMemberDao {
 	//로그인
 	public String loginMember(MemberVO vo) throws SQLException;
 	
+	// 이메일 유무
+	public MemberVO isMember(MemberVO vo);
 	
-	
-	
+	// 비밀번호 번경
+	public int updatePass(MemberVO vo);
 	
 
 	

@@ -10,14 +10,9 @@ import vo.MemberVO;
 import vo.noticeBoardVO;
 
 public class MemberDaoImpl implements IMemberDao {
-
 	
 	private SqlMapClient client;
 	private static IMemberDao dao;
-	
-	
-	
-	
 	
 	private MemberDaoImpl () {
 		client = SqlMapClientFactory.getClient();
@@ -54,6 +49,28 @@ public class MemberDaoImpl implements IMemberDao {
 	public String loginMember(MemberVO vo) throws SQLException {
 		
 		return (String) client.queryForObject("member.loginMember",vo);
+	}
+	@Override
+	public MemberVO isMember(MemberVO vo) {
+		MemberVO memVo = null;
+		try {
+			memVo = (MemberVO) client.queryForObject("member.isMember", vo);
+		} catch (SQLException e) {
+			memVo = null;
+			e.printStackTrace();
+		}
+		return memVo;
+	}
+	@Override
+	public int updatePass(MemberVO vo) {
+		int cnt = 0;
+		try {
+			cnt = client.update("member.updatePass", vo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 	
 
