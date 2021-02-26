@@ -26,16 +26,6 @@ public class ShopServiceImpl implements IShopService {
 		return dao.selectAll();
 	}
 
-	@Override
-	public int insertItem(ShopVO vo) {
-		return dao.insertItem(vo);
-	}
-
-	@Override
-	public int deleteItem(int no) {
-		// TODO Auto-generated method stub
-		return dao.deleteItem(no);
-	}
 
 
 	

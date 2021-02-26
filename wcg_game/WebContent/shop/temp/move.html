@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="../shop_js/shop.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="../shop_js/shop.js"></script>
+<script>
+$(function(){
+
+	test = $('#test');	//아이디가 test인 요소를 변수에 test에 할당
+	test.offset().top;  // 상단을 기준으로 test 엘리먼트 요소가 위치한 거리를 절대좌표로 반환
+	test.offset().left;// 좌측을 기준으로 test 엘리먼트 요소가 위치한 거리를 절대좌표로 반환
+	
+	test.offset({top: 400});// 절대좌표를 기준으로 위에서 400px에 해당하는 좌표로 이동시킴
+	test.offset({left: 400});// 절대좌표를 기준으로 좌측에서 400px에 해당하는 좌표로 이동시킴
+	test.offset({top: 100, left: 200});// 절대좌표를 기준으로 위에서 100px 그리고 좌측에서 200px에 해당하는 좌표로 이동시킴
+	
+	consloe(text)
+	
+})
+</script>
+</head>
+<body>
+<div id="test">나의 좌표는??</div>
+</body>
+</html>

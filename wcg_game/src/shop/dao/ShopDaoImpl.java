@@ -36,33 +36,18 @@ public class ShopDaoImpl implements IShopDao {
 		return list;
 	}
 
-	@Override
-	public int insertItem(ShopVO vo) {
-		int cnt = 0;
-		try {
-			cnt = (Integer)smc.insert("shop.insertShop",vo);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			cnt = 0;
-			e.printStackTrace();
-		}
-		// TODO Auto-generated method stub
-		return cnt;
-	}
+
+
 
 	@Override
-	public int deleteItem(int no) {
+	public int BuyItem(int no) {
 		// TODO Auto-generated method stub
-		int cnt =0;
-		try {
-			cnt = smc.delete("shop.deleteShop", no);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			cnt = 0;
-			e.printStackTrace();
-		}
-		return cnt;
+		return 0;
 	}
+
+
+
+
 
 
 	

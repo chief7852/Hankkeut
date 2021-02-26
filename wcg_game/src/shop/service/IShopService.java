@@ -11,13 +11,8 @@ public interface IShopService {
 	//전체목록출력
 	public List<ShopVO> selectAll();
 	
-	//추가
-	public int insertItem(ShopVO vo);
-	 
-	//삭제
-	public int deleteItem(int no);
-	
-	
+	//구입매서드
+	//public int BuyItem(int no);
 	
 	
 

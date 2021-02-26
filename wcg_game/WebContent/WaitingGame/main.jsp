@@ -18,7 +18,7 @@
 
 $(function(){	//shop버튼을 눌렀을때 shop로 이동
 	$('#shopmove').on('click',function(){
-		$('#result').load("../shop/view.html")
+		$('#result').load("../shop/main.jsp")
 	})
 	
 	
