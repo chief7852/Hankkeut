@@ -18,5 +18,6 @@ public interface IShopDao {
 		public int deleteItem(int no) ;
 		
 		
+		
 	
 }
