@@ -16,12 +16,7 @@
 %>
 
 	 {
-	    "number" : "<%= i%>",
-	        "no" : "<%= vo.getItem_no() %>",
 	      "link" : "<%= vo.getItem_link() %>",
-	      "name" : "<%= vo.getItem_name() %>",
-	     "point" : "<%= vo.getItem_point() %>",
-	  "category" : "<%= vo.getItemp_category() %>"
 	 }   
 	   
  <% 

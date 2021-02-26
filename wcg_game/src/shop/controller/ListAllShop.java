@@ -35,15 +35,13 @@ public class ListAllShop extends HttpServlet {
 		//3. service 매서드 호출
 		List<ShopVO> list = service.selectAll();
 		
-		for(ShopVO vo : list)
-		{
-			System.out.println(vo.item_no);
-		}
 		//4.결과값 request에 저장
 		request.setAttribute("list", list);
 		
 		//5. view페이지로 forward - result.jsp
 		request.getRequestDispatcher("WEB-INF/view/shop/listAll.jsp").forward(request, response); 
+	
+		
 	}
 	
 
