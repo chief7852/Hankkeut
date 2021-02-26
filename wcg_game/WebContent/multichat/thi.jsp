@@ -4,7 +4,7 @@
 <h2> Drop an image here. </he>
 
 <script>
- var ws = new WebSocket("ws://echo.websocket.org/echo");
+ var ws = new WebSocket("ws://localhost:8032/wcggame/websocktMultiChat");
 
  ws.onopen = function(e) {
   console.log("Connected.");

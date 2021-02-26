@@ -8,6 +8,11 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../home_js/sign_up_js.js"></script>
 <script src="../home_js/login.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://static-hid.gslb.toastoven.net/css/members/hangame_join.css?v=494f495ee8f6ef563e71d9dc5af9b6811707b319">
+<link rel="stylesheet" href="../css/h_signCSS.css">
 <script type="text/javascript">
 
 
@@ -43,7 +48,7 @@
 		    사용자ID : <input type="text" id="userId" size="20"><br>
 		    사용자pass:<input type="text" id="userPass" size="20">
 		    <!-- 접속 버튼 -->
-		    <input type="button" value="접속하기" id="btnConnect" disabled="disabled">
+		    <input type="button" value="접속하기" id="btnConnect" >
 		    <button type="submit" value="로그인하기" id="btnConnect2" >로그인하기</button>
 		    
 	    </div>
@@ -58,6 +63,10 @@
     webSocket.onopen = function(message) {
        messageTextArea.value += "Server connect...\n";
     };
+    doc
+    </script>
+    <script type="text/javascript">
+  
     </script>
     <script type="text/javascript">
     	var webSocket = null; // 웹소켓 변수 선언
@@ -77,6 +86,7 @@
     		
     		
 	        //웹소켓 초기화
+	        // WebSocket 오브젝트 생성 (자동으로 접속 시작한다. - onopen 함수 호출)
 	        webSocket = new WebSocket("ws://localhost:8032/wcggame/websocktMultiChat");
 	        
 	    	// 접속 성공하면 
@@ -84,14 +94,22 @@
 	        	$('#characters').html(vhtml);
 	        	document.getElementById("connectArea").style.display = "none";
 	    		document.getElementById("chatArea").style.display = "block";
-	        	webSocket.send(userText.value);
+	        	webSocket.send(nick);
 	        	
 	        }
 	        
 	        //메시지가 오면 messageTextArea요소에 메시지를 추가한다.
 	        webSocket.onmessage = function processMessge(message){
+	        	console.log(message);
 	            //Json 풀기
 	            var jsonData = JSON.parse(message.data);
+	             var jsonData2 = JSON.parse(message.data);  
+	            // json "img"풀기
+	            console.log(jsonData);
+	            console.log(jsonData2);
+	              if(jsonData2.img != null){
+	            	console.log(jsonData2);
+	            }  
 	            if(jsonData.message != null) {
 	                messageTextArea.value += jsonData.message + "\n"
 	                messageTextArea.scrollTop = 9999999;
@@ -106,7 +124,7 @@
 				messageTextArea.value = "";
 				messageText.value = "";
 				userText.value = "";
-				nick.value="";
+				nick="";
 				document.getElementById("connectArea").style.display = "block";
 	    		document.getElementById("chatArea").style.display = "none";
 			}
@@ -141,7 +159,8 @@
     </script>
     <script src="../home_js/jquery-3.5.1.min.js"></script>
     	<script type="text/javascript">
-$(function() {
+$(function() {lector)')
+	})
 				var messageText = document.getElementById("messageText");
 			$('#messageText').keydown(function(key) {
 				if (key.keyCode == 13) {
