@@ -12,6 +12,7 @@ public class CharVO {
 	private int char_point    ;
 	private int char_rank     ;
 	private String char_login    ;
+	private String base_img    ;
 	
 	public String getChar_nickname() {
 		return char_nickname;
@@ -72,6 +73,12 @@ public class CharVO {
 	}
 	public void setChar_login(String char_login) {
 		this.char_login = char_login;
+	}
+	public String getBase_img() {
+		return base_img;
+	}
+	public void setBase_img(String base_img) {
+		this.base_img = base_img;
 	}
 	
 	
