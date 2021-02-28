@@ -22,7 +22,7 @@
 <%		
 	}
 %>
-	<form action="">
+	<form action="<%=request.getContextPath()%>/login/login.ddit">
 		<div class="center">
 			<!-- <input type="checkbox" id="show"> <label for="show" class="show-btn">View Form</label> -->
 			<div class="container">
