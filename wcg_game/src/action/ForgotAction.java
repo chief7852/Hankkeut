@@ -32,6 +32,7 @@ public class ForgotAction implements IAction {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		// 1. VO 객체를 생성한다.
 		MemberVO memVo = new MemberVO();
 		
