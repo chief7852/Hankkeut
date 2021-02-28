@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>한끝 로그인</title>
-<meta charset="utf-8">
+<meta charset="UTF-8">
+<title>로그인</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,24 +13,13 @@
 <link rel="stylesheet" href="/wcggame/css/loginCSS.css">
 </head>
 <body>
-<%
-	Boolean status = (Boolean) request.getAttribute("error");
-	if(status == false) {
-		//alert("아이디와 패스워드가 일치 하지 않습니다.");
-%>
-<%		
-	}
-%>
-	<form action="">
+<form action="/wcggame/login/login.ddit">
 		<div class="center">
 			<!-- <input type="checkbox" id="show"> <label for="show" class="show-btn">View Form</label> -->
 			<div class="container">
 				<label for="show" class="close-btn fas fa-times" title="close"></label>
 				<div class="text">한끝 로그인</div>
-				<!-- <div class="data">
-				  <label>Danger!</label> Indicates a dangerous or potentially negative action.
-				</div> -->
-				<form action="#">					
+				<form action="#">
 					<div class="data">
 						<label>ID</label> <input type="text" name="mem_id" required>
 					</div>
@@ -39,10 +27,8 @@
 						<label>Password</label> <input type="password" name="mem_pass" required>
 					</div>
 					<div class="forgot-pass">
-						<a href="#">Forgot Password?</a>
-						
+						<a href="/wcggame/home_sign/forgot.html">Forgot Password?</a>
 					</div>
-					
 					<div class="btn">
 						<div class="inner"></div>
 						<button type="submit">login</button>

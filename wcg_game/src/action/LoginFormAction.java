@@ -17,7 +17,7 @@ public class LoginFormAction implements IAction {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		return "/login/login.jsp";
+		return "/login/Forgot.jsp";
 	}
 
 }
