@@ -19,6 +19,8 @@ import javax.websocket.server.ServerEndpoint;
 import com.google.gson.Gson;
 
 import kr.or.ddit.websocket.vo.MultiChatVO;
+import word.service.IWordService;
+import word.service.WordServiceImpl;
 
 
 @ServerEndpoint("/websocktMultiChat2")
@@ -71,8 +73,18 @@ public class WebSocketMutiChat2 {
 				}
 			}
 		}
-		
+		int a = sessionUsers.size();
+		if(a ==Integer.parseInt(userSession.getId())) {
+		IWordService service = WordServiceImpl.getService();
+		String result = service.selectWord(message);
+		if(result==null)
+		{
+			
+					userSession.getBasicRemote().sendText(buildJsonData("System", message + "는 없는문자입니다 : "+a+"번째차례"));
+					message += "(x)";
+		}
 		sendToAll(username, message);
+		}
 	}
 	
 	public void sendToAll(String username, String message) throws IOException{
