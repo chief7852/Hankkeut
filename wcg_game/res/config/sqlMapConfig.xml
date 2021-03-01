@@ -37,7 +37,10 @@
 		  <typeAlias alias="freeBoardVO" type="vo.freeBoardVO"/>
 		   <typeAlias alias="commentVO" type="vo.CommentVO"/>
 		  <typeAlias alias="charVO" type="vo.CharVO"/>
-
+		  <typeAlias alias="wordVO" type="vo.WordVO"/>
+		  <typeAlias alias="managerVO" type="vo.ManagerVO"/>
+		  <typeAlias alias="inventoryVO" type="vo.InventoryVO"/>
+		  <typeAlias alias="wordVO" type="vo.WordVO"/>
 		  
 		  
 		  <!-- DB와의 연결을 처리하는 부분 -->
@@ -62,7 +65,11 @@
 	 	<!-- <sqlMap resource = "mapper/free.xml"/> -->
 
 	 	<sqlMap resource = "mapper/free.xml"/>
-
+	 	<sqlMap resource = "mapper/character.xml"/>
+	 	<sqlMap resource = "mapper/word.xml"/>
+	 	
+	 	<sqlMap resource = "mapper/manager.xml"/>
+		<sqlMap resource = "mapper/word.xml"/> 
+		<sqlMap resource = "mapper/inventory.xml"/>
 		<!-- <sqlMap resource = "mapper/character.xml"/> -->
 	</sqlMapConfig>
-	

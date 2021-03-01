@@ -58,7 +58,6 @@
       </div>
     </div>
     
-    
     <script type="text/javascript">
     webSocket.onopen = function(message) {
        messageTextArea.value += "Server connect...\n";

@@ -1,3 +1,14 @@
+// 게임 내부 로직
+
+/*
+ 	구현 해야하는 로직들
+ 	1. 유저 순서를 정해서 그 순서대로 채팅 허용여부 결정
+ 	2. 채팅 입력시 db에 있는 문자인지 판단후 정답여부 출력(o)
+ 	3. 시간이 지나면 다음사람 차례로 넘어가게 로직
+ 	4. 마지막 문자의 끝과 지금 입력한 문자의 첫자리가 같은지 판단
+ 	5. 게임시작시 노래 출력
+ */
+
 package kr.or.ddit.websocket.multichat;
 
 import java.io.IOException;
@@ -19,127 +30,160 @@ import javax.websocket.server.ServerEndpoint;
 import com.google.gson.Gson;
 
 import kr.or.ddit.websocket.vo.MultiChatVO;
+import kr.or.ddit.websocket.vo.MultiChatVO2;
 import word.service.IWordService;
 import word.service.WordServiceImpl;
 
-
 @ServerEndpoint("/websocktMultiChat2")
 public class WebSocketMutiChat2 {
-	
-	//유저 집합 리스트
-	static List<MultiChatVO> sessionUsers = Collections.synchronizedList(new ArrayList<MultiChatVO>());
-	
-	
+
+	// 유저 집합 리스트
+	static List<MultiChatVO2> sessionUsers = Collections.synchronizedList(new ArrayList<MultiChatVO2>());
+	static List<String> remember = Collections.synchronizedList(new ArrayList<String>());
+	static int order = 0;
+
 	/**
-	 * 웹 소켓이 접속되면 유저리스트에 세션을 넣는다.
-	 * @param userSession 웹 소켓 세션
-	 */
+	 *  * 웹 소켓이 접속되면 유저리스트에 세션을 넣는다.  * @param userSession 웹 소켓 세션  
+	 */
 	@OnOpen
-	public void handleOpen(Session userSession){
-		MultiChatVO chatVo = new MultiChatVO(null, userSession);
+	public void handleOpen(Session userSession) {
+		MultiChatVO2 chatVo = new MultiChatVO2(null, userSession, 0);
 		sessionUsers.add(chatVo);
 		System.out.println(userSession.getId() + "접속\n");
 	}
-	
-	
+
 	/**
-	 * 웹 소켓으로부터 메시지가 오면 호출한다.
-	 * @param message 메시지
-	 * @param userSession
-	 * @throws IOException
-	 */
+	 *  * 웹 소켓으로부터 메시지가 오면 호출한다.  * @param message 메시지  * @param userSession
+	 *  * @throws IOException  
+	 */
 	@OnMessage
-	public void handleMessage(String message, Session userSession) throws IOException{
-		
-		String username = (String)userSession.getUserProperties().get("username");
-		
-		//세션 프로퍼티에 username이 없으면 username을 선언하고 해당 세션으로 메시지를 보낸다.(json 형식이다.)
-		//최초 메시지는 username설정
-		if(username == null){
-			for(MultiChatVO chatVo : sessionUsers){
-				if(userSession.equals(chatVo.getSession())){
+	public void handleMessage(String message, Session userSession) throws IOException {
+
+		String username = (String) userSession.getUserProperties().get("username");
+
+		// 세션 프로퍼티에 username이 없으면 username을 선언하고 해당 세션으로 메시지를 보낸다.(json 형식이다.)
+		// 최초 메시지는 username설정
+		if (username == null) {
+			for (MultiChatVO2 chatVo : sessionUsers) {
+				if (userSession.equals(chatVo.getSession())) {
 					chatVo.setName(message);
+					chatVo.setNum(sessionUsers.size());
 					userSession.getUserProperties().put("username", message);
 					userSession.getBasicRemote().sendText(buildJsonData("System", message + "님 연결 성공!!"));
-					
-					Iterator<MultiChatVO> iterator = sessionUsers.iterator();
-					while(iterator.hasNext()){
-						MultiChatVO chVo = iterator.next();
-						if(!chVo.getSession().equals(chatVo.getSession())){
-							chVo.getSession().getBasicRemote().sendText(buildJsonData("System",message + "님이 입장했습니다."));
+
+					Iterator<MultiChatVO2> iterator = sessionUsers.iterator();
+					while (iterator.hasNext()) {
+						MultiChatVO2 chVo = iterator.next();
+						if (!chVo.getSession().equals(chatVo.getSession())) {
+							chVo.getSession().getBasicRemote()
+									.sendText(buildJsonData("System", message + "님이 입장했습니다."));
+
 						}
-					}					
+					}
 					return;
 				}
 			}
 		}
-		int a = sessionUsers.size();
-		if(a ==Integer.parseInt(userSession.getId())) {
+		// 접속 session id로 구분해서 순서 맞춰서 출력
+		if (order != Integer.parseInt(userSession.getId())) {
+			userSession.getBasicRemote().sendText(buildJsonData("System", "당신의 차례가 아닙니다"));
+			
+		}else {
+
 		IWordService service = WordServiceImpl.getService();
 		String result = service.selectWord(message);
-		if(result==null)
-		{
-			
-					userSession.getBasicRemote().sendText(buildJsonData("System", message + "는 없는문자입니다 : "+a+"번째차례"));
-					message += "(x)";
+		Iterator<MultiChatVO2> iterator = sessionUsers.iterator();
+
+		// 이미 사용한 문자인지 아닌지 판단하는 로직
+		boolean overlap = true;
+		Iterator<String> over = remember.iterator();
+		while (over.hasNext()) {
+			String temp = over.next();
+			if (temp.equals(result)) {
+				overlap = false;
+			}
 		}
-		sendToAll(username, message);
+		// -------------------------------------------------
+
+		// db에 없는 글자이면 없는 문자라고 통보
+		if (result == null) {
+
+			while (iterator.hasNext()) {
+				MultiChatVO2 chVo = iterator.next();
+				chVo.getSession().getBasicRemote().sendText(buildJsonData("System", message + "는 없는문자입니다(x)"));
+
+			}
+			sendToAll(username, message);
+		} else { // db에 있을때 중복사용이면 중복되었다고 안내 아닐경우 사용기억에 넣고 정답출력
+			if (overlap == true) {
+				remember.add(result);
+				order++;
+				if(sessionUsers.size()-1<order)
+				{
+					order=0;
+				}
+				sendToAll(username, message);
+			} else {
+				while (iterator.hasNext()) {
+					MultiChatVO2 chVo = iterator.next();
+					chVo.getSession().getBasicRemote().sendText(buildJsonData("System", message + "는 이미 사용한 문자입니다(x)"));
+
+				}
+			}
+		}
 		}
 	}
-	
-	public void sendToAll(String username, String message) throws IOException{
-		//username이 있으면 전체에게 메시지를 보낸다.
-		Iterator<MultiChatVO> iterator = sessionUsers.iterator();
-		while(iterator.hasNext()){
-			iterator.next().getSession().getBasicRemote().sendText(buildJsonData(username,message));
+
+	public void sendToAll(String username, String message) throws IOException {
+		// username이 있으면 전체에게 메시지를 보낸다.
+		Iterator<MultiChatVO2> iterator = sessionUsers.iterator();
+		while (iterator.hasNext()) {
+			iterator.next().getSession().getBasicRemote().sendText(buildJsonData(username, message));
 		}
 	}
-	
+
 	/**
-	 * 웹소켓을 닫으면 해당 유저를 유저리스트에서 뺀다.
-	 * @param userSession
-	 
-	 * @throws IOException */
+	 *  * 웹소켓을 닫으면 해당 유저를 유저리스트에서 뺀다.  * @param userSession  
+	 * 
+	 * @throws IOException
+	 */
 	@OnClose
-	public void handleClose(Session userSession) throws IOException{
+	public void handleClose(Session userSession) throws IOException {
 		System.out.println(userSession.getId() + "접속 종료...");
 		String delName = null;
-		Iterator<MultiChatVO> chatIter = sessionUsers.iterator();
-		while(chatIter.hasNext()){
-			MultiChatVO chatVo = chatIter.next();
-			if(userSession.equals(chatVo.getSession())){
+		Iterator<MultiChatVO2> chatIter = sessionUsers.iterator();
+		while (chatIter.hasNext()) {
+			MultiChatVO2 chatVo = chatIter.next();
+			if (userSession.equals(chatVo.getSession())) {
 				delName = chatVo.getName();
-				//sessionUsers.remove(chatVo);
+				// sessionUsers.remove(chatVo);
 				chatIter.remove();
 			}
 		}
-			
+
 		sendToAll("System", delName + "님이 퇴장했습니다.");
 
 	}
-	
+
 	/**
-     * 웹 소켓이 에러가 나면 호출되는 이벤트
-     * @param t
-     */
-    @OnError
-    public void handleError(Throwable t){
-        t.printStackTrace();
-    }
-    
-	
+	 * 웹 소켓이 에러가 나면 호출되는 이벤트
+	 * 
+	 * @param t
+	 */
+	@OnError
+	public void handleError(Throwable t) {
+		t.printStackTrace();
+	}
+
 	/**
-	 * json타입의 메시지 만들기
-	 * @param username
-	 * @param message
-	 * @return
-	 */
-	public String buildJsonData(String username,String message){
+	 *  * json타입의 메시지 만들기  * @param username  * @param message  * @return  
+	 */
+	public String buildJsonData(String username, String message) {
 		Gson gson = new Gson();
 		Map<String, String> jsonMap = new HashMap<String, String>();
-		jsonMap.put("message", username+" : "+message);
+		jsonMap.put("message", username + " : " + message);
 		String strJson = gson.toJson(jsonMap);
-		//System.out.println("strJson = " + strJson);
+		// System.out.println("strJson = " + strJson);
 
 		return strJson;
 	}

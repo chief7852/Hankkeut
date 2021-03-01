@@ -2,15 +2,16 @@ package kr.or.ddit.websocket.vo;
 
 import javax.websocket.Session;
 
-public class MultiChatVO {
+public class MultiChatVO2 {
 	private String name;
 	private Session session;
+	private int num;
 	
-	
-	public MultiChatVO(String name, Session session) {
+	public MultiChatVO2(String name, Session session , int num) {
 		super();
 		this.name = name;
 		this.session = session;
+		this.num = num;
 	}
 
 	public String getName() {
@@ -29,7 +30,13 @@ public class MultiChatVO {
 		this.session = session;
 	}
 
+	public int getNum() {
+		return num;
+	}
 
+	public void setNum(int num) {
+		this.num = num;
+	}
 	
 	
 }
