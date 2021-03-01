@@ -11,7 +11,44 @@
 		from shop
 	</select>
 	
-
+	<select id="selectOne" resultClass="shopVO" parameterClass="int" >
+		select *
+		from shop where item_no=#item_no#
+	</select>
 	
+	<select id="selectChar" resultClass="CharVO" parameterClass="String">
+		select *
+		from CHARACTERS
+		where MEM_ID=#mem_id#
+	</select>
+	
+	<update id ="BuyItem"  parameterClass="map">
+		update CHARACTERS
+		set CHAR_POINT = CHAR_POINT - #item#
+		where MEM_ID = #mem_id#
+	</update>
 	
 </sqlMap>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

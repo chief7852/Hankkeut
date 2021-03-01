@@ -39,10 +39,20 @@ public class ShopDaoImpl implements IShopDao {
 
 
 
+
 	@Override
-	public int BuyItem(int no) {
-		// TODO Auto-generated method stub
-		return 0;
+	public ShopVO selectOne(int no) {
+		
+		ShopVO vo= null;
+		
+		try {
+			vo = (ShopVO) smc.queryForObject("shop.selectOne",no);
+		} catch (SQLException e) {
+			vo = null;
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
 	}
 
 
