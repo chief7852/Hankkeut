@@ -52,7 +52,6 @@ public class ForgotAction implements IAction {
 			
 			// 메일 받을 주소
 			String to_email = memVo.getMem_mail();	// 유저 메일
-			System.out.println("memVo ? " + memVo.getMem_id());
 			// SMTP 서버 정보를 설정
 			Properties props = new Properties();
 			props.put("mail.smtp.host", host);

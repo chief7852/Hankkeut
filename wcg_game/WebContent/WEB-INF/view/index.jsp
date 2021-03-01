@@ -35,6 +35,9 @@ footer {
 		        $('.dept01').slideUp(1000);
 		    }
 		})
+		function reload() {
+			$('#myNavbar').load(window.location.href + "#myNavbar");		
+		}
   </script>
 </head>
 <body>
@@ -50,6 +53,20 @@ footer {
 				<!-- <a class="navbar-brand" href="#">Portfolio</a> -->
 				<a href="<%=request.getContextPath()%>/index.ddit"><img src="./img/logo.png" style="width: 150px; hegiht: 100px;"></a>
 			</div>
+			<%
+				Boolean reloadPage = (Boolean) session.getAttribute("reloadPage");
+				System.out.println("reloadPage" + reloadPage);
+				if(reloadPage != null) {
+					if(reloadPage == true) {
+			%>
+						<script>reload()</script>
+			<%
+						reloadPage = false;
+					}	
+				} else {
+					reloadPage = false;
+				}
+			%>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
 				<%
@@ -58,7 +75,7 @@ footer {
 				%>
 					<li><a href="/wcggame/home_sign/login.html"><span class="glyphicon glyphicon-log-in"></span>
 							Login</a></li>
-					<li><a href="./home_sign/sign_up.html"><span class="glyphicon glyphicon-user"></span>
+					<li><a href="/wcggame/home_sign/sign_up.html"><span class="glyphicon glyphicon-user"></span>
 							Join</a></li>
 				<%
 					} else {

@@ -45,7 +45,7 @@
 					
 					<div class="btn">
 						<div class="inner"></div>
-						<button type="submit">login</button>
+						<button type="submit">login1</button>
 					</div>
 					<div class="signup-link">
 						Not a member? <a href="/wcggame/home_sign/sign_up.html">SignUp</a>

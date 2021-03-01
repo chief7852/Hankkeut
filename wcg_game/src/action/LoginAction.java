@@ -30,16 +30,15 @@ public class LoginAction implements IAction {
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		// 관리자 로그인인지 일반회원 로그인이지 유무 확인을 위해 파라미터 값을 받아옴
+		
 		String userId = req.getParameter("mem_id");
 		String pass = req.getParameter("mem_pass");
-		System.out.println("LoginAction UserId : " + userId);
-		System.out.println("LoginAction pass : " + pass);
 		// 세션 객체 생성
 		HttpSession session = req.getSession();
 		
 		// 아이디나 비밀번호가 입력 되어 있지 않을 경우
 		if(userId == null || userId == "" || pass == null || pass == "") {
-			return "/wcggame/home_sign/login.html";
+			return "/home_sign/login.html";
 		}
 		// 회원 객체 생성
 		MemberVO memVo = new MemberVO();
