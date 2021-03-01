@@ -13,40 +13,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<style>
-/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-.row.content {
-	height: 1500px
-}
-
-/* Set gray background color and 100% height */
-.sidenav {
-	background-color: #f1f1f1;
-	height: 100%;
-}
-
-/* Set black background color, white text and some padding */
-footer {
-	background-color: #555;
-	color: white;
-	padding: 15px;
-}
-
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-	.sidenav {
-		height: auto;
-		padding: 15px;
-	}
-	.row.content {
-		height: auto;
-	}
-}
-
-.subMenu {
-	list-style: none;
-}
-</style>
+<script type="text/javascript" src="../home_js/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="./css/mypage.css">
 <script type="text/javascript">
 	function daumPostcode() {
 	    new daum.Postcode({
@@ -80,7 +48,38 @@ footer {
 	        }
 	    }).open();
 	}
+	$(function() {
+		$('.nav li').on('click', function() {
+			liAttr = $(this).attr('id');
+			if(liAttr == 'passUpdateLi') {
+				$('#passUpdateForm').css('display', 'block');
+				$('#addrUpdateForm').css('display', 'none');
+				$('#telUpdateForm').css('display', 'none');
+				$('#deleteUserForm').css('display', 'none');
+			} else if(liAttr == 'addrUpdateLi') {
+				$('#passUpdateForm').css('display', 'none');
+				$('#addrUpdateForm').css('display', 'block');
+				$('#telUpdateForm').css('display', 'none');
+				$('#deleteUserForm').css('display', 'none');
+			} else if(liAttr == 'telUpdateLi') {
+				$('#passUpdateForm').css('display', 'none');
+				$('#addrUpdateForm').css('display', 'none');
+				$('#telUpdateForm').css('display', 'block');
+				$('#deleteUserForm').css('display', 'none');
+			} else if(liAttr == 'deleteUser') {
+				$('#passUpdateForm').css('display', 'none');
+				$('#addrUpdateForm').css('display', 'none');
+				$('#telUpdateForm').css('display', 'none');
+				$('#deleteUserForm').css('display', 'block');
+			}
+		})
+	});
 </script>
+<style>
+	#addrUpdateForm, #telUpdateForm, #deleteUserForm{
+		display: none;
+	}
+</style>
 </head>
 <body>
 	<!-- 왼쪽 메뉴바 -->
@@ -89,69 +88,81 @@ footer {
 			<div class="col-sm-3 sidenav">
 				<h2>마이페이지</h2>
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#passUpdate" data-toggle="tab">비밀번호 수정</a></li>
-					<li><a href="#addrUpdate" data-toggle="tab">주소 수정</a></li>
-					<li><a href="#telUpdate" data-toggle="tab">핸드폰 번호 수정</a></li>
-					<li><a href="#withdrawal" data-toggle="tab">회원탈퇴</a></li>
+					<li id="passUpdateLi" class="active"><a href="#passUpdate" data-toggle="tab">비밀번호 수정</a></li>
+					<li id="addrUpdateLi"><a href="#addrUpdate" data-toggle="tab">주소 수정</a></li>
+					<li id="telUpdateLi"><a href="#telUpdate" data-toggle="tab">핸드폰 번호 수정</a></li>
+					<li id="deleteUser"><a href="#withdrawal" data-toggle="tab">회원탈퇴</a></li>
 				</ul>
 			</div>
 
 			<!-- 오른쪽 컨텐츠 -->
 			<div class="tab-content col-sm-9">
-				<div id="passUpdate" class="tab-pane fade in active">
-					<!-- 비밀번호 수정 -->
-					<label for="usr">현재 비밀번호</label> <input type="text"
-						class="form-control" id="usr"> <label for="usr">새비밀번호</label> 
-						<input type="text" class="form-control" id="usr"> 
-						<label for="usr">새 비밀번호 확인</label> <input type="text" class="form-control" id="usr">
-						<button type="button" class="btn btn-success">수정하기</button>
+				<form id="passUpdateForm" action="<%=request.getContextPath()%>/mypage/updateInfo.ddit">
+					<div id="passUpdate" class="tab-pane fade in active">
+						<!-- 비밀번호 수정 -->
+						<label for="usr">현재 비밀번호</label>
+						<input type="password" class="form-control pw" name="mem_pass">
+						
+						<label for="usr">새 비밀번호</label>
+						<input type="password" class="form-control pw" name="change_pass"> 
+						
+						<label for="usr">새 비밀번호 확인</label>
+						<input type="password" class="form-control pw" name="new_pass"><br>
+						
+						<button type="submit" class="btn btn-success">수정하기</button>
 						<button type="button" class="btn btn-default">취소</button>
-				</div>
-
-				<div id="addrUpdate" class="tab-pane fade">
-					<!-- 주소 수정 -->
-					<div class="form-group">
-						<label class="control-label col-sm-3" for="zip"><span
-							class="asterisk"></span>우편번호:</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" id="zip" name="zip_code"
-								placeholder="우편번호">
-						</div>
-
-						<input class="btn pressDownButton" type="button"
-							onclick="daumPostcode()" value="우편번호 찾기">
 					</div>
-
-					<!-- 주소 -->
-					<div class="form-group">
-						<label class="control-label col-sm-1" for="add1">주소:</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="add1" name="mem_add1" placeholder="도로명주소">
+				</form>
+				<form id="addrUpdateForm" action="<%=request.getContextPath()%>/mypage/updateInfo.ddit">
+					<div id="addrUpdate" class="tab-pane fade">
+						<!-- 주소 수정 -->
+						<div class="form-group">
+							<div>
+								<label class="control-label col-sm-1" for="zip">우편번호:</label>
+								<div class="col-sm-2">
+									<input type="text" class="form-control col-sm-1" id="zip" name="zip_code" placeholder="우편번호">
+								</div>
+								<input class="btn pressDownButton" type="button" onclick="daumPostcode()" value="우편번호 찾기">
+							</div>
+							<div>
+								<label class="control-label col-sm-1" for="add1">주소:</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" id="add1" name="mem_add1" placeholder="도로명주소">
+								</div>
+							</div>
+							<br><br>
+							<div>
+								<label class="control-label col-sm-1" for="add2">상세주소:</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" id="add2" name="mem_add2" placeholder="상세주소">
+								</div>
+							</div><br><br>
+							<button type="submit" class="btn btn-success">수정하기</button>
+							<button type="button" class="btn btn-default">취소</button>
 						</div>
 					</div>
-
-					<!-- 상세주소 -->
-					<div class="form-group">
-						<label class="control-label col-sm-3" for="add2">상세주소:</label>
-						<div class="col-sm-5">
-							<input type="text" class="form-control" id="add2" name="mem_add2" placeholder="상세주소">
+				</form>
+				<form id="telUpdateForm" action="<%=request.getContextPath()%>/mypage/updateInfo.ddit">
+					<div id="telUpdate" class="tab-pane fade">
+						<!-- 핸드폰 번호 수정 -->
+						<div class="form-group">
+							<label for="hp">전화번호:</label>
+							<input type="text" class="form-control tel" id="hp" placeholder="Enter hp" name="mem_hp">
 						</div>
+						<button type="submit" class="btn btn-success">수정하기</button>
+						<button type="button" class="btn btn-default">취소</button>
 					</div>
-					<button type="button" class="btn btn-success">수정하기</button>
-					<button type="button" class="btn btn-default">취소</button>
-				</div>
-
-				<div id="telUpdate" class="tab-pane fade">
-					<!-- 핸드폰 번호 수정 -->
-					<button type="button" class="btn btn-success">수정하기</button>
-					<button type="button" class="btn btn-default">취소</button>
-				</div>
-
-				<div id="withdrawal" class="tab-pane fade">
-					<!-- 회원탈퇴 -->
-					<button type="button" class="btn btn-success">수정하기</button>
-					<button type="button" class="btn btn-default">취소</button>
-				</div>
+				</form>
+				<form id="deleteUserForm" action="<%=request.getContextPath()%>/mypage/deleteInfo.ddit">
+					<div id="withdrawal" class="tab-pane fade">
+						<!-- 회원탈퇴 -->
+						<label for="usr">비밀번호 입력</label>
+						<input type="password" class="form-control pw" name="mem_pass">
+						
+						<button type="submit" class="btn btn-success">수정하기</button>
+						<button type="button" class="btn btn-default">취소</button>
+					</div>
+				</form> 
 			</div>
 		</div>
 	</div>

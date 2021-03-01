@@ -43,7 +43,27 @@
 	<select id="isMember" parameterClass="MemberVO" resultClass="MemberVO">
 		select * from member where mem_mail = #mem_mail#
 	</select>
+	<!-- 비밀번호 찾기를 통해 임시비밀번호가 변경 된 경우 -->
 	<update id="updatePass" parameterClass="MemberVO">
 		update member set mem_pass = #mem_pass# where mem_mail = #mem_mail#
 	</update>
+	
+	<select id="isPassWord" parameterClass="MemberVO" resultClass="int">
+		select count(*) from member where mem_id = #mem_id# and mem_pass = #mem_pass#
+	</select>
+	<update id="updatePW" parameterClass="MemberVO">
+		update member set mem_pass = #mem_pass# where mem_id = #mem_id#
+	</update>
+	
+	<update id="updateAddr" parameterClass="MemberVO">
+		update member set mem_add1 = #mem_add1#, mem_add2 = #mem_add2#, zip_code = #zip_code# where mem_id = #mem_id#
+	</update>
+	
+	<update id="updateTel" parameterClass="MemberVO">
+		update member set mem_hp = #mem_hp# where mem_id = #mem_id#
+	</update>
+	
+	<delete id="deleteMember" parameterClass="MemberVO">
+		delete from member where mem_id = #mem_id# and mem_pass = #mem_pass#
+	</delete>
 </sqlMap>
