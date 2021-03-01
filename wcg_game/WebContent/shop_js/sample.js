@@ -54,15 +54,12 @@
 	
 
 	
-	selectItemShow = function(itemNo){
+	selectItem = function(itemNo){
 		
 		$.ajax({
 			url : '/wcggame/OneShop.do',
 			data : {"item_no" : itemNo },
 			success : function(res){
-				console.log("----"+res.link);
-				console.log("----"+res.link);
-				
 				code = '  <table class="table">';
 				code += '    <tbody>';
 				code += '      <tr class="success">';

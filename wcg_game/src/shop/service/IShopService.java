@@ -11,8 +11,8 @@ public interface IShopService {
 	//전체목록출력
 	public List<ShopVO> selectAll();
 	
-	//구입매서드
-	//public int BuyItem(int no);
+	//아이템 하나 출력
+	public ShopVO selectOne(int no);
 	
 	
 

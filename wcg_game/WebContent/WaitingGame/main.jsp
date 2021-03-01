@@ -13,20 +13,27 @@
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../css/gameCSS.css">
 	<script src="../shop_js/shop.js"></script>
+	<script src="../character_js/character.js"></script>
 </head>
 <script>
 
-$(function(){	//shop버튼을 눌렀을때 shop로 이동
-	$('#shopmove').on('click',function(){
-		$('#result').load("../shop/main.jsp")
-	})
+$(function(){
 	
+	selectMyCharacter("issac");	//내 캐릭터 불러오기
 	
+	/////////////////////////////////////////////////////////////////////
+	 $('#shopmove').on('click',function(){	//shop버튼을 눌렀을때 shop로 이동
+		$('#result').load("../shop/main.jsp");
+	}) 
+	//////////////////////////////////////////////////////////////////////
 })
+
+
 </script>
 <body>
   <jsp:include page="header.jsp"></jsp:include>
-  <jsp:include page="content.jsp"></jsp:include>
+  <jsp:include page="WatitngView.jsp"></jsp:include>
+  <jsp:include page="modalTemp.jsp"></jsp:include>
   <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>		

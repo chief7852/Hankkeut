@@ -6,16 +6,17 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <script src="../shop_js/shop.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="../shop_js/shop.js"></script>
+	
+<script src="../character_js/character.js"></script>
+
+ <script src="../inventory_js/jquery.serializejson.min.js"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
 	/* The Modal (background) */
 	.searchModal {
@@ -43,20 +44,29 @@
 
 <script>
 $(function() {
+	id="";
+	item="";
+	item_no="";
 	readItem();
-		
-	$('#res').on('click','#showItem',function(){//모달open
+	ch_nickName="";
 	
-	 $("#modal").show();
-		 selectItem();
-	 
-	 $("#buyItem").on('click',function(){
-		 alert("구입폼");
+	$('#res').on('click','#showItem',function(){//모달open
+		itemNo = $(this).parent().find("#showItemNo").val();
+		console.log($(this).parent().find("#showItemNo").val());
+		 $("#modal").show();	//클릭시 아이템 자세히 보기
+		 selectItem(itemNo);	
+	 		 
+	 $("#buyItem").on('click',function(){	//구입버튼 클릭	
+		 selectCharacter("issac");	
+		 //자금은 아이디값을 강제로 줌 섹션에서 아이디값 받아와야함!!!! 그러면 끄으으으으ㅡㅅ 
+		 
+		 
+		 
 	 })	 
 		 
-		$('#close').on('click',function(){//모달hide
+	 $('#close').on('click',function(){//모달hide
 			$('#modal').hide();
-		})
+	  })
 	})
 		
 	
@@ -65,7 +75,7 @@ $(function() {
 </head>
 <body>
 <div id="res"></div>
-	
+	<!-- 미리보기모달 -->
 	<div id="modal" class="searchModal">
 		<div class="search-modal-content">
 			<div class="page-header">
@@ -75,11 +85,17 @@ $(function() {
 				<div class="col-sm-12">
 				<div class="row">
 					<div class="col-sm-12">
-						<h2 id="contents" name="oneLine"></h2>
+						<h2 id="contents"></h2>
 					</div>
 				</div>
 				</div>
 			</div>
+			
+			
+			<!-- 그림에 대한 값 가격 -->
+			<input type ="hidden" id="itempoint" value="20">
+			<input type ="hidden" id="itempoint" value="40">
+			
 			<input id="buyItem" type="button" class="btn btn-info" value="구입">
 			<input id="close" type="button" class="btn btn-info" value="닫기">
 			<hr>
@@ -89,6 +105,16 @@ $(function() {
 			</div>
 		</div>
 	</div>
+	
+	<!-- 구입완료모달 -->
+
+	
+	
+	<!-- 구입실패모달 -->
+	
+	
+	
+	
  
 </body>
 </html>
