@@ -39,4 +39,11 @@
 	<select id="loginMember" resultClass="String" parameterClass="memberVO">
 	select mem_id, mem_pass from member where mem_id = #mem_id# and mem_pass = #mem_pass#
 	</select>
+	
+	<select id="isMember" parameterClass="MemberVO" resultClass="MemberVO">
+		select * from member where mem_mail = #mem_mail#
+	</select>
+	<update id="updatePass" parameterClass="MemberVO">
+		update member set mem_pass = #mem_pass# where mem_mail = #mem_mail#
+	</update>
 </sqlMap>

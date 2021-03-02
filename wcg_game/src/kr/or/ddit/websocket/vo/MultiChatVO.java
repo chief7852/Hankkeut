@@ -6,7 +6,6 @@ public class MultiChatVO {
 	private String name;
 	private Session session;
 	
-	
 	public MultiChatVO(String name, Session session) {
 		super();
 		this.name = name;
@@ -28,8 +27,6 @@ public class MultiChatVO {
 	public void setSession(Session session) {
 		this.session = session;
 	}
-
-
 	
 	
 }

@@ -34,14 +34,8 @@ body {
 	font-family: 'Nanum Gothic', sans-serif;
 	/* width: 1200px; */
 	margin: 0 auto;
-	overflow: hidden;
 }
-#idStyle {
-	display: inline-block;
-	font-size: 18px;
-	color: white;
-	margin-right: 8px;
-}
+
 .logo {
 	margin: 50px 0;
 	font-size: 30px;

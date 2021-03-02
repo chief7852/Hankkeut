@@ -9,28 +9,31 @@ import vo.noticeBoardVO;
 
 public interface IFreeDao {
 	
-	//자유게시판 전체 리스트 
+	//�옄�쑀寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃 
 	public List<freeBoardVO> selectAll();
 	
-	// 자유게시판 전체 리스트 개수
+	// �옄�쑀寃뚯떆�뙋 �쟾泥� 由ъ뒪�듃 媛쒖닔
 	public int selectAllCnt();
 	
-	// 자유게시판 페이징 처리를 위한 메소드
+	// �옄�쑀寃뚯떆�뙋 �럹�씠吏� 泥섎━瑜� �쐞�븳 硫붿냼�뱶
 	public List<freeBoardVO> selectByPage(Map<String, Integer> map);
 
-	// 자유게시판조회수 증가
+	// �옄�쑀寃뚯떆�뙋議고쉶�닔 利앷�
 	public int updateViews(int boardNum);
 	
-	// 자유게시판 해당 게시물 내용
+	// �옄�쑀寃뚯떆�뙋 �빐�떦 寃뚯떆臾� �궡�슜
 	public freeBoardVO selectBoard(int boardNum);
 	
-	// 자유게시판 등록
+	// �옄�쑀寃뚯떆�뙋 �벑濡�
 	public int insertBoard(freeBoardVO vo);
-	// 자유게시판  수정
+	// �옄�쑀寃뚯떆�뙋  �닔�젙
 	public int updateBoard(freeBoardVO vo);
-	// 자유게시판 삭제
+	// �옄�쑀寃뚯떆�뙋 �궘�젣
 	public int deleteBoard(int boardNum);
 	
-	// 댓글 등록
+	// �뙎湲� �벑濡�
 	public int insertReply(CommentVO vo);
+	// �뙎湲� 由ъ뒪�듃 
+	public List<CommentVO> listReply(String board_no);
+	
 }

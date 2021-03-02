@@ -35,88 +35,27 @@ footer {
 		        $('.dept01').slideUp(1000);
 		    }
 		})
-		function reload() {
-			$('#myNavbar').load(window.location.href + "#myNavbar");		
-		}
   </script>
 </head>
 <body>
+
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
 				</button>
 				<!-- <a class="navbar-brand" href="#">Portfolio</a> -->
-				<a href="<%=request.getContextPath()%>/index.ddit"><img src="./img/logo.png" style="width: 150px; hegiht: 100px;"></a>
+				<a href="<%=request.getContextPath()%>/index.ddit"><img src="./img/hankk.png" style="width: 150px; hegiht: 100px;"></a>
 			</div>
-			<%
-				Boolean reloadPage = (Boolean) session.getAttribute("reloadPage");
-				System.out.println("reloadPage" + reloadPage);
-				if(reloadPage != null) {
-					if(reloadPage == true) {
-			%>
-						<script>reload()</script>
-			<%
-						reloadPage = false;
-					}	
-				} else {
-					reloadPage = false;
-				}
-			%>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-				<%
-					String userId = (String) session.getAttribute("userid");
-					if(userId == null || userId == "") {
-				%>
-					<li><a href="/wcggame/home_sign/login.html"><span class="glyphicon glyphicon-log-in"></span>
+					<li><a href="/wcggame/login/login.ddit"><span class="glyphicon glyphicon-log-in"></span>
 							Login</a></li>
-					<li><a href="/wcggame/home_sign/sign_up.html"><span class="glyphicon glyphicon-user"></span>
+					<li><a href="./home_sign/sign_up.html"><span class="glyphicon glyphicon-user"></span>
 							Join</a></li>
-				<%
-					} else {
-						if(userId.equals("admin")) {	// 어드민 접속
-							
-				%>
-							<li>
-								<a style="cursor:default"><span id="idStyle"><%=userId%> 님</span></a>
-							</li>
-							<li>
-								<a herf="<%=request.getContextPath()%>/myPage.ddit" style="cursor:pointer">
-									<span class="glyphicon glyphicon glyphicon-edit"></span>회원관리
-								</a>
-							</li>
-							<li>
-								<a herf="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer">
-									<span class="glyphicon glyphicon-log-out"></span>로그아웃
-								</a>
-							</li>
-				<%
-						}
-						else {	// 일반 회원 접속
-				%>
-							<li>
-								<a style="cursor:default"><span id="idStyle"><%=userId%> 님</span></a>
-							</li>
-							<li>
-								<a href="<%=request.getContextPath()%>/mypage.ddit" target="ifr" style="cursor:pointer">
-									<span class="glyphicon glyphicon glyphicon-edit"></span>마이페이지
-								</a>
-							</li>
-							<li>
-								<a href="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer">
-									<span class="glyphicon glyphicon-log-out"></span>로그아웃
-								</a>
-								<!-- <button id="logout" type="button" class="btn btn-default">로그아웃</button> -->
-							</li>
-				<%
-						}
-					}
-				%>
 				</ul>
 			</div>
 			<div class="collapse navbar-collapse topMenu" id="myNavbar">
@@ -124,7 +63,7 @@ footer {
 					<li><span>새소식</span>
 						<ul class="dept01">
 							<li class="nop"><a href="<%=request.getContextPath()%>/notice/boardList.ddit" target="ifr">공지사항</a></li>
-							<li class="nop"><a href="#" target="ifr">이벤트</a></li>
+							<li class="nop"><a href="#">이벤트</a></li>
 						</ul></li>
 					<li><span>가이드</span>
 						<ul class="dept01">
@@ -132,12 +71,12 @@ footer {
 						</ul></li>
 					<li><span>커뮤니티</span>
 						<ul class="dept01">
-							<li class="nop"><a href="#" target="ifr">자유게시판</a></li>
+							<li class="nop"><a href="<%=request.getContextPath()%>/free/freeList.ddit" target="ifr">자유게시판</a></li>
 						</ul></li>
 					<li><span>고객센터</span>
 						<ul class="dept01">
-							<li class="nop"><a href="#" target="ifr">Q & A</a></li>
-							<li class="nop"><a href="#" target="ifr">문의</a></li>
+							<li class="nop"><a href="<%=request.getContextPath()%>/inquiry/inquiryList.ddit" target="ifr">문의게시판</a></li>
+							<li class="nop"><a href="#">문의</a></li>
 						</ul></li>
 				</ul>
 				<ul class="menu02">

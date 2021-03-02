@@ -24,24 +24,17 @@ public class InventoryDaoImpl implements IInventoryDao {
 	}
 
 	@Override
-	public String insertInventory(InventoryVO vo) throws SQLException {
-		
-		return (String)smc.insert("inventory.insertInventory",vo);
-	}
-
-	@Override
-	public List<InventoryVO> seletAll() {
-		
-		List<InventoryVO> list = null;
+	public List<InventoryVO> selectAll(){
+		List<InventoryVO> inventoryList = null;
 		
 		try {
-			list = smc.queryForList("inventory.selectAllItemInInventory");
+			inventoryList = smc.queryForList("inventory.selectAll");
 		} catch (SQLException e) {
+			inventoryList = null;
 			e.printStackTrace();
 		}
-		return list;
+		return inventoryList;
 	}
-
 	
 	
 

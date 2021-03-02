@@ -80,7 +80,7 @@ form .data input:focus{
   border-bottom-width: 2px;
 }
 form .forgot-pass{
-  /* margin-top: -8px; */
+  margin-top: -8px;
 }
 form .forgot-pass a{
   color: #3498db;

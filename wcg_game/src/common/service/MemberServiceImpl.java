@@ -40,8 +40,9 @@ public class MemberServiceImpl implements IMemberService {
 
 	//회원 탈퇴
 	@Override
-	public int deleteMember(MemberVO vo) {
-		return dao.deleteMember(vo);
+	public int deleteMember(String mem_id) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	// 아이디 체크
@@ -65,7 +66,7 @@ public class MemberServiceImpl implements IMemberService {
 		
 		try {
 			resId = dao.loginMember(vo);
-			System.out.println("servivce : " + resId);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,29 +83,6 @@ public class MemberServiceImpl implements IMemberService {
 	@Override
 	public int updatePass(MemberVO vo) {
 		return dao.updatePass(vo);
-	}
-
-	@Override
-	public int updatePW(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return dao.updatePW(vo);
-	}
-
-	@Override
-	public int updateAddr(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return dao.updateAddr(vo);
-	}
-
-	@Override
-	public int updateTel(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return dao.updateTel(vo);
-	}
-
-	@Override
-	public int isPassWord(MemberVO vo) {
-		return dao.isPassWord(vo);
 	}
 
 

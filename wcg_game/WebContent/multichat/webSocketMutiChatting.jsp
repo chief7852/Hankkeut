@@ -87,7 +87,7 @@
     		
 	        //웹소켓 초기화
 	        // WebSocket 오브젝트 생성 (자동으로 접속 시작한다. - onopen 함수 호출)
-	        webSocket = new WebSocket("ws://192.168.0.101:8032/wcggame/websocktMultiChat");
+	        webSocket = new WebSocket("ws://localhost:8032/wcggame/websocktMultiChat");
 	        
 	    	// 접속 성공하면 
 	        webSocket.onopen = function onOpen(event){
@@ -118,7 +118,7 @@
 	        
 	        webSocket.onerror = function showErrorMsg(event) {
 	        	alert("오류 : " + event.data);
-			};b 
+			};
 			
 			webSocket.onclose = function(event){
 				messageTextArea.value = "";
