@@ -29,10 +29,10 @@ public class MemberDaoImpl implements IMemberDao {
 	}
 
 	@Override
-	public int deleteMember(MemberVO vo) {
+	public int deleteMember(String mem_id) {
 		int cnt = 0;
 		try {
-			cnt = (Integer) client.delete("member.deleteMember", vo);
+			cnt = (Integer) client.delete("board.deleteBoard",mem_id);
 		} catch (SQLException e) {
 			cnt = 0;
 			e.printStackTrace();
@@ -68,52 +68,6 @@ public class MemberDaoImpl implements IMemberDao {
 			cnt = client.update("member.updatePass", vo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return cnt;
-	}
-	
-	@Override
-	public int updatePW(MemberVO vo) {
-		int cnt = 0;
-		try {
-			cnt = client.update("member.updatePW", vo);
-		} catch (SQLException e) {
-			cnt = 0;
-			e.printStackTrace();
-		}
-		return cnt;
-	}
-	@Override
-	public int updateAddr(MemberVO vo) {
-		int cnt = 0;
-		try {
-			cnt = client.update("member.updateAddr", vo);
-		} catch (SQLException e) {
-			cnt = 0;
-			e.printStackTrace();
-		}
-		return cnt;
-	}
-	@Override
-	public int updateTel(MemberVO vo) {
-		int cnt = 0;
-		try {
-			cnt = client.update("member.updateTel", vo);
-		} catch (SQLException e) {
-			cnt = 0;
-			e.printStackTrace();
-		}
-		return cnt;
-	}
-	@Override
-	public int isPassWord(MemberVO vo) {
-		int cnt = 0;
-		try {
-			cnt =  (int) client.queryForObject("member.isPassWord", vo);
-			System.out.println("dao cnt : " + cnt);
-		} catch (SQLException e) {
-			cnt = 0;
 			e.printStackTrace();
 		}
 		return cnt;

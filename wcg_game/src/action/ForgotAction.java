@@ -32,7 +32,6 @@ public class ForgotAction implements IAction {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
 		// 1. VO 객체를 생성한다.
 		MemberVO memVo = new MemberVO();
 		
@@ -52,6 +51,7 @@ public class ForgotAction implements IAction {
 			
 			// 메일 받을 주소
 			String to_email = memVo.getMem_mail();	// 유저 메일
+			System.out.println("memVo ? " + memVo.getMem_id());
 			// SMTP 서버 정보를 설정
 			Properties props = new Properties();
 			props.put("mail.smtp.host", host);

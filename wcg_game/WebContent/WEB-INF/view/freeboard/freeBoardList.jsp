@@ -25,7 +25,7 @@
 	List<freeBoardVO> boardList = (List<freeBoardVO>) request.getAttribute("free");
 	
 %>
-<%=boardList%>
+
 	<div class="board_wrap">
 		<div class="board_title">
 			<strong>자유게시판</strong>

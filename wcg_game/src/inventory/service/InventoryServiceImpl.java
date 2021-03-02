@@ -24,28 +24,10 @@ public class InventoryServiceImpl implements IInventoryService {
 		return service;
 	}
 
-	
 	@Override
-	public String insertInventory(InventoryVO vo) {
-		
-		String num = 
-				
-				"";
-		
-		try {
-			num = dao.insertInventory(vo);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return num;
+	public List<InventoryVO> selectAll() {
+		return dao.selectAll();
 	}
-	@Override
-	public List<InventoryVO> seletAll() {
-		return dao.seletAll();
-	}
-	
-	
 
 
 	

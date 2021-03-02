@@ -85,7 +85,7 @@ public class WebSocketMutiChat {
 					CharVO charvo = service.selectchetChar(message); 
 					users.add(charvo); 
 					
-					//sendToAll2(username, message , charvo.getBase_img());
+					sendToAll2(username, message , charvo);
 					
 					///////////////////////////////
 					// 접속중인 인원 전원을 출력해봐야겠다====================
@@ -119,15 +119,13 @@ public class WebSocketMutiChat {
 		}
 	}
 	
-	public void sendToAll2(String username, String message,String img) throws IOException {
+	public void sendToAll2(String username, String message,CharVO vo) throws IOException {
 		// username이 있으면 전체에게 이미지링크를 보낸다.
-		System.out.println(img);
+		
 		Iterator<MultiChatVO> iterator = sessionUsers.iterator();
-		/*while (iterator.hasNext()) {
-			if(buildJsonData(username,message,img) != null) {
-			iterator.next().getSession().getBasicRemote().sendText(buildJsonData(username,message,img));
-			}
-		}*/
+		while (iterator.hasNext()) {
+			iterator.next().getSession().getBasicRemote().sendText(buildJsonData(username,message,vo.getBase_img()));
+		}
 	}
 
 	/**

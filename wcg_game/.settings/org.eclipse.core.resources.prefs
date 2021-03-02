@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
 encoding//res/config/SqlMapClientFactory.java=UTF-8
+encoding//src/action/FreeFormAction.java=UTF-8
+encoding//src/action/LoginAction.java=UTF-8
+encoding//src/board/dao/IFreeDao.java=UTF-8
+encoding//src/board/service/IFreeService.java=UTF-8

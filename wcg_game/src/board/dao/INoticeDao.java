@@ -22,4 +22,6 @@ public interface INoticeDao {
 	public int deleteBoard(int boardNum);
 	// 조회수 증가
 	public int updateViews(int boardNum);
+	
+	
 }

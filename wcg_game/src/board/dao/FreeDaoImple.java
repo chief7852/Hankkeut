@@ -130,5 +130,17 @@ public class FreeDaoImple implements IFreeDao {
 		return cnt;
 	
 	}
+	@Override
+	public List<CommentVO> listReply(String board_no) {
+		
+		List<CommentVO> nBoardVo = null;
+		try {
+			nBoardVo = smc.queryForList("free.listReply", board_no);
+		} catch (SQLException e) {
+			nBoardVo = null;
+			e.printStackTrace();
+		}
+		return nBoardVo;
+	}
 
 }

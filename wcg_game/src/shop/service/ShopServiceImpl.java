@@ -26,11 +26,6 @@ public class ShopServiceImpl implements IShopService {
 		return dao.selectAll();
 	}
 
-	@Override
-	public ShopVO selectOne(int no) {
-		return dao.selectOne(no);
-	}
-	
 
 
 	

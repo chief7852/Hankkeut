@@ -21,22 +21,22 @@ public class FreeReplyInsertAction implements IAction {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		req.setCharacterEncoding("utf-8");
 		
 		CommentVO vo = new CommentVO();
+		String board_no = req.getParameter("board_no");
+		vo.setBoard_no(board_no);
 		vo.setCo_contents(req.getParameter("f_reply_contents"));
-		vo.setBoard_no(req.getParameter("board_no"));
-		vo.setCo_date(req.getParameter("co_date"));
 		
 		
-		vo.setMem_id(req.getParameter("mem_id"));
+		
 		
 		IFreeService service = FreeServiceImpl.getService();
 		
 		int cnt =service.insertReply(vo);
 		
 		
-		return "/free/freeForm.ddit";
+		return "/free/freeForm.ddit?boardNum="+board_no;
 	}
 
 }

@@ -11,11 +11,7 @@
 		from shop
 	</select>
 	
-	<select id="selectByCategory" resultClass="shopVO" parameterClass="map">
-		select *
-		from shop
-		where ITEMP_CATEGORY like #category#
-	</select>
+
 	
 	
 </sqlMap>

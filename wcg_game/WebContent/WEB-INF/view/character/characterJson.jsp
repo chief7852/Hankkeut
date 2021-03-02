@@ -1,7 +1,7 @@
 <%@page import="vo.CharVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
+[
 <%
 	CharVO vo = (CharVO)request.getAttribute("character");
 %>
@@ -19,3 +19,4 @@
 	"char_login"     :  "<%=vo.getChar_login()%>",
 	"base_img"		 :  "<%=vo.getBase_img()%>"
 }
+]

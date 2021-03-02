@@ -15,7 +15,7 @@ import vo.CharVO;
 /**
  * Servlet implementation class loginMember
  */
-@WebServlet("/SelectChar.do")
+@WebServlet("/SelectChar1.do")
 public class SelectChar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

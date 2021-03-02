@@ -11,12 +11,16 @@
 				$.each(res, function(i, v){
 //					result = v.link;
 					code += '  <table class="table">';
+					code += '    </thead>';
 					code += '    <tbody>';
 					code += '      <tr>';
+					code += '        <td></td>';
+					code += '        <td></td>';
 					code += '        <td></td>';
 					code += '      </tr>';
 					code += '      <tr class="success">';
 					code += '        <td><img id="imges" src="'+v.link+'"></td>';
+					code += '			<button type="button" id="showItem" class="btn btn-danger">show</button>'
 					code += '      </tr>';
 					code += '      <tr class="danger">';
 					code += '        <td>'+v.category+'</td>';
@@ -28,10 +32,6 @@
 					code += '        <td> '+v.point+'</td>';
 					code += '      </tr>';
 					code += '      <tr class="active">';
-					code += '        <td>';
-					code += '			<button type="button" id="showItem" class="btn btn-danger">show</button>'
-					code += '			<input type="hidden" id="showItemNo" value="'+ v.no +'">'
-					code += '        </td>';
 					code += '      </tr>';
 					code += '    </tbody>';
 					code += '  </table>';
@@ -53,26 +53,17 @@
 	
 	
 
-	
-	selectItemShow = function(itemNo){
+	selectItem = function(){
 		
 		$.ajax({
-			url : '/wcggame/OneShop.do',
-			data : {"item_no" : itemNo },
+			url : '/wcggame/ListAllShop.do',
 			success : function(res){
-				console.log("----"+res.link);
-				console.log("----"+res.link);
+				result = "";
+				$.each(res, function(i,v){
+					result = '<td><img id="imges" src="'+v.link+'"></td>';
+				})
 				
-				code = '  <table class="table">';
-				code += '    <tbody>';
-				code += '      <tr class="success">';
-				code += '        <td><img id="imges" src="'+res.link+'"></td>';
-				code += '      </tr>';
-				code += '    </tbody>';
-				code += '  </table>';
-				
-				$('#contents').append().html(code);
-				$('#itempoint').val(res.point);
+				$('#contents').append().html(result);
 				
 			},
 			error : function(xhr){
