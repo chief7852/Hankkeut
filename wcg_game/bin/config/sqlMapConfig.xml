@@ -30,7 +30,10 @@
 		  <typeAlias alias="memberVO" type="vo.MemberVO"/>
 		  <typeAlias alias="shopVO" type="vo.ShopVO"/>
 		  <typeAlias alias="noticeBoardVO" type="vo.noticeBoardVO"/>
+<<<<<<< HEAD
 		  <typeAlias alias="managerVO" type="vo.ManagerVO"/>
+=======
+>>>>>>> d2cc2fc (1. 인벤토리 소스 수정)
 
 		  <!-- <typeAlias alias="freeBoardVO" type="vo.freeBoardVO"/> -->
 		  <!-- <typeAlias alias="charVO" type="vo.CharVO"/> -->
@@ -39,10 +42,16 @@
 		   <typeAlias alias="commentVO" type="vo.CommentVO"/>
 		  <typeAlias alias="charVO" type="vo.CharVO"/>
 		  <typeAlias alias="wordVO" type="vo.WordVO"/>
+<<<<<<< HEAD
 		   <typeAlias alias="commentVO" type="vo.CommentVO"/>
 		    <typeAlias alias="inventoryVO" type="vo.InventoryVO"/>
 		   	 <typeAlias alias="inquiryBoardVO" type="vo.InquiryBoardVO"/>
 
+=======
+		  <typeAlias alias="managerVO" type="vo.ManagerVO"/>
+		  <typeAlias alias="inventoryVO" type="vo.InventoryVO"/>
+		  <typeAlias alias="wordVO" type="vo.WordVO"/>
+>>>>>>> d2cc2fc (1. 인벤토리 소스 수정)
 		  
 		  
 		  <!-- DB와의 연결을 처리하는 부분 -->
@@ -67,11 +76,19 @@
 	 	<!-- <sqlMap resource = "mapper/free.xml"/> -->
 
 	 	<sqlMap resource = "mapper/free.xml"/>
+<<<<<<< HEAD
 	 	<sqlMap resource = "mapper/manager.xml"/>
 	 	<sqlMap resource = "mapper/word.xml"/> 
 	 	<sqlMap resource = "mapper/inventory.xml"/>
 	 	<sqlMap resource = "mapper/inquiry.xml"/> 
 
+=======
+	 	<sqlMap resource = "mapper/character.xml"/>
+	 	
+	 	<sqlMap resource = "mapper/manager.xml"/>
+		<sqlMap resource = "mapper/word.xml"/> 
+		<sqlMap resource = "mapper/inventory.xml"/>
+>>>>>>> d2cc2fc (1. 인벤토리 소스 수정)
 		<!-- <sqlMap resource = "mapper/character.xml"/> -->
 	</sqlMapConfig>
 	
