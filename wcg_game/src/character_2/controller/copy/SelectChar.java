@@ -24,16 +24,17 @@ public class SelectChar extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String mem_id = request.getParameter("id");
-//		System.out.println("-----selectChar"+mem_id);
+		//System.out.println("-----selectChar"+mem_id);
+		
 		ICharacterService service = CharacterServiceImpl.getService();
 		
 		CharVO vo = service.selectChar(mem_id);
 		
 	
-		  request.setAttribute("character", vo);
+		request.setAttribute("character", vo);
 		  
 		  
-		  request.getRequestDispatcher("WEB-INF/view/character/characterJson.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/character/characterJson.jsp").forward(request, response);
 		 
 		
 	}

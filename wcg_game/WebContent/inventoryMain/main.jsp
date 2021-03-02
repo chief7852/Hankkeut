@@ -12,19 +12,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="../inventory_js/jquery.serializejson.min.js"></script>
   <script src="../character_js/character.js"></script>
+  <script sir =></script>
   <script>
-  	$(function(){
-  		
-  		idcc = "";
-  		
-  		selectMyCharacter("issac");
-  		
-  		selectMyNickname("issac");
-  		
-  		selectMyPoint("issac");
-  		
-  		BuyItemINInvettorySelectAll("issac");
-  	})
+     $(function(){
+        
+        id = ""; //캐릭터 아이디 담을 변수
+        aa="1";
+        char_nickname = "";  //캐릭터 닉네임 담을 변수(BuyItemINInvettorySelectAll)실행예정
+        
+        selectId("issac");
+        
+        
+        
+        
+     })
   </script>
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -82,7 +83,7 @@
         <p>내 인벤토리 창 입니다</p>
       </div>
       
-      <div id=showItem>
+      <div id="showItem">
       
        <!-- <div class="row">
         <div class="col-sm-3">

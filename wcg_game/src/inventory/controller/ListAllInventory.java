@@ -35,13 +35,12 @@ public class ListAllInventory extends HttpServlet {
 	IInventoryService service = InventoryServiceImpl.getService();
 	
 	//service매서드호출
-		List<InventoryVO> list = service.seletAll();
-	
+	List<InventoryVO> list = service.seletAll();
 	//결과값 request에 저장
 	request.setAttribute("list",list);
 	
 	//view페이지로 forward - listAllInven.jsp로 포워딩
-	request.getRequestDispatcher("WEB-INF/view/inventory/listAll.jsp");
+	request.getRequestDispatcher("WEB-INF/view/inventory/listAll.jsp").forward(request, response);;
 		
 		
 	}

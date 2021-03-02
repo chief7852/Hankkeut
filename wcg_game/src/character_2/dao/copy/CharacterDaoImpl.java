@@ -1,5 +1,6 @@
 package character_2.dao.copy;
 import java.sql.SQLException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +20,9 @@ public class CharacterDaoImpl implements ICharacterDao {
 	
 	
 	private CharacterDaoImpl () {
-		client = SqlMapClientFactory.getClient();
+		//client = SqlMapClientFactory.getClient();
+	      client = SqlMapClientFactory.getClient();
+		
 	}
 	public static ICharacterDao getDao() {
 		if(dao == null) dao = new CharacterDaoImpl();
@@ -29,6 +32,9 @@ public class CharacterDaoImpl implements ICharacterDao {
 	@Override
 	public CharVO selectChar(String mem_id) throws SQLException {
 		CharVO vo = new CharVO();
+		
+		System.out.println("여기까지 올까?>"+mem_id) ;
+		
 		try {
 			
 			vo = (CharVO)client.queryForObject("shop.selectChar",mem_id);

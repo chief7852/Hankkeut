@@ -26,6 +26,7 @@ public class MainFormAction implements IAction {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		System.out.println("???");
 		// 세션 호출
 		HttpSession session = req.getSession();
 		
