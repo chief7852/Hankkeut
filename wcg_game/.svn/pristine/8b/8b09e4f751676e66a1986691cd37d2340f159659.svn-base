@@ -1,0 +1,28 @@
+<HTML>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<style>
+	/* 임의로 div 태그들의 간격을 margin-bottom 을 이용하여 줌 (스크롤이 생기도록 하기 위해서) */
+    div {margin-bottom:1000px;}
+</style>
+<script>
+/* 스크롤 이동을 할 함수 */
+    function fnMove(seq){
+	
+    	/* 이동하고 싶은 태그를 선택하여 offset() 함수를 이용하여 절대좌표가 있는 객체를 가져온다. */
+        var offset = $("#div" + seq).offset();
+    	
+        /* jquery animate의 scrollTop 함수를 이용하여 절대좌표 top 위치로 이동한다. (400 은 이동되는 시간) */
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>
+ <BODY>
+    <button onclick="fnMove('1')">div1로 이동</button>
+    <button onclick="fnMove('2')">div2로 이동</button>
+    <button onclick="fnMove('3')">div3로 이동</button>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+    <div id="div3">div3</div>
+ </BODY>
+</HTML>
+
+

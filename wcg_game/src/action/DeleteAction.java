@@ -20,7 +20,7 @@ public class DeleteAction implements IAction {
 	@Override
 	public boolean isRedirect() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -45,7 +45,6 @@ public class DeleteAction implements IAction {
 		if(userId != null) {
 			service.deleteMember(memvo);
 			session.invalidate();
-			session.setAttribute("reloadPage", true);
 		}
 		return "/index.ddit";
 	}
