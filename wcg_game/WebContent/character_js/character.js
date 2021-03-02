@@ -7,6 +7,8 @@ selectCharacter = function(id){
 		method: "post",  
 		success : function(res){
 			id = res.mem_id;
+			
+			
 		/*	console.log("id>>"+id);
 			
 			console.log("Point>> "+itemPoint);
@@ -16,6 +18,72 @@ selectCharacter = function(id){
 			ch_nickName = res.char_nickname;
 			
 			itemPoint = parseInt(itemPoint) 
+			
+			
+			if(itemPoint > res.char_point){
+				console.log("res.char_point"+res.char_point);
+				alert("포인트가 부족합니다");		
+			}else{
+				alert("아이템구매");
+				updateBuyPoint(id,item);
+			}
+		},
+		error : function(xhr){
+			alert("상태:" + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
+selectId = function(id){
+	console.log("id : " + id);
+	//id값 받아오는..
+	var itemPoint = $('#itempoint').val();
+	$.ajax({
+		url : '/wcggame/SelectChar.do',
+		data : {"id" : id},
+		method: "post",  
+		success : function(res){
+			id = res.mem_id;
+			char_nickname = res.char_nickname;	// 전역변수에 저장
+			console.log(">>" + char_nickname);
+		
+			
+		    selectMyCharacter(id);
+			selectMyNickname(id);
+			selectMyPoint(id);
+			BuyItemINInvettorySelectAll(char_nickname);
+		},
+		error : function(xhr){
+			alert("상태:" + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
+
+selectCharacter = function(id){
+	//아이템 구매
+	var itemPoint = $('#itempoint').val();
+	$.ajax({
+		url : '/wcggame/SelectChar.do',
+		data : {"id" : id},
+		method: "post",  
+		success : function(res){
+			id = res.mem_id;
+			
+			
+		/*	console.log("id>>"+id);
+			
+			console.log("Point>> "+itemPoint);
+			
+			console.log("res.char_point>>"+res.char_point);*/
+			
+			ch_nickName = res.char_nickname;
+			
+			itemPoint = parseInt(itemPoint) 
+			
+			
 			if(itemPoint > res.char_point){
 				console.log("res.char_point"+res.char_point);
 				alert("포인트가 부족합니닷");		
@@ -31,19 +99,37 @@ selectCharacter = function(id){
 	})
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 selectMyCharacter = function(id){
 	//내 캐릭터 조회
 	$.ajax({
 		url : '/wcggame/SelectChar.do',
 		data : {"id" : id},
 		method : 'post',
+		//-------------------보내는값
+		
+		
+		//----성공시받는값
 		success : function(res){
+			//console.log(">> ");
 			idx = res.mem_id;
 			code = '<td><img id="imges" width="200px" height="200px"  src="'+res.base_img+'"></td>';
 			
 			$('#myChShow').append().html(code);
-			/*console.log("id출력이 안되나,,,,제발..." + idx);
-			console.log(res.link);*/
+			console.log("id출력이 안되나,,,,제발..." + id);
+			console.log(res.base_img);
 		},
 		error : function(xhr){
 			alert("상태:" + xhr.status);
@@ -61,6 +147,8 @@ selectMyNickname = function(id){
 		data : {"id" : id},
 		method : 'post',
 		success : function(res){
+			console.log("selectMyNickname");
+			
 			idx = res.mem_id;
 			code = '<td>'+res.char_nickname+'</td>';
 			
@@ -81,6 +169,7 @@ selectMyPoint = function(id){
 		data :{"id" : id},
 		method : 'post',
 		success : function(res){
+			console.log("selectMyPoint");
 			idx = res.mem_id;
 			code = '<td>'+res.char_point+'</td>'
 				
@@ -164,7 +253,46 @@ buyItemINInventory = function(){
 				alert("상태 : " + xhr.status) // 200 400 500 
 				},
 			dataType : 'json'
-				
 			})
-
 }
+
+BuyItemINInvettorySelectAll = function(char_nickname){	//캐릭터닉네임을 기준으로 소지 item_no를 출력
+	$.ajax({
+		url:'/wcggame/ListAllInventory.do',
+		data:{"char_nickname":char_nickname},	//1.char_nickname이 이름으로 2.char_nickname이값을 보내는데 2.값은 html혹은 jsp에 변수로 있엉 ㅑ한다., 
+		method : 'post',
+		//주는값-------------------------------
+		
+		//--------------------------
+		success:function(res){
+			code = '<div class="row">';
+			
+			
+			
+			$.each(res, function(i,v){
+				code += '   <div class="col-sm-3">';
+				code += '     <div class="well">';
+				code += '       <h4>아이템'+i+'</h4>';
+				code += '       <p id="show1" class="showclass">'+v.item_no+'</p>';
+				code += '       <button type="button" class="btn btn-info">착용</button>';
+				code += '     </div>';
+				code += '   </div>';
+			console.log("sda"+aa);
+			console.log("sda1"+v.item_no);
+			
+			
+			
+			})
+			code += '</div>'
+				
+			$('#showItem').append().html(code);
+		},
+		error:function(xhr){
+			alert("상태:" + xhr.status);
+		},
+		dataType : 'json'
+	})
+	
+}
+
+

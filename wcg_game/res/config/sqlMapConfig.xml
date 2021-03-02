@@ -67,6 +67,11 @@
 	 	<!-- <sqlMap resource = "mapper/free.xml"/> -->
 
 	 	<sqlMap resource = "mapper/free.xml"/>
+<<<<<<< HEAD
+=======
+	 	<sqlMap resource = "mapper/character.xml"/>
+	 	
+>>>>>>> d2cc2fc (1. 인벤토리 소스 수정)
 	 	<sqlMap resource = "mapper/manager.xml"/>
 	 	<sqlMap resource = "mapper/word.xml"/> 
 	 	<sqlMap resource = "mapper/inventory.xml"/>
