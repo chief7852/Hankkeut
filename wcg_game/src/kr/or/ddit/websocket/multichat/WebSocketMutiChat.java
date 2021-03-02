@@ -78,7 +78,8 @@ public class WebSocketMutiChat {
 					
 					userSession.getUserProperties().put("username", message);
 					userSession.getBasicRemote().sendText(buildJsonData("System", message + "님 연결 성공!!"));
-					
+					//현재 인원의 정보를 보내주기
+					Iterator<MultiChatVO> iterator = sessionUsers.iterator();					
 					
 						
 					ICharacterService service = CharacterServiceImpl.getService();
@@ -91,10 +92,13 @@ public class WebSocketMutiChat {
 					// 접속중인 인원 전원을 출력해봐야겠다====================
 					System.out.println("현재 접속중인원");
 					for (MultiChatVO vo : sessionUsers) {
-						System.out.println(vo.getName());
+						if (!vo.getSession().equals(chatVo.getSession())) {
+							vo.getSession().getBasicRemote()
+									.sendText(buildJsonData("id", message ,vo.getBase_img()));
+						}
 					}
 					/////////////////////////////
-					Iterator<MultiChatVO> iterator = sessionUsers.iterator();
+					iterator = sessionUsers.iterator();	
 					while (iterator.hasNext()) {
 						MultiChatVO chVo = iterator.next();
 						if (!chVo.getSession().equals(chatVo.getSession())) {
@@ -121,7 +125,7 @@ public class WebSocketMutiChat {
 	
 	public void sendToAll2(String username, String message,CharVO vo) throws IOException {
 		// username이 있으면 전체에게 이미지링크를 보낸다.
-		
+
 		Iterator<MultiChatVO> iterator = sessionUsers.iterator();
 		while (iterator.hasNext()) {
 			iterator.next().getSession().getBasicRemote().sendText(buildJsonData(username,message,vo.getBase_img()));
