@@ -3,6 +3,8 @@ package common.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.sun.security.ntlm.Client;
+
 import common.dao.IMemberDao;
 import common.dao.MemberDaoImpl;
 import vo.MemberVO;

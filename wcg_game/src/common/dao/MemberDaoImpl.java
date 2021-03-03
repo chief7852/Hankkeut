@@ -32,7 +32,9 @@ public class MemberDaoImpl implements IMemberDao {
 	public int deleteMember(MemberVO vo) {
 		int cnt = 0;
 		try {
+
 			cnt = (Integer) client.delete("member.deleteMember", vo);
+
 		} catch (SQLException e) {
 			cnt = 0;
 			e.printStackTrace();

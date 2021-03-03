@@ -35,6 +35,9 @@ footer {
 		        $('.dept01').slideUp(1000);
 		    }
 		})
+		function reload() {
+			$('#myNavbar').load(window.location.href + "#myNavbar");		
+		}
   </script>
 </head>
 <body>
@@ -75,7 +78,9 @@ footer {
 								</a>
 							</li>
 							<li>
+
 								<a herf="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer" target="_top">
+
 									<span class="glyphicon glyphicon-log-out"></span>로그아웃
 								</a>
 							</li>
@@ -92,7 +97,9 @@ footer {
 								</a>
 							</li>
 							<li>
+
 								<a href="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer" target="_top">
+
 									<span class="glyphicon glyphicon-log-out"></span>로그아웃
 								</a>
 								<!-- <button id="logout" type="button" class="btn btn-default">로그아웃</button> -->
