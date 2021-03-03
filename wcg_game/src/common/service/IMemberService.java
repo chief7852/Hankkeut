@@ -14,7 +14,7 @@ public interface IMemberService {
 	public String insertMember(MemberVO vo);
 
 	//탈퇴
-	public int deleteMember(String mem_id);
+	public int deleteMember(MemberVO vo);
 	
 	//로그인
 	public String loginMember(MemberVO vo);

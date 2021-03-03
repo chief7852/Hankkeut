@@ -3,6 +3,8 @@ package common.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.sun.security.ntlm.Client;
+
 import common.dao.IMemberDao;
 import common.dao.MemberDaoImpl;
 import vo.MemberVO;
@@ -40,9 +42,8 @@ public class MemberServiceImpl implements IMemberService {
 
 	//회원 탈퇴
 	@Override
-	public int deleteMember(String mem_id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteMember(MemberVO vo) {
+		return dao.deleteMember(vo);
 	}
 
 	// 아이디 체크

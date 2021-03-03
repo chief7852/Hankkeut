@@ -29,10 +29,10 @@ public class MemberDaoImpl implements IMemberDao {
 	}
 
 	@Override
-	public int deleteMember(String mem_id) {
+	public int deleteMember(MemberVO vo) {
 		int cnt = 0;
 		try {
-			cnt = (Integer) client.delete("board.deleteBoard",mem_id);
+			cnt = (Integer) client.delete("board.deleteBoard",vo);
 		} catch (SQLException e) {
 			cnt = 0;
 			e.printStackTrace();

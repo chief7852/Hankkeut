@@ -13,7 +13,7 @@ public interface IMemberDao {
 	//회원가입
 	public String insertMember(MemberVO vo) throws SQLException;
 	//탈퇴
-	public int deleteMember(String mem_id) throws SQLException;
+	public int deleteMember(MemberVO vo);
 	//로그인
 	public String loginMember(MemberVO vo) throws SQLException;
 	
