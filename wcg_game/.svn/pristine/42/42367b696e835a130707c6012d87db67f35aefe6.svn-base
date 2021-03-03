@@ -1,0 +1,47 @@
+package room.controller;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.jasper.tagplugins.jstl.core.Redirect;
+
+import room.service.IRoomService;
+import room.service.RoomServiceImpl;
+import vo.RoomVO;
+
+/**
+ * Servlet implementation class InsertRoom
+ */
+@WebServlet("/insertRoom.do")
+public class InsertRoom extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		IRoomService service = RoomServiceImpl.getService();
+		RoomVO roomvo = new RoomVO();
+		try {
+			BeanUtils.populate(roomvo, request.getParameterMap());
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String result = service.insertRoom(roomvo);
+		request.setAttribute("result", result);
+		
+		//request.getRequestDispatcher("WEB-INF/view/game/RoomState.jsp").forward(request, response);
+		request.getRequestDispatcher("/room/waitingRoom.ddit").forward(request, response);
+		
+	}
+
+}

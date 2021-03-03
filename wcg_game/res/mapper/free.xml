@@ -56,19 +56,14 @@
 		
 			<insert id="insertReply" parameterClass="CommentVO">
 			insert into COMMENTS values(
-			0,
+			#mem_id#,
 			sysdate,
 			#co_contents#,
 			#board_no#,
 			free_reply_seq.nextval		
-			)
-						
+			)			
 		
 			</insert>
-			
-			<select id="listReply" parameterClass="string" resultClass="CommentVO">
-				select * from COMMENTS where BOARD_NO= #board_no# order by CO_NO desc
-			</select>
 	
 
 </sqlMap>

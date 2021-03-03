@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 :: 한끝</title>
+    
+    <link rel="stylesheet" href="https://static-hid.gslb.toastoven.net/css/members/hangame_join.css?v=494f495ee8f6ef563e71d9dc5af9b6811707b319">
+        <script src="/webjars/jquery/1.12.4/jquery.min.js"></script>
+        
+    <style>
+        .btn_wrap .btn{
+            background: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="is_pc">
+        <div class="wrap">
+            <header id="header" class="header">
+                <em class="logo_area">
+                    <!--로고 링크-->
+                </em>
+            </header>
+            <div id="container">
+                <div class="content join_type_select">
+                    <div class="tit_wrap is_underline">
+                        <h1 class="h_txt">한끝 회원가입을<br class="is_pc_skip"> 환영합니다.</h1>
+                        <div class="btn_wrap">
+                            <a href="" class="btn">한끝 계정으로 회원가입</a>
+                        </div>
+
+                    </div>
+                    <div class="form_wrap">
+                        <span class="intro_txt">SNS 계정으로 회원가입</span>
+                        <ul class="lst_btn_regis">
+                            
+                            <li><a href="#" class="btn btn_regis" data-sns-code="google" onclick="return false;"><span class="sp ico_service ico_google"></span>Google 아이디로 회원가입</a></li>
+                            <li><a href="#" class="btn btn_regis" data-sns-code="facebook" onclick="return false;"><span class="sp ico_service ico_facebook"></span>Facebook 아이디로 회원가입</a></li>
+                            <li><a href="#" class="btn btn_regis" data-sns-code="naver" onclick="return false;"><span class="sp ico_service ico_naver"></span>NAVER 아이디로 회원가입</a></li>
+                        </ul>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body></html>

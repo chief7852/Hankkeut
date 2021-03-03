@@ -53,6 +53,7 @@ footer {
 				<!-- <a class="navbar-brand" href="#">Portfolio</a> -->
 				<a href="<%=request.getContextPath()%>/index.ddit"><img src="./img/logo.png" style="width: 150px; hegiht: 100px;"></a>
 			</div>
+			
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
 				<%
@@ -77,7 +78,9 @@ footer {
 								</a>
 							</li>
 							<li>
-								<a herf="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer">
+
+								<a herf="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer" target="_top">
+
 									<span class="glyphicon glyphicon-log-out"></span>로그아웃
 								</a>
 							</li>
@@ -94,7 +97,9 @@ footer {
 								</a>
 							</li>
 							<li>
-								<a href="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer">
+
+								<a href="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer" target="_top">
+
 									<span class="glyphicon glyphicon-log-out"></span>로그아웃
 								</a>
 								<!-- <button id="logout" type="button" class="btn btn-default">로그아웃</button> -->
@@ -128,7 +133,7 @@ footer {
 				</ul>
 				<ul class="menu02">
 					<li>
-						<img src="./img/gameBtn.PNG" onClick="window.open('./game_page/Han_KKEUT.html', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">
+						<img src="./img/gameBtn.PNG" onClick="window.open('<%=request.getContextPath()%>/WaitingGame/main.jsp', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">
 					</li>
 				</ul>
 			</div>

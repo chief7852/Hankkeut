@@ -14,13 +14,24 @@
 <link rel="stylesheet" href="/wcggame/css/loginCSS.css">
 </head>
 <body>
-	<form action="">
+<%
+	Boolean status = (Boolean) request.getAttribute("error");
+	if(status == false) {
+		//alert("아이디와 패스워드가 일치 하지 않습니다.");
+%>
+<%		
+	}
+%>
+	<form action="<%=request.getContextPath()%>/login/login.ddit">
 		<div class="center">
 			<!-- <input type="checkbox" id="show"> <label for="show" class="show-btn">View Form</label> -->
 			<div class="container">
 				<label for="show" class="close-btn fas fa-times" title="close"></label>
 				<div class="text">한끝 로그인</div>
-				<form action="#">
+				<!-- <div class="data">
+				  <label>Danger!</label> Indicates a dangerous or potentially negative action.
+				</div> -->
+				<form action="#">					
 					<div class="data">
 						<label>ID</label> <input type="text" name="mem_id" required>
 					</div>
@@ -29,10 +40,12 @@
 					</div>
 					<div class="forgot-pass">
 						<a href="#">Forgot Password?</a>
+						
 					</div>
+					
 					<div class="btn">
 						<div class="inner"></div>
-						<button type="submit">login</button>
+						<button type="submit">login1</button>
 					</div>
 					<div class="signup-link">
 						Not a member? <a href="/wcggame/home_sign/sign_up.html">SignUp</a>

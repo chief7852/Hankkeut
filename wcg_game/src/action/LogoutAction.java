@@ -22,8 +22,8 @@ public class LogoutAction implements IAction {
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();	// 세션 객체 불러오기
 		
-		session.invalidate();	// 세션 전체 데이터 삭제
-		session.setAttribute("userid", null);
+		session.invalidate();	// 세션 전체 데이터 삭제		
+		
 		return "/index.ddit";
 	}
 
