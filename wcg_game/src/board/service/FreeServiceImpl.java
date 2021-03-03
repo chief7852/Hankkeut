@@ -64,5 +64,11 @@ public class FreeServiceImpl implements IFreeService {
 		
 		return dao.insertReply(vo);
 	}
+	@Override
+	public List<CommentVO> listReply(String board_no) {
+		
+		return dao.listReply(board_no);
+	}
+	
 
 }

@@ -30,13 +30,23 @@ public class RoomServiceImpl implements IRoomService {
 	}
 
 	@Override
-	public String insertRoom(RoomVO vo) {
+	public int insertRoom(RoomVO vo) {
 		return dao.insertRoom(vo);
 	}
 
 	@Override
 	public List<RoomVO> selectAllRoom() {
 		return dao.selectAllRoom();
+	}
+
+	@Override
+	public int isRoom(RoomVO vo) {
+		return dao.isRoom(vo);
+	}
+
+	@Override
+	public RoomVO roomEnter(int room_vo) {
+		return dao.roomEnter(room_vo);
 	}
 
 }

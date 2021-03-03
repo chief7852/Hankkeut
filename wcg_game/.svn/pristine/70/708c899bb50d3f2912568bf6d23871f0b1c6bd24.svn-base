@@ -1,0 +1,15 @@
+package board.dao;
+
+import java.util.List;
+
+import vo.EventBoardVO;
+
+public interface IEventDao {
+	
+		//이미지 전체 출력 
+		public List<EventBoardVO> selectAll();
+		
+		//이미지 상세보기 
+		public EventBoardVO selectEvent(int boardNum);
+	
+}

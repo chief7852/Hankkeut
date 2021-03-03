@@ -8,6 +8,7 @@ import board.dao.IFreeDao;
 import board.dao.IInquiryDao;
 import board.dao.InquiryDaoImpl;
 import vo.InquiryBoardVO;
+import vo.MemberVO;
 
 public class InquiryServiceImpl implements IInquiryService {
 	
@@ -50,5 +51,9 @@ public class InquiryServiceImpl implements IInquiryService {
 	
 		return dao.selectAllCnt();
 	}
+	
+	
+	
+	
 
 }

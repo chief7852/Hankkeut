@@ -24,22 +24,40 @@ import kr.or.ddit.websocket.vo.MultiChatVO;
 import vo.CharVO;
 
 
+/*
+ *  1. ready가 유저명수와 동일해지면 게임스타트할수있다.
+ *  2. host는 gamestart버튼을 누를수있어야한다
+ *  3. host는 강제퇴장이 가능해야한다
+ */
 @ServerEndpoint("/websocktMultiChat")
 public class WebSocketMutiChat {
 
 	// 유저 집합 리스트 // 접속된 클라이언트 session관리 리스트
 	static List<MultiChatVO> sessionUsers = Collections.synchronizedList(new ArrayList<MultiChatVO>());
 	static List<CharVO> users =Collections.synchronizedList(new ArrayList<CharVO>());
-	int ready = 0;
+	// 강퇴리스트
+	static List<MultiChatVO> black =Collections.synchronizedList(new ArrayList<MultiChatVO>());
+	static int ready = 0;
+	static String host = "hostname";
+	
 	// 여기에는 charVO를 저장하는 리스트를 또한 만들어줘야겠다==========
 	
 	/**
 	 *  * 웹 소켓이 접속되면 유저리스트에 세션을 넣는다.  * @param userSession 웹 소켓 세션  
 	 */
+
+	
 	@OnOpen
 	public void handleOpen(Session userSession) {
 		MultiChatVO chatVo = new MultiChatVO(null, userSession);
 		// 클라이언트가 접속하면 WebSocket세션을 리스트에 저장한다
+		Iterator<MultiChatVO> bcheck = black.iterator();
+		while(bcheck.hasNext())
+		{
+			if(bcheck.next().getSession().equals(userSession)){
+				userSession.removeMessageHandler(null);
+			}
+		}
 		sessionUsers.add(chatVo);
 		/*
 		 * 여기에 charater를 저장해놓아야하는데=================
@@ -62,7 +80,7 @@ public class WebSocketMutiChat {
 		// 세션 프로퍼티에 username이 없으면 username을 선언하고 해당 세션으로 메시지를 보낸다.(json 형식이다.)
 		// 최초 메시지는 username설정
 		if (username == null) {
-			if(message.equals(""))
+			if(message.equals("")||message.equals(null))
 			{
 				message="guest";
 			}
@@ -80,6 +98,15 @@ public class WebSocketMutiChat {
 					
 					userSession.getUserProperties().put("username", message);
 					userSession.getBasicRemote().sendText(buildJsonData("System", message + "님 연결 성공!!"));
+					
+					//호스트 선정
+					if(Integer.parseInt(userSession.getId())==0)
+					{
+						host = message;
+						
+					}
+					
+					System.out.println(host);
 					//현재 인원의 정보를 보내주기
 					Iterator<MultiChatVO> iterator = sessionUsers.iterator();					
 					
@@ -218,3 +245,5 @@ public class WebSocketMutiChat {
 		return strJson;
 	}
 }
+
+

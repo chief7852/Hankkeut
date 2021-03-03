@@ -1,0 +1,14 @@
+package vo;
+
+public class preference {
+	
+	public String mem_id;
+	public String backmusic_no;
+	public String p_effect;
+	public String frien_allow;
+	public String friend_mess;
+	public String roominvite;
+	public String autoready;
+	public String color;
+	
+}

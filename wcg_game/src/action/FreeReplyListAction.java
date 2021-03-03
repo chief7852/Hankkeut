@@ -29,9 +29,8 @@ public class FreeReplyListAction implements IAction {
 		System.out.println(board_no);
 		IFreeService service = FreeServiceImpl.getService();
 		List<CommentVO> commentvo = service.listReply(board_no);
-		commentvo.get(0).getMem_id();
-		commentvo.get(0);
-		System.out.println(commentvo+"ÀüÇü¼· ÄÚ¸àÆ®");
+		
+		
 		req.setAttribute("reply", commentvo);
 		return "/freeboard/freeReplyForm.jsp";
 	}

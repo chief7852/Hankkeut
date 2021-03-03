@@ -25,24 +25,23 @@ public class ListAllInventory extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	//¿äÃ»½Ã ±Û¹øÈ£ °¡Á®¿À±â
+	//ìš”ì²­ì‹œ ê¸€ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
 	request.setCharacterEncoding("utf-8");	
-	//´Ğ³×ÀÓ Á¤º¸ °¡Á®¿À±â
+	//ë‹‰ë„¤ì„ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 	String char_nickname = request.getParameter("char_nickname");
-	System.out.println("----selectChar³ª¿Í¶ó!!" + char_nickname);
 	
-	//service °´Ã¼¾ò±â
+	//service ê°ì²´ì–»ê¸°
 	IInventoryService service = InventoryServiceImpl.getService();
 	
-	//service¸Å¼­µåÈ£Ãâ
-		List<InventoryVO> list = service.seletAll(char_nickname);
-		System.out.println("dddddasd;asdlkas" + list.get(0).char_nickname);
-	//°á°ú°ª request¿¡ ÀúÀå
+	//serviceë§¤ì„œë“œí˜¸ì¶œ
+	List<InventoryVO> list = service.seletAll(char_nickname);
+	
+		
 	request.setAttribute("list",list);
 	
-	//viewÆäÀÌÁö·Î forward - listAllInven.jsp·Î Æ÷¿öµù
+	//viewí˜ì´ì§€ë¡œ forward - listAllInven.jspë¡œ í¬ì›Œë”©
 	request.getRequestDispatcher("WEB-INF/view/inventory/listAll.jsp").forward(request, response);
-		
+	
 		
 	}
 

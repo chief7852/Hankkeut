@@ -20,7 +20,12 @@
 	<script type="text/javascript">
 		$(function() {
 			$("#createRoomBtn").on('click', function() {
-				createRoom();
+				<%-- var url = "<%=request.getContextPath()%>/game/waitingRoom.ddit";
+				createRoom(url); --%>
+				var form = $('#createRoomForm').get(0);
+				form.action = "<%=request.getContextPath()%>/game/waitingRoom.ddit";
+				console.log("next");
+				form.submit();
 			});
 		})
 	</script>
@@ -106,7 +111,7 @@
 	</div>
 	
 	<!-- Create Room Modal -->
-	<form action="<%=request.getContextPath()%>/">
+	<form id="createRoomForm">
 		<div class="modal fade" id="createRoom" data-backdrop="static">
 			<div class="modal-dialog modal-sm">
 	
@@ -129,7 +134,7 @@
 							<input type="password" name="room_pass"><br>
 							<input type="text" name="room_round"><br>
 							
-							<select name="gameStart" id="gStart">
+							<select name="room_time" id="gStart">
 								<option value="60">60초</option>
 								<option value="80">80초</option>
 								<option value="120">120초</option>

@@ -12,7 +12,9 @@
 		from word where word= #data#
 	</select>
 	
-
+	<insert id="insertWord" parameterClass="wordVO">
+			insert into word (w_no, word, init,neutral) values ( #w_no#,#word#,#init#,#neutral#)
+	</insert>
 	
 	
 </sqlMap>

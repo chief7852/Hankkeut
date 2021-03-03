@@ -5,7 +5,6 @@
 
 String result = (String)request.getAttribute("idcheck");
 if(result != null){
-	//id가 이미 있다 a001 - 사용불가능
 
 %>
 	{

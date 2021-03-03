@@ -1,44 +1,43 @@
 package word.service;
 
-import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
-import common.dao.IMemberDao;
-import common.dao.MemberDaoImpl;
-import vo.MemberVO;
-import vo.noticeBoardVO;
+import vo.WordVO;
 import word.dao.IWordDao;
 import word.dao.WordDaoImpl;
 
 public class WordServiceImpl implements IWordService {
-	private static IWordService service = null;
-
-	private IWordDao dao;
-
+	// Service객체는 Dao객체를 사용하기 때문에
+	// Dao객체가 저장될 변수가 필요하다.
+	
+	private IWordDao wordDao;
+	private static WordServiceImpl service;
+	
+	//생성자
 	private WordServiceImpl() {
-		dao = WordDaoImpl.getDao();
+//		memDao = new memberDaoImpl();		//오류 이유 : 싱글톤 패턴적용했기때문
+		wordDao = WordDaoImpl.getInstance();
+	}
+	
+	public static WordServiceImpl getInstance() {
+		if(service == null){
+			service = new WordServiceImpl();
+		}
+		return service;
+	}
+	
+	@Override
+	public int insertWord(WordVO memVo) {
+		
+		return wordDao.insertWord(memVo);
 	}
 
-	public static IWordService getService() {
-		if (service == null)
-			service = new WordServiceImpl();
-		return service;
+	@Override
+	public String selectWord(String word) {
+		// TODO Auto-generated method stub
+		return wordDao.selectWord(word);
 	}
 
 	
-	@Override
-	public String selectWord(String word) {
-		String result = null;
-		
-		try {
-			result = dao.selectWord(word);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
-
-
-
 }

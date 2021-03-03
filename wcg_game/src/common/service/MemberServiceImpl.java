@@ -3,8 +3,6 @@ package common.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.sun.security.ntlm.Client;
-
 import common.dao.IMemberDao;
 import common.dao.MemberDaoImpl;
 import vo.MemberVO;
@@ -43,6 +41,7 @@ public class MemberServiceImpl implements IMemberService {
 	//회원 탈퇴
 	@Override
 	public int deleteMember(MemberVO vo) {
+		// TODO Auto-generated method stub
 		return dao.deleteMember(vo);
 	}
 
@@ -67,7 +66,7 @@ public class MemberServiceImpl implements IMemberService {
 		
 		try {
 			resId = dao.loginMember(vo);
-			System.out.println("servivce : " + resId);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -87,26 +86,29 @@ public class MemberServiceImpl implements IMemberService {
 	}
 
 	@Override
-	public int updatePW(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return dao.updatePW(vo);
-	}
-
-	@Override
-	public int updateAddr(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return dao.updateAddr(vo);
-	}
-
-	@Override
-	public int updateTel(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return dao.updateTel(vo);
+	public String selectEmail(String memid) {
+		
+		return dao.selectEmail(memid);
 	}
 
 	@Override
 	public int isPassWord(MemberVO vo) {
 		return dao.isPassWord(vo);
+	}
+
+	@Override
+	public int updatePW(MemberVO vo) {
+		return dao.updatePW(vo);
+	}
+
+	@Override
+	public int updateAddr(MemberVO vo) {
+		return dao.updateAddr(vo);
+	}
+
+	@Override
+	public int updateTel(MemberVO vo) {
+		return dao.updateTel(vo);
 	}
 
 

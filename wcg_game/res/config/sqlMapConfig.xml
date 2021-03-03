@@ -30,6 +30,7 @@
 		  <typeAlias alias="memberVO" type="vo.MemberVO"/>
 		  <typeAlias alias="shopVO" type="vo.ShopVO"/>
 		  <typeAlias alias="noticeBoardVO" type="vo.noticeBoardVO"/>
+		  <typeAlias alias="managerVO" type="vo.ManagerVO"/>
 
 		  <!-- <typeAlias alias="freeBoardVO" type="vo.freeBoardVO"/> -->
 		  <!-- <typeAlias alias="charVO" type="vo.CharVO"/> -->
@@ -38,9 +39,12 @@
 		   <typeAlias alias="commentVO" type="vo.CommentVO"/>
 		  <typeAlias alias="charVO" type="vo.CharVO"/>
 		  <typeAlias alias="wordVO" type="vo.WordVO"/>
-		  <typeAlias alias="managerVO" type="vo.ManagerVO"/>
-		  <typeAlias alias="inventoryVO" type="vo.InventoryVO"/>
-		  <typeAlias alias="wordVO" type="vo.WordVO"/>
+		   <typeAlias alias="commentVO" type="vo.CommentVO"/>
+		    <typeAlias alias="inventoryVO" type="vo.InventoryVO"/>
+		   	 <typeAlias alias="inquiryBoardVO" type="vo.InquiryBoardVO"/>
+		   	 <typeAlias alias="eventBoardVO" type="vo.EventBoardVO"/>
+			 <!-- 21.03.03 pm0855 YJS -->
+        <typeAlias alias="BackMusicVO" type="vo.BackMusicVO"/>
 		  
 		  <!-- 21.03.02 CHS -->
 		  <typeAlias alias="roomVO" type="vo.RoomVO"/>
@@ -67,13 +71,20 @@
 	 	<!-- <sqlMap resource = "mapper/free.xml"/> -->
 
 	 	<sqlMap resource = "mapper/free.xml"/>
+
 	 	<sqlMap resource = "mapper/character.xml"/>
 	 	
+<!-- >>>>>>> d2cc2fc (1. 인벤토리 소스 수정) -->
 	 	<sqlMap resource = "mapper/manager.xml"/>
-		<sqlMap resource = "mapper/word.xml"/> 
-		<sqlMap resource = "mapper/inventory.xml"/>
+	 	<sqlMap resource = "mapper/word.xml"/> 
+	 	<sqlMap resource = "mapper/inventory.xml"/>
+	 	<sqlMap resource = "mapper/inquiry.xml"/> 
+	 	<sqlMap resource = "mapper/event.xml"/> 
+
 		
 		<!-- 21.03.02 CHS -->
 		<sqlMap resource = "mapper/room.xml"/>
+		<sqlMap resource = "mapper/backmusic.xml"/>
 		<!-- <sqlMap resource = "mapper/character.xml"/> -->
 	</sqlMapConfig>
+	

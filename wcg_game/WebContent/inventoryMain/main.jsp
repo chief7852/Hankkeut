@@ -12,7 +12,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="../inventory_js/jquery.serializejson.min.js"></script>
   <script src="../character_js/character.js"></script>
-  <script sir =></script>
   <script>
      $(function(){
         
@@ -22,12 +21,15 @@
         
         selectId("issac");
         
-        
-        
-        
+        $('#showItem').on('click','.btn-info',function(){
+        	console.log("---"+id);
+        	
+        	UpdateItemLinkIMG("issac");
+        })
+        	
      })
   </script>
-  <style>
+  <style>	
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 550px}Q
     
@@ -90,7 +92,7 @@
           <div class="well">
             <h4>아이템1</h4>
             <p id="show1" class="showclass">이미지출력자리</p>
-            <button type="button" class="btn btn-info">착용</button>
+            <button type="button" id="closetIMG" class="btn btn-info">착용</button>
           </div>
         </div>
         </div> -->

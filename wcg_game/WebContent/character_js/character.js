@@ -8,17 +8,9 @@ selectCharacter = function(id){
 		success : function(res){
 			id = res.mem_id;
 			
-			
-		/*	console.log("id>>"+id);
-			
-			console.log("Point>> "+itemPoint);
-			
-			console.log("res.char_point>>"+res.char_point);*/
-			
 			ch_nickName = res.char_nickname;
 			
 			itemPoint = parseInt(itemPoint) 
-			
 			
 			if(itemPoint > res.char_point){
 				console.log("res.char_point"+res.char_point);
@@ -36,7 +28,6 @@ selectCharacter = function(id){
 }
 
 selectId = function(id){
-	console.log("id : " + id);
 	//id값 받아오는..
 	var itemPoint = $('#itempoint').val();
 	$.ajax({
@@ -46,9 +37,8 @@ selectId = function(id){
 		success : function(res){
 			id = res.mem_id;
 			char_nickname = res.char_nickname;	// 전역변수에 저장
-			console.log(">>" + char_nickname);
+		//	console.log(">>" + char_nickname);
 		
-			
 		    selectMyCharacter(id);
 			selectMyNickname(id);
 			selectMyPoint(id);
@@ -72,13 +62,6 @@ selectCharacter = function(id){
 		success : function(res){
 			id = res.mem_id;
 			
-			
-		/*	console.log("id>>"+id);
-			
-			console.log("Point>> "+itemPoint);
-			
-			console.log("res.char_point>>"+res.char_point);*/
-			
 			ch_nickName = res.char_nickname;
 			
 			itemPoint = parseInt(itemPoint) 
@@ -101,17 +84,6 @@ selectCharacter = function(id){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 selectMyCharacter = function(id){
 	//내 캐릭터 조회
 	$.ajax({
@@ -119,8 +91,6 @@ selectMyCharacter = function(id){
 		data : {"id" : id},
 		method : 'post',
 		//-------------------보내는값
-		
-		
 		//----성공시받는값
 		success : function(res){
 			//console.log(">> ");
@@ -129,7 +99,7 @@ selectMyCharacter = function(id){
 			
 			$('#myChShow').append().html(code);
 			console.log("id출력이 안되나,,,,제발..." + id);
-			console.log(res.base_img);
+			console.log(res.link);
 		},
 		error : function(xhr){
 			alert("상태:" + xhr.status);
@@ -240,7 +210,6 @@ buyItemINInventory = function(){
 		/*	console.log("ch_nickName"+ch_nickName)
 			console.log("item_no"+item_no)*/
 			
-			
 			$.ajax({
 				url:'/wcggame/insertInventory.do',
 				data :{"item_no" : item_no, "char_nickname":ch_nickName},
@@ -265,28 +234,11 @@ BuyItemINInvettorySelectAll = function(char_nickname){	//캐릭터닉네임을 �
 		
 		//--------------------------
 		success:function(res){
-			code = '<div class="row">';
 			
-			
-			
-			$.each(res, function(i,v){
-				code += '   <div class="col-sm-3">';
-				code += '     <div class="well">';
-				code += '       <h4>아이템'+i+'</h4>';
-				code += '       <p id="show1" class="showclass">'+v.item_no+'</p>';
-				code += '       <button type="button" class="btn btn-info">착용</button>';
-				code += '     </div>';
-				code += '   </div>';
-			console.log("sda"+aa);
-			console.log("sda1"+v.item_no);
-			
-			
-			
-			})
-			code += '</div>'
-				
-			$('#showItem').append().html(code);
+			showLinkedItemListAll(char_nickname);
 		},
+		
+		
 		error:function(xhr){
 			alert("상태:" + xhr.status);
 		},
@@ -294,5 +246,105 @@ BuyItemINInvettorySelectAll = function(char_nickname){	//캐릭터닉네임을 �
 	})
 	
 }
+
+showLinkedItemListAll = function(char_nickname){
+	
+	$.ajax({
+		url : '/wcggame/selectLink.do',
+		data : {"char_nickname" : char_nickname},
+		method : 'post',
+		//주는값 --------------------------------------
+		
+		//받는값-----------------------------------
+		success : function(res){
+			code = '<div class="row">';
+			$.each(res, function(i,v){
+				code += '   <div class="col-sm-3">';
+				code += '     <div class="well">';
+				code += '       <h4>아이템'+i+'</h4>';
+				code += '       <p id="show1" class="showclass"><td><img id="imges" src="'+v.item_link+'"></td></p>';
+				code += '       <button type="button" class="btn btn-info">착용</button>';
+				code += '     </div>';
+				code += '   </div>';
+			
+			})
+			code += '</div>'
+				
+			$('#showItem').append().html(code);
+		},
+		error : function(xhr){
+			alert("상태:" + xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
+
+//착용 버튼 눌렀을떄 이미지 입혀지도록 할 계획임
+UpdateItemLinkIMG = function(id){
+	
+	console.log("-123--"+id)
+	
+	$.ajax({
+		
+		url : '/wcggame/UpdateIMGLink.do',
+		data : {"mem_id" : id},
+		method : 'post',
+	//servlet에 주는 값---------------------------
+		
+	//받는값---------------------------
+		success : function(res){
+			alert(res.sw)
+			if(res.sw == "성공"){
+			selectId(id);	
+			}
+			
+		},
+		error : function(xhr){
+			alert(xhr.status);
+		},
+		dataType : 'json'
+		
+	})
+}
+
+
+//랭킹정보 select 
+//1.랭킹 2.nickname 3.level 4.exp
+
+selectRanking = function(){
+	
+	$.ajax({
+		url : '/wcggame/SelectAllch.do',
+		method : 'post',
+		success : function(res){
+			
+			code = '<div>';
+			$.each(res, function(i,v){
+				
+				code += '<h2>'+v.char_nickname+'</h2>';
+				code += '<h2>'+v.mem_id+'</h2>';
+				code += '<h2>'+v.char_level+'</h2>';
+				code += '<h2>'+v.char_exp+'</h2>';
+				code += '<h2>'+v.char_win+'</h2>';
+				code += '<h2>'+v.char_lose+'</h2>';
+				code += '<h2>'+v.char_about+'</h2>';
+				code += '<h2>'+v.char_point+'</h2>';
+				code += '<h2>'+v.char_rank+'</h2>';
+				code += '<h2>'+v.char_login+'</h2>';
+				code += '<h2>'+v.base_img+'</h2>';
+			
+			})
+			code += '</div>';
+				$('#testAAA').append().html(code);
+				
+		},
+		error : function(xhr){
+			alert(xhr.status);
+		},
+		dataType : 'json'
+	})
+}
+
 
 

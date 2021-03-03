@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="character">
+
+	<select id="selectChar2" resultClass="charVO" parameterClass="String">
+		select * from characters where mem_id =#data#
+	</select>
+
+	<select id="selectChar" resultClass="charVO" parameterClass="String">
+		select *
+		from characters where mem_id = #mem_id#
+	</select>
+	
+	<select id="selectchetChar" resultClass="charVO" parameterClass="String">
+		select *
+		from  characters where mem_id = #nickname#
+	</select>
+	
+	<update id="changeIMG" parameterClass="String">
+	      update CHARACTERS
+	      set BASE_IMG = '../img/closeItemgirlIMG.png'
+	      where mem_id = #mem_id#
+   </update>
+	
+
+</sqlMap>

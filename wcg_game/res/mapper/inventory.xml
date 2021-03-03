@@ -8,6 +8,7 @@
 
 	<insert id="insertInventory" parameterClass="inventoryVO">
 		insert into INVENTORY 
+		
 					(
 					in_no,
 					item_no,
@@ -16,10 +17,13 @@
 					)
 					
 		values (
+		
 		INVENTORY_seq.NEXTVAL,
 				#item_no#,
 				#char_nickname#, 
-				0)
+				0
+				
+				)
 <!-- 				
 		 <selectKey keyProperty="in_no" resultClass="string">
 				select in_no 
@@ -33,6 +37,20 @@
 		select *
 		from inventory
 	</select>
+	
+	
+	<select id="selectLink" resultClass="shopVO" parameterClass="String">
+	
+		select a.ITEM_LINK
+	    from shop a
+	    
+	    inner join INVENTORY b on  a.ITEM_NO = b.ITEM_NO
+	        
+	    where b.char_nickname  = #CHAR_NICKNAME#
+	    
+	</select>
+	
+	
 
 </sqlMap>
 

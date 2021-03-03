@@ -50,6 +50,47 @@ public class CharacterServiceImpl implements ICharacterService {
 		
 		return vo;
 	}
+
+	
+	
+	@Override
+	public int updateIMGLink(String mem_id) {
+		
+		int vo = 0;
+		
+		try {
+			vo = dao.updateIMGLink(mem_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+	}
+
+	
+	
+	@Override
+	public List<CharVO> selectAll() {
+		return dao.selectAll();
+	}
+
+	@Override
+	   public int insertChar(CharVO vo) {
+	      return dao.insertChar(vo);
+	   }
+	
+
+	
+
+
+	
+	
+
+	
+	
+
+	
+
 	
 	
 

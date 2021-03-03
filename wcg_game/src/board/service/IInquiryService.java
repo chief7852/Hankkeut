@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import vo.InquiryBoardVO;
+import vo.MemberVO;
 import vo.freeBoardVO;
 
 public interface IInquiryService {
@@ -22,4 +23,6 @@ public interface IInquiryService {
 	
 	//전체페이지개수
 	public int selectAllCnt();
+	
+
 }

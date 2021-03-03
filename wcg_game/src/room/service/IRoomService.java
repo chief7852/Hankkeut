@@ -10,7 +10,13 @@ import vo.noticeBoardVO;
 
 public interface IRoomService {
 	// 방 생성
-	public String insertRoom(RoomVO vo);
+	public int insertRoom(RoomVO vo);
 	// 방 호출
 	public List<RoomVO> selectAllRoom();
+	
+	// 방 호스트 생성 유무
+	public int isRoom(RoomVO vo); 
+	
+	// 방 정보
+	public RoomVO roomEnter(int room_vo);
 }

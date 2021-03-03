@@ -28,6 +28,13 @@
 		where MEM_ID = #mem_id#
 	</update>
 	
+	
+	
+	
+	
+	
+	
+	
 </sqlMap>
 
 

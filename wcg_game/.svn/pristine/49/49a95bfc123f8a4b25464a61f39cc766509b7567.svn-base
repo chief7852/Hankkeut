@@ -1,0 +1,50 @@
+package action;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.Inet4Address;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+import room.service.IRoomService;
+import room.service.RoomServiceImpl;
+import vo.RoomVO;
+import web.IAction;
+
+public class waitingRoomFormAction implements IAction {
+
+	@Override
+	public boolean isRedirect() {
+		return true;
+	}
+
+	@Override
+	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		//String ip = req.getRemoteAddr();	// 접속한 IP주소
+		String ip = Inet4Address.getLocalHost().getHostAddress();
+		
+		IRoomService service = RoomServiceImpl.getService();
+		RoomVO roomvo = new RoomVO();
+		roomvo.setRoom_host(ip);
+		try {
+			BeanUtils.populate(roomvo, req.getParameterMap());
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		
+		service.insertRoom(roomvo);
+		
+		//System.out.println("WaitingRoomFormAction roomList : " + roomList);
+		
+		return "/game/gameRoom.ddit";
+	}
+
+}

@@ -35,9 +35,6 @@ footer {
 		        $('.dept01').slideUp(1000);
 		    }
 		})
-		function reload() {
-			$('#myNavbar').load(window.location.href + "#myNavbar");		
-		}
   </script>
 </head>
 <body>
@@ -78,9 +75,7 @@ footer {
 								</a>
 							</li>
 							<li>
-
 								<a herf="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer" target="_top">
-
 									<span class="glyphicon glyphicon-log-out"></span>로그아웃
 								</a>
 							</li>
@@ -97,9 +92,7 @@ footer {
 								</a>
 							</li>
 							<li>
-
 								<a href="<%=request.getContextPath()%>/logout.ddit" style="cursor:pointer" target="_top">
-
 									<span class="glyphicon glyphicon-log-out"></span>로그아웃
 								</a>
 								<!-- <button id="logout" type="button" class="btn btn-default">로그아웃</button> -->
@@ -115,7 +108,7 @@ footer {
 					<li><span>새소식</span>
 						<ul class="dept01">
 							<li class="nop"><a href="<%=request.getContextPath()%>/notice/boardList.ddit" target="ifr">공지사항</a></li>
-							<li class="nop"><a href="#" target="ifr">이벤트</a></li>
+							<li class="nop"><a href="<%=request.getContextPath()%>/event/eventList.ddit" target="ifr">이벤트</a></li>
 						</ul></li>
 					<li><span>가이드</span>
 						<ul class="dept01">
@@ -123,17 +116,38 @@ footer {
 						</ul></li>
 					<li><span>커뮤니티</span>
 						<ul class="dept01">
-							<li class="nop"><a href="#" target="ifr">자유게시판</a></li>
+							<li class="nop"><a href="<%=request.getContextPath()%>/free/freeList.ddit" target="ifr">자유게시판</a></li>
 						</ul></li>
 					<li><span>고객센터</span>
 						<ul class="dept01">
-							<li class="nop"><a href="#" target="ifr">Q & A</a></li>
-							<li class="nop"><a href="#" target="ifr">문의</a></li>
+							<li class="nop"><a href="<%=request.getContextPath()%>/inquiry/inquiryInsertForm.ddit"target="ifr">문의게시판</a></li>
+							
 						</ul></li>
 				</ul>
 				<ul class="menu02">
 					<li>
-						<img src="./img/gameBtn.PNG" onClick="window.open('<%=request.getContextPath()%>/WaitingGame/main.jsp', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">
+						<%
+							//boolean isChar = (boolean) session.getAttribute("isChar");
+							//System.out.println("isChar " + isChar);
+							//	if(userId == null || userId == "") isChar = true;
+							// if(isChar == true) {
+							if(userId == null || userId == "") {
+						%>
+								<img src="./img/gameBtn.PNG" onClick="window.open('<%=request.getContextPath()%>/WaitingGame/main.jsp', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">
+						<%
+							} else {
+								boolean isChar = (boolean) session.getAttribute("isChar");
+								if(isChar == true) {
+						%>
+									<img src="./img/gameBtn.PNG" onClick="window.open('<%=request.getContextPath()%>/WaitingGame/main.jsp', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">
+						<%
+								} else {
+						%>
+									<img src="./img/gameBtn.PNG" onClick="window.open('<%=request.getContextPath()%>/WaitingGame/createNickName.jsp', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">
+						<%
+								}
+							}
+						%>
 					</li>
 				</ul>
 			</div>

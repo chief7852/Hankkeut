@@ -28,7 +28,9 @@
 		border:2px solid green;	padding: 5px; width : 430px;
 		margin: 0px auto;
 	}
-		 
+	 #timer{
+	 
+	 }
 </style>
 </head>
 <body>
@@ -52,10 +54,8 @@
 		    <button type="submit" value="로그인하기" id="btnConnect2" >로그인하기</button>
 		    
 	    </div>
-	    <div id="characters">
-         <%-- <img src="images/spongebob.png" style="width:100px; height:100px"><br>
-         <label><%=userId%></label> --%>
-      </div>
+	    
+      <div id="timer"></div>
     </div>
     
     <script type="text/javascript">
@@ -103,6 +103,11 @@
 	            //Json 풀기
 	            var jsonData = JSON.parse(message.data);
 	             var jsonData2 = JSON.parse(message.data);  
+	             var jsonTimer = JSON.parse(message.data);
+	             
+	             if(jsonTimer.timer != -1){
+	            	 $('#timer').html(jsonTimer.timer)
+	             }
 	            // json "img"풀기
 	            console.log(jsonData);
 	            console.log(jsonData2);

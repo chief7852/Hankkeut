@@ -1,7 +1,7 @@
 package character_2.dao.copy;
 import java.sql.SQLException;
-
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -17,10 +17,7 @@ public class CharacterDaoImpl implements ICharacterDao {
 	
 	
 	
-	
-	
 	private CharacterDaoImpl () {
-		//client = SqlMapClientFactory.getClient();
 	      client = SqlMapClientFactory.getClient();
 		
 	}
@@ -31,7 +28,11 @@ public class CharacterDaoImpl implements ICharacterDao {
 	
 	@Override
 	public CharVO selectChar(String mem_id) throws SQLException {
-		CharVO vo = new CharVO();		
+		CharVO vo = new CharVO();
+		
+		
+		//System.out.println("여기까지 올까?>"+mem_id) ;
+		
 		try {
 			
 			vo = (CharVO)client.queryForObject("shop.selectChar",mem_id);
@@ -46,6 +47,10 @@ public class CharacterDaoImpl implements ICharacterDao {
 	@Override
 	public int updateBuyPoint(String mem_id,String item) throws SQLException {
 		int res;
+		
+		
+		System.out.println("itemitemitemitemitem"+ item);
+		
 				
 		Map<String, String> map = new HashMap<String, String>();
 		map.put( "mem_id",mem_id );
@@ -54,6 +59,57 @@ public class CharacterDaoImpl implements ICharacterDao {
 		res = (Integer) client.update("shop.BuyItem",map);
 		return res;
 	}
+	
+	
+	@Override
+	public int updateIMGLink(String mem_id) throws SQLException {
+		int res;
+		
+		res = client.update("character.changeIMG",mem_id);
+		return res;
+	}
+	
+	
+	@Override
+	public List<CharVO> selectAll() {
+		List<CharVO> list = null;
+				
+		try {
+			list = client.queryForList("character.selectAll");
+		} catch (SQLException e) {
+			list = null;
+			e.printStackTrace();
+		}		
+		return list;
+	}
+	@Override
+	public int insertChar(CharVO vo) {
+		int cnt = 0;
+		Object isInsert = null;
+		try {
+			isInsert = client.insert("character.insertChar", vo);
+			if(isInsert == null) cnt = 1;
+		} catch (SQLException e) {
+			cnt = 0;
+			isInsert = null;
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
 	
 	
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="room">
+	<insert id="insertRoom" parameterClass="roomVO">
+		insert into room values(
+			room_seq.nextVal,
+			#room_pass#,
+			#room_round#,
+			#room_theme#,
+			#room_name#,
+			#nickname#,
+			#allow_no#,
+			#room_host#,
+			#room_time#
+		)	
+
+	</insert>
+	
+	<select id="selectAllRoom" parameterClass="roomVO" resultClass="roomVO">
+		select * from room
+	</select>
+	
+	<select id="isRoomPass" parameterClass="int" resultClass="String">
+		select room_pass room where room_no = #room_no#
+	</select>
+	
+	<!-- 21.03.03 CHS -->
+	<select id="isRoom" parameterClass="String" resultClass="int">
+		select * from room where room_host = #room_host#
+	</select>
+	
+	<select id="roomEnter" parameterClass="int" resultClass="roomVO">
+		select * from room where room_no = #room_no#
+	</select>
+</sqlMap>
