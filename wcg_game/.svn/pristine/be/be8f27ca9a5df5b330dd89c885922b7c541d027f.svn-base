@@ -1,0 +1,58 @@
+waitingRoomList = function() {
+	$.ajax({
+		url: "/wcggame/waitingGame.do",
+		method: "post", 
+		success : function(res){
+			code = '';
+			$.each(res, function(i,v) {
+				code += `
+						<div class="col-sm-3 roomDiv" onclick="entrance(${v.room_no})" id="${v.room_no}">
+						  <div class="well">
+						  	<input type="hidden" value="${v.room_no}">
+					        <h4>${v.room_no}</h4>
+					        <p>${v.room_name}</p> 
+					        <p>인원수</p>
+					      </div>
+						</div>
+						`;
+			});	
+			$('#roomList').html(code);
+		},
+		error: function(xhr) {
+			alert("서버 상태 : " + xhr.status);
+		},
+		dataType: 'json'
+	});
+
+}
+
+createRoom = function(url) {
+	$.ajax({
+		//url: "/wcggame/insertRoom.do",
+		url: url,
+		method: "post", 
+		success : function(res){
+		},
+		error: function(xhr) {
+			alert("서버 상태 : " + xhr.status);
+		},
+		dataType: 'json'
+	});
+}
+
+entrance = function(room_vo) {
+	location.href= "/wcggame/game/waitingGameInfo.ddit?room_vo="+room_vo;
+	/*$.ajax({
+		url: urlAction,
+		method: "post", 
+		data: {"room_vo" : room_vo},
+		success : function(res){
+			//waitingRoomList();
+			
+		},
+		error: function(xhr) {
+			alert("서버 상태 : " + xhr.status);
+		},
+		dataType: 'html'
+	});*/
+}

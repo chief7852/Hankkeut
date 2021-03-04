@@ -1,0 +1,10 @@
+package kr.or.ddit.websocket.multichat;
+
+public class test {
+
+	public static void main(String[] args) {
+		String test = "rnum:report";
+		System.out.println(test.substring(5));
+	}
+
+}

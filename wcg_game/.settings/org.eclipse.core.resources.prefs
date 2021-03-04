@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/view/game/gameRoom.jsp=UTF-8
 encoding//res/config/SqlMapClientFactory.java=UTF-8
-encoding//src/character_2/dao/copy/CharacterDaoImpl.java=UTF-8
 encoding//src/kr/or/ddit/websocket/multichat/WebSocketMutiChat.java=UTF-8

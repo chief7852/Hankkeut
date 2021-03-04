@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="free">
+	<select id="selectAll" resultClass="freeBoardVO">
+		select * from FREEBOARD order by f_board_no desc
+	</select>
+	
+	<select id="selectAllCnt" resultClass="int">
+			select count(*) from FREEBOARD
+		</select>
+		
+	<update id="updateViews" parameterClass="int">
+			update FREEBOARD set F_BOARD_VIEWS = F_BOARD_VIEWS+1 where F_BOARD_NO = #num#
+		</update>
+		
+		
+		<select id="selectBoard" parameterClass="int" resultClass="freeBoardVO">
+			select * from FREEBOARD where F_BOARD_NO = #num#
+		</select>
+		
+		<insert id="insertBoard" parameterClass="freeBoardVO">
+			insert into FREEBOARD values (
+				free_seq.nextval,
+				#f_board_title#,
+				#mem_id#,
+				sysdate,
+				0,
+				#f_board_contents#,
+				0,
+				0
+				
+			)
+		</insert> 
+		<update id="updateBoard" parameterClass="freeBoardVO">
+			update FREEBOARD set f_board_title = #f_board_title#, f_board_contents = #f_board_contents#
+			where f_board_no = #f_board_no#
+		</update>
+		<delete id="deleteBoard" parameterClass="int">
+			delete from FREEBOARD where F_BOARD_NO = #f_board_no#
+		</delete>
+		
+			<select id="selectByPage" parameterClass="map" resultClass="freeBoardVO">
+			select A.* from (
+	      		select rownum as rnum, B.*  from (
+	          		select * from FREEBOARD 
+	          		order by F_BOARD_NO desc) B
+	       <![CDATA[
+	      		where rownum <= #end#) A 
+	   		where A.rnum >= #start#
+	       ]]>
+		</select>
+		
+			<insert id="insertReply" parameterClass="CommentVO">
+			insert into COMMENTS values(
+			#mem_id#,
+			sysdate,
+			#co_contents#,
+			#board_no#,
+			free_reply_seq.nextval		
+			)
+						
+		
+			</insert>
+			
+			<select id="listReply" parameterClass="string" resultClass="CommentVO">
+				select * from COMMENTS where BOARD_NO= #board_no# order by CO_NO desc
+			</select>
+
+	<delete id="deleteReply" parameterClass="int">
+		delete from COMMENTS where CO_NO=#data#
+	</delete>
+
+	<update id="updateReply" parameterClass="CommentVO">
+		update COMMENTS set CO_CONTENTS=#cont#,
+		
+		CO_DATE = sysdate
+		where CO_NO = #co_no#
+
+	</update>
+			
+			
+	
+
+</sqlMap>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
