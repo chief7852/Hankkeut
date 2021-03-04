@@ -1,0 +1,105 @@
+<%@page import="vo.RoomVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>게임 방</title>
+<style>
+	nav {
+		border-bottom: 1px solid grey;
+		height: 100px;
+		text-align: center;
+		box-sizing: border-box;
+	}
+	#header div {
+		display: inline-block;
+		border: 1px solid red;
+		text-align: center;
+		box-sizing: border-box;
+	}
+	#roomNo {
+		width: 250px;
+	}
+	#title {
+		width: 690px;
+	}
+	#theme {
+		width: 250px;
+	}
+	#getAllow {
+		width: 250px;
+	}
+	#content {
+		box-sizing: border-box;
+		border-bottom: 1px solid grey;
+		height: 450px;
+		display: grid;
+		grid-template-columns : auto auto auto auto;
+	}
+	#content .user {
+		box-sizing: border-box;
+		border: 1px solid lightgrey;
+	}
+	#readyBtn {
+		box-sizing: border-box;
+		text-align: center;
+		display: grid;
+		grid-template-columns : auto auto auto auto;
+	}
+	#chatting {
+		box-sizing: border-box;
+		height: 185px;
+	}
+</style>
+</head>
+<body>
+<%
+	System.out.println("gameRoom.jsp hostRoomInfo??");
+	RoomVO roomVo = (RoomVO) request.getAttribute("hostRoomInfo");
+	System.out.println("gameRoom.jsp hostRoomInfo : " + roomVo.getRoom_no());
+%>
+<nav id="header">
+	<div id="roomNo">
+		<h1><%=roomVo.getRoom_no()%></h1>
+	</div>
+	<div id="title">
+		<h1><%=roomVo.getRoom_name()%></h1>
+	</div>
+	<div id="theme">
+		<h1><%=roomVo.getRoom_theme()%></h1>
+	</div>
+	<div id="getAllow">
+		<h1><%=roomVo.getAllow_no()%></h1>
+	</div>
+	<div id="out">
+		<h1>나가기</h1>
+	</div>
+</nav>
+	
+	
+	<div id="content">
+		<div class="user"><img src="../img/boy_basic.png"></div>
+		<div class="user"><img src="../img/girl_basic.png"></div>
+		<div class="user"><img src="../img/boy_basic.png"></div>
+		<div class="user"><img src="../img/girl_basic.png"></div>
+	</div>
+	<div id="readyBtn">
+		<div class="ready"><img src="../img/gameBtn.PNG"></div>
+		<div class="ready"><img src="../img/gameBtn.PNG"></div>
+		<div class="ready"><img src="../img/gameBtn.PNG"></div>
+		<div class="ready"><img src="../img/gameBtn.PNG"></div>
+	</div>
+	
+	<div id="chatting">
+		<textarea rows="6" cols="230"></textarea>
+		<input type="text" name="chatInput" class="form-control">
+	</div>
+</body>
+</html>

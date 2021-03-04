@@ -1,0 +1,65 @@
+package action;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.Inet4Address;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+import room.service.IRoomService;
+import room.service.RoomServiceImpl;
+import vo.RoomVO;
+import web.IAction;
+
+public class waitingRoomFormAction implements IAction {
+
+	@Override
+	public boolean isRedirect() {
+		return false;
+	}
+
+	@Override
+	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		//String ip = req.getRemoteAddr();	// 접속한 IP주소
+		String ip = Inet4Address.getLocalHost().getHostAddress();
+		
+		IRoomService service = RoomServiceImpl.getService();
+		RoomVO roomvo = new RoomVO();
+		roomvo.setRoom_host(ip);
+		try {
+			BeanUtils.populate(roomvo, req.getParameterMap());
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		//RoomVO hostRoomInfo = service.isRoom(ip);
+		// 중복 방 생성 안되게 하기 위한 소스
+//		if(hostRoomInfo != null) {	// 해당 방장 ip를 가진 룸이 존재 하지 않을 경우 방 생성
+//			return "/WaitingGame/main.jsp";
+//		} else {
+//			// 방 생성
+//			service.insertRoom(roomvo);
+//			
+//			hostRoomInfo = service.isRoom(roomvo.getRoom_host());
+//			req.setAttribute("hostRoomInfo", hostRoomInfo);
+//		}
+		
+		// 테스트를 위한소스
+		service.insertRoom(roomvo);
+		
+		RoomVO hostRoomInfo = service.isRoom(roomvo.getRoom_host());
+		req.setAttribute("hostRoomInfo", hostRoomInfo);
+		
+		return "/game/gameRoom.jsp";
+		
+		
+	}
+
+}
