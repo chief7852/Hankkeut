@@ -40,6 +40,9 @@ a {
 	font-size: 0;
 }
 
+
+
+
 .bt_wrap a, .bt_wrap input[type=button] {
 	margin-left: 10px;
 	display: inline-block;
@@ -48,6 +51,7 @@ a {
 	border: 1px solid black;
 	border-radius: 2px;
 	font-size: 1.4rem;
+	
 }
 
 .bt_wrap a:first-child {

@@ -19,7 +19,8 @@
 			"room_name" : "<%=room.getRoom_name()%>",
 			"nickname" : "<%=room.getNickname()%>",
 			"allow_no" : "<%=room.getAllow_no()%>",
-			"room_host" : "<%=room.getRoom_host()%>"
+			"room_host" : "<%=room.getRoom_host()%>",
+			"room_time" : "<%=room.getRoom_time()%>"
 		}
 <%
 		i++;

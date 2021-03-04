@@ -1,0 +1,48 @@
+package inventory.controller;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import inventory.service.IInventoryService;
+import inventory.service.InventoryServiceImpl;
+import vo.InventoryVO;
+
+@WebServlet("/ListAllInventory.do")
+public class ListAllInventory extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public ListAllInventory() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	//��û�� �۹�ȣ ��������
+	request.setCharacterEncoding("utf-8");	
+	//�г��� ���� ��������
+	String char_nickname = request.getParameter("char_nickname");
+	System.out.println("----selectChar���Ͷ�!!" + char_nickname);
+	
+	//service ��ü���
+	IInventoryService service = InventoryServiceImpl.getService();
+	
+	//service�ż���ȣ��
+		List<InventoryVO> list = service.seletAll(char_nickname);
+	//����� request�� ����
+	request.setAttribute("list",list);
+	
+	//view�������� forward - listAllInven.jsp�� ������
+	request.getRequestDispatcher("WEB-INF/view/inventory/listAll.jsp").forward(request, response);
+		
+		
+	}
+
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+	<sqlMap namespace="event">
+		<select id="selectAll" resultClass="EventBoardVO">
+		
+			select * from eventboard 
+		
+		</select>
+		
+		<select id="selectEvent" resultClass="EventBoardVO" parameterClass="int">
+		
+			select * from EVENTBOARD where E_BOARD_NUM = #e_board_num#
+		
+		</select>
+		
+	<update id="updateViews" parameterClass="int">
+			update EVENTBOARD set E_BOARD_VIEWS = E_BOARD_VIEWS+1 where E_BOARD_NUM = #num#
+		</update>
+	
+	</sqlMap>

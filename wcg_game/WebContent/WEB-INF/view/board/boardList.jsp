@@ -2,6 +2,11 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
+<% request.setCharacterEncoding("UTF-8");%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,11 +85,31 @@
 				<a href="#" class="bt next">&gt;</a> 
 				<!-- <a href="#" class="bt last">&gt;&gt;</a> -->
 			</div>
-			<div class="bt_wrap">
-				<a href="<%=request.getContextPath()%>/notice/boardInsertForm.ddit" class="on">글쓰기</a> 
-				<!-- <input type="button" id="addText" value="글쓰기"> -->
-				<!-- <a href="#">수정</a> -->
-			</div>
+			<%
+				
+				try{
+				String userId = (String) session.getAttribute("userid");
+				
+				if(userId.equals("admin")) {
+					
+				
+			%>
+				<div class="bt_wrap">
+					<a href="<%=request.getContextPath()%>/notice/boardInsertForm.ddit" class="on">글쓰기</a> 
+					<!-- <input type="button" id="addText" value="글쓰기"> -->
+					<!-- <a href="#">수정</a> -->
+				</div>
+			<%
+					}
+				}
+				catch (Exception e) {
+					
+					e.printStackTrace();
+				}
+				
+				
+			%>
+			
 
 		</div>
 	</div>

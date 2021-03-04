@@ -1,0 +1,16 @@
+package room.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import vo.ManagerVO;
+import vo.MemberVO;
+import vo.RoomVO;
+import vo.noticeBoardVO;
+
+public interface IRoomService {
+	// 방 생성
+	public int insertRoom(RoomVO vo);
+	// 방 호출
+	public List<RoomVO> selectAllRoom();
+}

@@ -35,6 +35,13 @@ public class InventoryDaoImpl implements IInventoryDao {
 		return smc.queryForList("inventory.selectAllItemInInventory",char_nickname);
 	}
 
+	@Override
+	public List<ShopVO> selectIMG(String nickName) throws SQLException {
+		return smc.queryForList("inventory.selectLink",nickName);
+	}
+
+
+
 
 	
 	

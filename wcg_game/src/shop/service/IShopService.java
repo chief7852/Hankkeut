@@ -14,7 +14,6 @@ public interface IShopService {
 	//아이템 하나 출력
 	public ShopVO selectOne(int no);
 	
-	
 
 	
 }

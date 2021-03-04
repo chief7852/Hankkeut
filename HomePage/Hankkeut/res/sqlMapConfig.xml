@@ -24,7 +24,7 @@
  	 	
  	 	형식 : <typeAlias alias="alias명 type="클래스의 전체이름"/>
  	  -->
-<!--  	  <typeAlias alias ="boardVO" type ="kr.or.ddit.vo.JdbcBoardVO"/> -->
+	 <typeAlias alias ="wordVO" type ="kr.or.ddit.vo.WordVO"/>
  	  <!-- DB와의 연결을 처리하는 부분 -->
  	  <transactionManager type="JDBC">
  	  		<dataSource type="SIMPLE">
@@ -42,6 +42,6 @@
  	   -->
 <!--  	  <sqlMap resource="kr/or/ddit/basic/lprodTest.xml"/> -->
  <!-- 	  <sqlMap resource="kr/or/ddit/mapper/board.xml"/> -->
- 	  <sqlMap resource="kr/or/ddit/mapper/ㅡ드ㅠㄷㄱ.xml"/>
+ 	  <sqlMap resource="kr/or/ddit/mapper/word.xml"/>
  	
  </sqlMapConfig>

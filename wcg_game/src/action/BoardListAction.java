@@ -31,7 +31,7 @@ public class BoardListAction implements IAction {
 		if(ccPage == null) ccPage = "1";
 		
 		INoticeService service = NoticeServiceImpl.getService();
-		
+	
 		//List<noticeBoardVO> boardList = service.selectAll();
 		
 		//req.setAttribute("board", boardList);

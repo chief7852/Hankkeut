@@ -14,6 +14,9 @@
     @media screen and (max-width: 767px) {
       .row.content {height: auto;} 
     }
+    .roomDiv {
+    	cursor:pointer;
+    }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="../waitingGame_js/waitingGame.js"></script>  

@@ -20,10 +20,17 @@ public interface IMemberDao {
 	// 이메일 유무
 	public MemberVO isMember(MemberVO vo);
 	
-	// 임시 비밀번호 번경
+	// 비밀번호 번경
 	public int updatePass(MemberVO vo);
 	
-	// 회원 정보에서 비밀번호 수정
+	
+	//이메일 가져오기 
+	public String selectEmail(String memid);
+
+	// 비밀번호 존재
+	public int isPassWord(MemberVO vo);
+	
+	// 비밀번호 변경
 	public int updatePW(MemberVO vo);
 	
 	// 주소 변경
@@ -31,9 +38,5 @@ public interface IMemberDao {
 	
 	// 전화번호 변경
 	public int updateTel(MemberVO vo);
-	
-	// 회원 비밀번호 존재 유무
-	public int isPassWord(MemberVO vo);
-	
 	
 }

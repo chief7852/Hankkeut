@@ -2,7 +2,7 @@
 
 /*
  	구현 해야하는 로직들
- 	1. 유저 순서를 정해서 그 순서대로 채팅 허용여부 결정
+ 	1. 유저 순서를 정해서 그 순서대로 채팅 허용여부 결정(o)
  	2. 채팅 입력시 db에 있는 문자인지 판단후 정답여부 출력(o)
  	3. 시간이 지나면 다음사람 차례로 넘어가게 로직
  	4. 마지막 문자의 끝과 지금 입력한 문자의 첫자리가 같은지 판단
@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -37,24 +38,96 @@ import word.service.IWordService;
 import word.service.WordServiceImpl;
 
 @ServerEndpoint("/websocktMultiChat2")
-public class WebSocketMutiChat2 {
+public class WebSocketMutiChat2 implements Runnable{
 
 	// 유저 집합 리스트
 	static List<MultiChatVO2> sessionUsers = Collections.synchronizedList(new ArrayList<MultiChatVO2>());
+	// 이미 사용한 문자
 	static List<String> remember = Collections.synchronizedList(new ArrayList<String>());
+	// 순서
 	static int order = 0;
-	static String charEnd = "";
-
+	// 문자의 끝
+	static char endpoint= '\u0000';
+	// 사용자 인원(미구현)
+	static int usermax = 1;
+	// 타이머
+	static int timer = 10;
+	// 타이머 onoff용 
+	private final AtomicBoolean running = new AtomicBoolean(false);
+	
+	
+	//타이머 시작
+	public void run()  {
+		timer = 10;
+		running.set(true);
+		while(running.get())
+		{
+			try {
+				// 1초마다 메세지 보내기
+				Iterator<MultiChatVO2> iterator = sessionUsers.iterator();
+				while (iterator.hasNext()) {
+					MultiChatVO2 chVo = iterator.next();
+					chVo.getSession().getBasicRemote()
+					 .sendText(buildJsonDataT(timer));
+				}
+				if(timer==0)
+				{
+					timer = 11;
+				}
+				timer--;
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO: handle exception
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	// 타이머 끄기
+	public void stop() {
+        running.set(false);
+        timer = 10;
+    }
+	
+	
 	/**
 	 *  * 웹 소켓이 접속되면 유저리스트에 세션을 넣는다.  * @param userSession 웹 소켓 세션  
 	 */
 	@OnOpen
 	public void handleOpen(Session userSession) {
+		if(sessionUsers.size()<=usermax)
+		{
+			
 		MultiChatVO2 chatVo = new MultiChatVO2(null, userSession, 0);
 		sessionUsers.add(chatVo);
 		System.out.println(userSession.getId() + "접속\n");
+		if(usermax==sessionUsers.size())
+		{
+		try {
+			sendToAll("System", "10초후게임 시작하겠습니다.");
+			int start = 10;
+			while(start==0) 
+			{
+				sendToAll("System", " : "+start);
+				Thread.sleep(1000);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		run();
+		}
+		}
 	}
-
+	
+	
+	
 	/**
 	 *  * 웹 소켓으로부터 메시지가 오면 호출한다.  * @param message 메시지  * @param userSession
 	 *  * @throws IOException  
@@ -93,10 +166,15 @@ public class WebSocketMutiChat2 {
 			
 		}else {
 
-		IWordService service = WordServiceImpl.getService();
+		IWordService service = WordServiceImpl.getInstance();
 		String result = service.selectWord(message);
 		Iterator<MultiChatVO2> iterator = sessionUsers.iterator();
-
+		
+		/*
+		 * 이전 끝 문자와 지금 시작문자가 동일한지 판단
+		 * 마지막으로 입력한 문자의 끝을 잘라서 저장 및 출력============================================================
+		 */
+		
 		// 이미 사용한 문자인지 아닌지 판단하는 로직
 		boolean overlap = true;
 		Iterator<String> over = remember.iterator();
@@ -107,7 +185,7 @@ public class WebSocketMutiChat2 {
 			}
 		}
 		// -------------------------------------------------
-
+		
 		// db에 없는 글자이면 없는 문자라고 통보
 		if (result == null) {
 
@@ -125,6 +203,7 @@ public class WebSocketMutiChat2 {
 				{
 					order=0;
 				}
+				endpoint = result.charAt(result.length()-1);
 				sendToAll(username, message);
 			} else {
 				while (iterator.hasNext()) {
@@ -185,6 +264,16 @@ public class WebSocketMutiChat2 {
 		Gson gson = new Gson();
 		Map<String, String> jsonMap = new HashMap<String, String>();
 		jsonMap.put("message", username + " : " + message);
+		String strJson = gson.toJson(jsonMap);
+		// System.out.println("strJson = " + strJson);
+
+		return strJson;
+	}
+	
+	public String buildJsonDataT(int time) {
+		Gson gson = new Gson();
+		Map<String, String> jsonMap = new HashMap<String, String>();
+		jsonMap.put("timer",  time+"");
 		String strJson = gson.toJson(jsonMap);
 		// System.out.println("strJson = " + strJson);
 

@@ -14,11 +14,10 @@
 			#room_name#,
 			#nickname#,
 			#allow_no#,
-			#room_host#
+			#room_host#,
+			#room_time#
 		)	
-		<selectKey keyProperty="room_no" resultClass="String">
-	    	select room_no from room where room_no = #room_no#
-	    </selectKey>
+
 	</insert>
 	
 	<select id="selectAllRoom" parameterClass="roomVO" resultClass="roomVO">
@@ -27,5 +26,14 @@
 	
 	<select id="isRoomPass" parameterClass="int" resultClass="String">
 		select room_pass room where room_no = #room_no#
+	</select>
+	
+	<!-- 21.03.03 CHS -->
+	<select id="isRoom" parameterClass="String" resultClass="int">
+		select * from room where room_host = #room_host#
+	</select>
+	
+	<select id="roomEnter" parameterClass="int" resultClass="roomVO">
+		select * from room where room_no = #room_no#
 	</select>
 </sqlMap>

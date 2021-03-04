@@ -8,6 +8,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 import config.SqlMapClientFactory;
 import vo.InquiryBoardVO;
+import vo.MemberVO;
 import vo.freeBoardVO;
 
 public class InquiryDaoImpl implements IInquiryDao {
@@ -84,5 +85,6 @@ public class InquiryDaoImpl implements IInquiryDao {
 		}
 		return cnt;
 	}
+
 
 }

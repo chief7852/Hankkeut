@@ -4,12 +4,14 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 	
 	<sqlMap namespace="word">
-		<typeAlias alias="wordVo" type="kr.or.ddit.vo.WordVO"/>
-		<!-- 새글작성  -->
-		<insert id="insertWord">
 		
+		<insert id="insertWord" parameterClass="wordVO">
+			insert into word (w_no, word, init,neutral) values ( #w_no#,#word#,#init#,#neutral#)
 		</insert>
 		
+		<select id="selectWord" parameterClass="String" resultClass="String">
+			select * from word where word = #data#
+		</select>
 	</sqlMap>
 	
 	

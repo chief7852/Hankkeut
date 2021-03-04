@@ -12,6 +12,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import kr.or.ddit.vo.WordVO;
+
 public class exel {
 	public static void main(String[] args) throws IOException {
 		FileInputStream fis = new FileInputStream("d:/d_other/끄투 단어 데이터베이스.xlsx");
@@ -61,6 +63,14 @@ public class exel {
 					{System.out.print("각 셀 내용 :" + value);
 					
 					temp++;
+					
+					WordVO vo = new WordVO();
+					vo.setInit(getInitialSound(value));
+					vo.setNeutral(getInitialSound2(value));
+					vo.setW_no(temp);
+					vo.setWord(value);
+					IWordService service = WordServiceImpl.getInstance();
+					service.insertWord(vo);
 					System.out.println(temp);
 					}
 					
@@ -69,6 +79,46 @@ public class exel {
 			}
 		}
 				
+	}
+	private static String getInitialSound(String text) {
+		String[] chs = { 
+				"ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", 
+				"ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", 
+				"ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", 
+				"ㅋ", "ㅌ", "ㅍ", "ㅎ" 
+		};
+		
+		if(text.length() > 0) {
+			char chName = text.charAt(0);
+			if(chName >= 0xAC00)
+			{
+				int uniVal = chName - 0xAC00;
+				int cho = ((uniVal - (uniVal % 28))/28)/21;
+				
+				return chs[cho];
+			}
+		}
+		
+		return null; 
+	}
+	
+	private static String getInitialSound2(String text) {
+		String[] chs = { 
+				"ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ", "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"
+		};
+		
+		if(text.length() > 0) {
+			char chName = text.charAt(0);
+			if(chName >= 0xAC00)
+			{
+				int uniVal = chName - 0xAC00;
+				int cho = ((uniVal - (uniVal % 28))/28)%21;
+				
+				return chs[cho];
+			}
+		}
+		
+		return null; 
 	}
 }
 

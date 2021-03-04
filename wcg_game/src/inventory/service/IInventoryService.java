@@ -4,14 +4,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 import vo.InventoryVO;
+import vo.ShopVO;
 
 public interface IInventoryService {
 
 	
-	//ÀÎº¥Åä¸®¿¡ ¾ÆÀÌÅÛ Ãß°¡
+	//ì¸ë²¤í† ë¦¬ ì¶”ê°€
 	public String insertInventory(InventoryVO vo);
 		
-	//¾ÆÀÌÅÛ ¸®½ºÆ® Ãâ·Â
+	//ì¸ë²¤ì˜ noë¥¼ ì¶œë ¥
 	public List<InventoryVO> seletAll(String char_nickname);
+	
+	//ì¸ë²¤ì˜ noë¥¼ í†µí•´ shopì˜ linkë¥¼ ì¶œë ¥
+	public List<ShopVO> selectIMG(String nickName);
+	
 		
 }

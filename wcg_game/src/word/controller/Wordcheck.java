@@ -41,7 +41,7 @@ public class Wordcheck extends HttpServlet {
 		String word = request.getParameter("word");
 		
 		//2. service媛앹껜瑜� �뼸�뒗�떎
-		IWordService service = WordServiceImpl.getService();
+		IWordService service = WordServiceImpl.getInstance();
 		
 		//3. service硫붿냼�뱶 �샇異� - 寃곌낵媛� 諛쏄린
 		String result = service.selectWord(word); 

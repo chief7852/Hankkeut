@@ -10,10 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import character_2.service.copy.CharacterServiceImpl;
+import character_2.service.copy.ICharacterService;
 import common.service.IMemberService;
 import common.service.MemberServiceImpl;
 import manager.service.IManagerService;
 import manager.service.ManagerServiceImpl;
+import vo.CharVO;
 import vo.ManagerVO;
 import vo.MemberVO;
 import web.IAction;
@@ -77,6 +80,15 @@ public class LoginAction implements IAction {
 		
 		// 세션에 로그인 정보 저장
 		session.setAttribute("userid", user);
+		
+		ICharacterService charService = CharacterServiceImpl.getService();
+		CharVO charvo =  charService.selectChar(user);
+		if(charvo == null) {	// 신생 유저
+			session.setAttribute("isChar", false);
+		} else {
+			session.setAttribute("isChar", true);
+		}
+		
 		return "/index.ddit";
 	}
 

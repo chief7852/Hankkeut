@@ -7,9 +7,16 @@ public class RoomVO {
 	private String room_theme;	// 방 유형
 	private String room_name;	// 방 제목
 	private String nickname;	// (보류)
-	private int allow_no;		// 방 허용 인원 수
+	private int allow_no = 4;		// 방 허용 인원 수
 	private String room_host;	// 방 호스트 ip
+	private int room_time;		// 방 게임 시간
 	
+	public int getRoom_time() {
+		return room_time;
+	}
+	public void setRoom_time(int room_time) {
+		this.room_time = room_time;
+	}
 	public int getRoom_no() {
 		return room_no;
 	}
@@ -49,10 +56,10 @@ public class RoomVO {
 	public int getAllow_no() {
 		return allow_no;
 	}
-	public void setAllow_no(int allow_no) {
-		//this.allow_no = allow_no;
-		this.allow_no = 4;
-	}
+//	public void setAllow_no(int allow_no) {
+//		//this.allow_no = allow_no;
+//		this.allow_no = 4;
+//	}
 	public String getRoom_host() {
 		return room_host;
 	}

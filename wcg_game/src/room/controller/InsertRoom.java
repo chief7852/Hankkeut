@@ -36,8 +36,9 @@ public class InsertRoom extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String result = service.insertRoom(roomvo);
-		request.setAttribute("result", result);
+		//service.insertRoom(roomvo);
+		//int result = service.insertRoom(roomvo);
+		//request.setAttribute("result", result);
 		
 		//request.getRequestDispatcher("WEB-INF/view/game/RoomState.jsp").forward(request, response);
 		request.getRequestDispatcher("/room/waitingRoom.ddit").forward(request, response);

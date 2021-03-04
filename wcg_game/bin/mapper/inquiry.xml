@@ -40,4 +40,8 @@
 			select count(*) from INQUIRYBOARD
 		</select>
 		
+		<select id="selectEmail" resultClass="MemberVO" parameterClass="InquiryBoardVO">
+			select MEM_MAIL from MEMBER where MEM_ID=#mem_id#
+		</select>
+		
 	</sqlMap>

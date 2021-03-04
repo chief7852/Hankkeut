@@ -23,15 +23,18 @@ public class RoomDaoImpl implements IRoomDao {
 		return dao;
 	}
 	@Override
-	public String insertRoom(RoomVO vo) {
-		String roomNo = "";
+	public int insertRoom(RoomVO vo) {
+		int cnt = 0;
+		Object room = null;
 		try {
-			roomNo = (String) client.insert("room.insertRoom", vo);
+			room = client.insert("room.insertRoom", vo);
+			if(room == null) cnt = 1;
 		} catch (SQLException e) {
-			roomNo = "";
+			room = null;
+			cnt = 0;
 			e.printStackTrace();
 		}
-		return roomNo;
+		return cnt;
 	}
 	@Override
 	public List<RoomVO> selectAllRoom() {
@@ -43,6 +46,28 @@ public class RoomDaoImpl implements IRoomDao {
 			e.printStackTrace();
 		}
 		return roomList;
+	}
+	@Override
+	public int isRoom(RoomVO vo) {
+		int cnt = 0;
+		try {
+			cnt = (int) client.queryForObject("room.isRoom", vo);
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	@Override
+	public RoomVO roomEnter(int room_vo) {
+		RoomVO roomVo = null;
+		try {
+			roomVo = (RoomVO) client.queryForObject("room.roomEnter", room_vo);
+		} catch (SQLException e) {
+			roomVo = null;
+			e.printStackTrace();
+		}
+		return roomVo;
 	}
 	
 

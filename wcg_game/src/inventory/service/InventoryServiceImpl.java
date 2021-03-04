@@ -18,7 +18,7 @@ public class InventoryServiceImpl implements IInventoryService {
 	public InventoryServiceImpl() {
 		dao = InventoryDaoImpl.getDao();
 	}
-	//get¸Å¼­µå
+	//getï¿½Å¼ï¿½ï¿½ï¿½
 	public static IInventoryService getService() {
 		if(service == null) service = new InventoryServiceImpl();
 		return service;
@@ -54,6 +54,25 @@ public class InventoryServiceImpl implements IInventoryService {
 		}
 		return list;
 	}
+	
+	
+	
+	@Override
+	public List<ShopVO> selectIMG(String nickName) {
+		
+		List<ShopVO> list = null;
+		
+		try {
+			list = dao.selectIMG(nickName);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
 	
 	
 

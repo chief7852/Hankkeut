@@ -1,7 +1,9 @@
+<%@page import="vo.CommentVO"%>
 <%@page import="vo.freeBoardVO"%>
 <%@page import="vo.noticeBoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +24,51 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
+   <%
+	freeBoardVO boardVo = (freeBoardVO) request.getAttribute("boardNum");
+   
+%>
   <script type="text/javascript">
+
+  replyListServer= function(but){
+  	$.ajax({
+  		url :"<%=request.getContextPath()%>/free/freeReplyList.ddit",
+  		data : {'board_no' : '<%=boardVo.getF_board_no()%>'},
+  		success : function(res){
+  			recode="";
+  			var memId = "";
+  			$.each(res, function(i,v){
+  				memId= v.memid;
+  				recode+=
+  					"<div class='panel-body rep' style='border: 2px solid #ccbbbb;'>"+
+         	       		"<p class='p1'>"+
+         	       		 "답글자:"+v.memid+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+         		         "작성일:"+v.codate+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>"+
+         		       	 "내용:"+v.cont+
+         		         "<br><br><span class='cont'>${v.cont}</span> </p></div>";
+         	     /*   <p class="p2">
+         		     <button id="rmodi" idx="${v.conum}" type="button" name="r_modify" class="action">댓글수정</button>
+         		     <button idx="${v.renum}" type="button" name="r_delete" class="action">댓글삭제</button>
+         	       </p> */
+         	       
+                   
+  			})
+  			$(but).parents('.panel').find('.rep').remove();
+  			$(but).parents('.panel').find('.pbody').append(memId);
+  			$("#pbdy").html(recode);	
+  			
+  			
+  		},
+  		error : function (xhr) {
+  			alert("상태 : " + xhr.status);
+  		},
+  		dataType : 'json'
+  	})
+  }
 	$(function() {
+		replyListServer();
+		
+		
 		$('#addBtn').on('click', function() {
 			cont = $(".reply textarea").val();
 			
@@ -46,13 +90,13 @@
 <body>
 
 <form id="noticeBoard" action="<%=request.getContextPath()%>/free/freeReplyInsert.ddit">
-<%
-	freeBoardVO boardVo = (freeBoardVO) request.getAttribute("boardNum");
-%>
+
 	<div class="board_wrap">
 		<div class="board_title">
 			<strong>자유게시판</strong>
 		</div>
+		<input type="hidden" name="board_no" value="<%=boardVo.getF_board_no()%>">
+		
 		<div class="board_view_wrap">
 			<div class="board_view">
 				<div class="title">
@@ -61,15 +105,15 @@
 				<div class="info">
 					<dl>
 						<dt>번호</dt>
-						<dd name="board_no"><%=boardVo.getF_board_no()%></dd>					
+						<dd><%=boardVo.getF_board_no()%></dd>					
 					</dl>
 					<dl>
 						<dt>글쓴이</dt>
-						<dd name="mem_id"><%=boardVo.getMem_id()%></dd>					
+						<dd><%=boardVo.getMem_id()%></dd>					
 					</dl>
 					<dl>
 						<dt>작성일</dt>
-						<dd name="co_date"><%=boardVo.getF_board_date()%></dd>					
+						<dd><%=boardVo.getF_board_date()%></dd>					
 					</dl>
 					<dl>
 						<dt>조회</dt>
@@ -81,11 +125,15 @@
 				</div>
 				
 				
+				
+				
 				<div class="reply">
 					<textarea width="600" name="f_reply_contents" placeholder="댓글 입력"></textarea>
 					<input id="addBtn" type="button" class="on" value="등록">
 				</div>
+				<div id="pbdy">
 				
+				</div>
 				
 				
 				

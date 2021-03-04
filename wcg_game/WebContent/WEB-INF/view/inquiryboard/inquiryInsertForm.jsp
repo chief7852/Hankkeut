@@ -42,44 +42,42 @@
 			<div class="board_write">
 				<div class="title">
 					<dl>
+						<dt>문의종류</dt>
+						<dd>
+								<select
+									name="type" id="type">
+									<option value="bug">버그신고</option>
+									<option value="troll">비매너신고</option>
+									<option value="fuck">욕설신고</option>								
+								</select>
+						</dd>
+						</dl>
+					</div>
+					<div class="title">
+						<dl>
 						<dt>제목</dt>
 						<dd>
-							<input type="text" name="n_board_title" placeholder="제목입력">
-
-								
-
-									
-										<button class="btn btn-primary dropdown-toggle" type="button"
-											data-toggle="dropdown">
-											Type <span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu">
-											<li><a href="#">버그문의</a></li>
-											<li><a href="#">비매너 신고</a></li>
-											<li><a href="#">욕설 신고</a></li>
-										</ul>
-									
-								
-
-							</dd>
-						
-					
-
+							<input type="text" name="i_board_title" placeholder="제목입력">
+						</dd>
 						</dl>
+						</div>
+						<div class="title">
+						<dl>
+						<dt>이메일</dt>
+						<dd>
+							<input type="text" name="i_board_email" placeholder="이메일입력">
+						</dd>
+						</dl>
+							
+				
+
+						
 				</div>
 				<hr>
 				<div class="cont">
-					<textarea name="n_board_contents" placeholder="내용입력"></textarea>
+					<textarea name="i_board_contents" placeholder="내용입력"></textarea>
 				</div>
-				<div class="title">
-					<dl>
-						<dt>비밀번호</dt>
-						<dd>
-							<input type="text" name="n_board_pass" placeholder="패스워드입력">
-							
-						</dd>
-					</dl>
-				</div>
+			
 			</div>
 
 
