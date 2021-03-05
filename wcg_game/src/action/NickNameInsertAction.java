@@ -28,7 +28,8 @@ public class NickNameInsertAction implements IAction {
 		req.setCharacterEncoding("utf-8");
 		String charImg = req.getParameter("charImg");
 		
-		System.out.println("NickName : " + charImg);
+		//System.out.println("NickName : " + charImg);
+		
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userid");
 		

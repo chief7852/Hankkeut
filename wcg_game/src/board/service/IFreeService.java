@@ -38,11 +38,12 @@ public interface IFreeService {
 		public int insertReply(CommentVO vo);
 		// �뙎湲� 由ъ뒪�듃 
 		public List<CommentVO> listReply(String board_no);
+	
 		// 댓글 수정하기
 		public int updateReply(CommentVO vo);
-		// 댓글 삭제하기
-		public int deleteReply(int renum);
 	
-		
+	 	// 댓글 삭제하기
+		 public int deleteReply(int renum);
+	 
 		
 }

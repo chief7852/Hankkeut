@@ -18,7 +18,7 @@ public class FreeInsertForm2 implements IAction {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 		return "/freeboard/freeInsertForm.jsp";
 	}
 

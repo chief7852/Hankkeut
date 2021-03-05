@@ -24,7 +24,7 @@ public class SelectChar extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String mem_id = request.getParameter("id");
-		//System.out.println("-----selectChar"+mem_id);
+		System.out.println("-----selectChar"+mem_id);
 		
 		ICharacterService service = CharacterServiceImpl.getService();
 		

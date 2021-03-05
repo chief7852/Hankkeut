@@ -78,6 +78,21 @@ public class CharacterServiceImpl implements ICharacterService {
 	   public int insertChar(CharVO vo) {
 	      return dao.insertChar(vo);
 	   }
+
+	@Override
+	public List<CharVO> isOn() {
+		return dao.isOn();
+	}
+
+	@Override
+	public int onChar(String memId) {
+		return dao.onChar(memId);
+	}
+
+	@Override
+	public int offChar(String memId) {
+		return dao.offChar(memId);
+	}
 	
 
 	

@@ -70,17 +70,9 @@
 				select * from COMMENTS where BOARD_NO= #board_no# order by CO_NO desc
 			</select>
 
-	<!-- <delete id="deleteReply" parameterClass="int">
-		delete from COMMENTS where CO_NO=#data#
-	</delete>
+	
 
-	<update id="updateReply" parameterClass="CommentVO">
-		update COMMENTS set CO_CONTENTS=#cont#,
-		
-		CO_DATE = sysdate
-		where CO_NO = #co_no#
-
-	</update> -->
+	
 			
 			
 	

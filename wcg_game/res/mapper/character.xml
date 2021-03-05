@@ -40,4 +40,17 @@
 			#base_img#			
 		)
 	</insert>
+	
+	<select id="isOn" resultClass="charVO">
+		select mem_id 
+          from characters 
+         where mem_id like 'guest%' and char_login = 'off'
+	</select>
+	
+	<update id="onChar" parameterClass="String">
+		update characters set char_login = 'on' where mem_id = #mem_id#
+	</update>
+	<update id="offChar" parameterClass="String">
+		update characters set char_login = 'off' where mem_id = #mem_id#
+	</update>
 </sqlMap>

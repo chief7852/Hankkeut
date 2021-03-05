@@ -60,4 +60,9 @@ public class RoomServiceImpl implements IRoomService {
 		return dao.selectRoom(nickname);
 	}
 
+	@Override
+	public String isPass(int room_vo) {
+		return dao.isPass(room_vo);
+	}
+
 }

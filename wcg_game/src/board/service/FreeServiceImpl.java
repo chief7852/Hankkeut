@@ -74,11 +74,17 @@ public class FreeServiceImpl implements IFreeService {
 		
 		return dao.updateReply(vo);
 	}
+	
+	
 	@Override
 	public int deleteReply(int renum) {
-		// TODO Auto-generated method stub
+
 		return dao.deleteReply(renum);
 	}
+	
+	 
+	
+
 	
 
 }

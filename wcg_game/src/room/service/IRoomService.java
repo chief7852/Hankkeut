@@ -25,4 +25,7 @@ public interface IRoomService {
 	
 	// 닉네임으로 방찾기
 	public int selectRoom(String nickname);
+	
+	// 방 비밀번호 유무
+	public String isPass(int room_vo);
 }

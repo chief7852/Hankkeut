@@ -44,20 +44,21 @@
 
 <script>
 $(function() {
-	id="";
+	/* id=""; */
 	item="";
 	item_no="";
 	readItem();
 	ch_nickName="";
-	
+	var userInfo = $('#id').val();
+	console.log("shopId : " + userInfo);
 	$('#res').on('click','#showItem',function(){//모달open
 		itemNo = $(this).parent().find("#showItemNo").val();
 		console.log($(this).parent().find("#showItemNo").val());
 		 $("#modal").show();	//클릭시 아이템 자세히 보기
-		 selectItem(itemNo);	
+		 selectItem(userInfo);	
 	 		 
 	 $("#buyItem").on('click',function(){	//구입버튼 클릭	
-		 selectCharacter("issac");	
+		 selectCharacter(id);	
 		 //자금은 아이디값을 강제로 줌 섹션에서 아이디값 받아와야함!!!! 그러면 끄으으으으ㅡㅅ 
 		 
 		 
@@ -73,6 +74,10 @@ $(function() {
 </script>
 </head>
 <body>
+<%
+	String userId = (String) session.getAttribute("userid");
+%>
+<input id="id" type="hidden" name="<%=userId%>" value="<%=userId%>">
 <div id="res"></div>
 	<!-- 미리보기모달 -->
 	<div id="modal" class="searchModal">

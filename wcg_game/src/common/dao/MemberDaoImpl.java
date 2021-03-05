@@ -123,6 +123,31 @@ public class MemberDaoImpl implements IMemberDao {
 		}
 		return cnt;
 	}
+	@Override
+	public List<MemberVO> guestList() {
+		List<MemberVO> memList = null;
+		try {
+			memList = client.queryForList("member.guestList");
+		} catch (SQLException e) {
+			memList = null;
+			e.printStackTrace();
+		}
+		
+		return memList;
+	}
+	@Override
+	public List<MemberVO> memRemoveList() {
+		
+		List<MemberVO> memList = null;
+		try {
+			memList = client.queryForList("member.memRemoveList");
+		} catch (SQLException e) {
+			memList = null;
+			e.printStackTrace();
+		}
+		
+		return memList;
+	}
 	
 
 

@@ -70,7 +70,7 @@ footer {
 								<a style="cursor:default"><span id="idStyle"><%=userId%> 님</span></a>
 							</li>
 							<li>
-								<a herf="<%=request.getContextPath()%>/myPage.ddit" style="cursor:pointer">
+								<a herf="<%=request.getContextPath()%>/admin/manager.ddit" style="cursor:pointer">
 									<span class="glyphicon glyphicon glyphicon-edit"></span>회원관리
 								</a>
 							</li>
@@ -126,17 +126,15 @@ footer {
 				</ul>
 				<ul class="menu02">
 					<li>
-						<%
-							//boolean isChar = (boolean) session.getAttribute("isChar");
-							//System.out.println("isChar " + isChar);
-							//	if(userId == null || userId == "") isChar = true;
-							// if(isChar == true) {
+						<%-- <%
 							if(userId == null || userId == "") {
 						%>
 								<img src="./img/gameBtn.PNG" onClick="window.open('<%=request.getContextPath()%>/WaitingGame/main.jsp', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">
+								<img src="./img/gameBtn.PNG" onClick="window.open('<%=request.getContextPath()%>/login/isLogin.ddit', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">								
 						<%
 							} else {
 								boolean isChar = (boolean) session.getAttribute("isChar");
+								System.out.println("index.jsp isChar : " + isChar);
 								if(isChar == true) {
 						%>
 									<img src="./img/gameBtn.PNG" onClick="window.open('<%=request.getContextPath()%>/WaitingGame/main.jsp', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">
@@ -147,7 +145,8 @@ footer {
 						<%
 								}
 							}
-						%>
+						%> --%>
+						<img src="./img/gameBtn.PNG" onClick="window.open('<%=request.getContextPath()%>/login/isLogin.ddit', '','width= 1700, height= 800px, resizable=no')" style="width: 200px; hegiht: 100px;">
 					</li>
 				</ul>
 			</div>

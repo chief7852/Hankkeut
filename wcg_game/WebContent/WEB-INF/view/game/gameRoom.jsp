@@ -13,6 +13,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+	function gameStart() {
+		location.href="<%=request.getContextPath()%>/game/gameStart.ddit";
+	};
+</script>
 <title>게임 방</title>
 <style>
 	nav {
@@ -67,6 +72,9 @@
 	.thumbnail{
 		text-align: center;
 	}
+	#btnSend{
+	display: none;
+	}
 </style>
 </head>
 <body>
@@ -97,12 +105,13 @@
 		<input type="button" value="나가기" id="btnClose">
 	</div>
 </nav>
-
+<div id="mainView">
 	<div id="content" class="characters">
 
 	</div>
 	<div id="readyBtn">
-		<div class="ready"><input type="button" value="ready"></div>
+		<div class="ready"><input type="button" value="ready" 
+				></div>
 	</div>
 	
 	<div id="chatting">
@@ -111,29 +120,16 @@
 		<input type="button" value="Send" id="btnSend">
 	</div>
 	
+</div>
 	<script type="text/javascript">
-  		$(function(){
-  			ready = 0;
-  			$('#ready').on('click', function(){
-  				if(ready = 0){
-  					ready++;
-  				$('.characters').append("<div class='tracking-in-contract-bck'>READY</div>");
-  				}else{
-  					ready--;
-  					$('tracking-in-contract-bck').remove();
-  				}
-  				
-  			})
-  		})
-    </script>
-	<script type="text/javascript">
+	
     	var webSocket = null; // 웹소켓 변수 선언
         var messageTextArea = document.getElementById("messageTextArea");
     	var messageText = document.getElementById("messageText");
 		
     	
     	(function connectting(){
-    		
+    		myid = '<%=nick%>';
     		nick = '<%=nick%>'+','+'<%=roomVo.getRoom_no()%>';
     		roomnum = <%=roomVo.getRoom_no()%>;
 	        //웹소켓 초기화
@@ -157,14 +153,36 @@
 	            // json "img"풀기
 	            	console.log(jsonData2.imgg);
 	            	console.log(jsonData2.id);
+	            	
 	            //이미지 들고오기
 	           var image = "";
-	            image += "<div class='thumbnail' id="+jsonData2.id+" display:inline-block><img src="+jsonData2.imgg+">"+jsonData2.id+"<div></div></div>"; 
+	            image += "<div class='thumbnail' id="+jsonData2.id+" display:inline-block><img src="+jsonData2.imgg+">"+jsonData2.id+
+	            			"<div style='color:#red' class="+jsonData2.id+"></div></div>"; 
 	            if(jsonData2.imgg!=null){
 	            $('.characters').append(image);	            	
 	            }
 	           //나갔을때 이미지 삭제
-	            
+	            if(jsonData.ready!=null){
+		            if(jsonData.ready=='(ready취소)'){
+		            	$('.'+jsonData.username).empty();
+		            }else{	            		
+		            	$('.'+jsonData.username).text('ready')
+		            }
+		            }
+	            	console.log(jsonData.username);
+	            if(jsonData.message=="System : 게임시작하겠습니다"){
+	            	$.ajax({
+	    				url: "/wcggame/startRoom.do",
+	    				method: "post",
+	    				success : function(res){
+	    					$('#mainView').html(res);
+	    				},
+	    				error: function(xhr) {
+	    					alert("서버 상태 : " + xhr.status);
+	    				},
+	    				dataType: 'html'
+	    			});
+	            }
 	            if(jsonData.message.slice(0, 15)=="System : remove"){
 	            	console.log(jsonData.message.substring(15)) 
 					$("#"+jsonData.message.substring(15)+"").remove();	            	
@@ -184,8 +202,7 @@
 				messageText.value = "";
 				userText.value = "";
 				nick="";
-				document.getElementById("connectArea").style.display = "block";
-	    		document.getElementById("chatArea").style.display = "none";
+
 			}
     	}())
     
@@ -222,6 +239,13 @@
         window.onbeforeunload = function(){
         	closing();
         }
+    </script>
+	<script type="text/javascript">
+	$(function(){
+			$('.ready').on('click', function(){
+				webSocket.send('/ready');
+			})
+		})	
     </script>
 	<script src="../home_js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript">

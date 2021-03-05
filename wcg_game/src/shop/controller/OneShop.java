@@ -27,7 +27,8 @@ public class OneShop extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String item_no = request.getParameter("item_no");
 		int no = Integer.parseInt(item_no);	//
-		System.out.println(no); 
+		
+		//System.out.println(no); 
 		IShopService service = ShopServiceImpl.getService();
 		
 		ShopVO vo = service.selectOne(no);

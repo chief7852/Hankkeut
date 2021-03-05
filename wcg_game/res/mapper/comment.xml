@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+	<sqlMap namespace="comment">
+	
+	<update id="updateReply" parameterClass="CommentVO">
+		update COMMENTS set CO_CONTENTS=#co_contents#,
+		
+		CO_DATE = sysdate
+		where CO_NO = #co_no#
+
+	</update>
+	
+	<delete id="deleteReply" parameterClass="int">
+			delete from COMMENTS where CO_NO=#data#
+		</delete>
+	
+	</sqlMap>

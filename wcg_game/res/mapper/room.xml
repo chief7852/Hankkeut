@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="isRoomPass" parameterClass="int" resultClass="String">
-		select room_pass room where room_no = #room_no#
+		select room_pass from room where room_no = #room_no#
 	</select>
 	
 	<!-- 21.03.03 CHS -->

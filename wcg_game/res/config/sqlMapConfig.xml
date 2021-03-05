@@ -59,7 +59,7 @@
 	<sqlMap resource="mapper/notice.xml" />
 	<sqlMap resource="mapper/free.xml" />
 	<sqlMap resource="mapper/character.xml" />
-	<!-- <sqlMap resource="mapper/comment.xml" /> -->
+	 <sqlMap resource="mapper/comment.xml" /> 
 	<!-- >>>>>>> d2cc2fc (1. 인벤토리 소스 수정) -->
 	<sqlMap resource="mapper/manager.xml" />
 	<sqlMap resource="mapper/word.xml" />
@@ -73,4 +73,6 @@
 	<sqlMap resource="mapper/room.xml" />
 	<!-- 21.03.04 CHS -->
 	<sqlMap resource="mapper/friend.xml" />
+	<!-- 21.03.05 JHS -->
+	
 </sqlMapConfig>

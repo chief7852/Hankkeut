@@ -8,8 +8,8 @@
    
  <%
   ShopVO vo = (ShopVO)request.getAttribute("vo");
- System.out.println("표시중~~");
- System.out.println(vo.getItem_link());
+ //System.out.println("표시중~~");
+ //System.out.println(vo.getItem_link());
  
 %>
 

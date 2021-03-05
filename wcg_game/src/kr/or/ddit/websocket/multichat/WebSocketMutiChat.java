@@ -76,7 +76,51 @@ public class WebSocketMutiChat {
 		String username = (String) userSession.getUserProperties().get("username");
 		// 세션 프로퍼티에 username이 없으면 username을 선언하고 해당 세션으로 메시지를 보낸다.(json 형식이다.)
 		// 최초 메시지는 username설정
-
+		if(message.equals("/ready")) {
+			int roomnum = 0;
+			int ready =0;
+			int summem = 0;
+			Iterator<MultiChatVO> iter = sessionUsers.iterator();
+			while(iter.hasNext()) {
+				MultiChatVO mvo = iter.next();
+				
+				if(mvo.getSession().equals(userSession)){
+					roomnum = mvo.getRoomnum();
+					if(mvo.isReady()==true)
+					{
+						mvo.setReady(false);
+						message="(ready취소)";
+						System.out.println(message);
+					}else if(mvo.isReady()==false)
+					{
+						mvo.setReady(true);
+						message="(ready)";
+						System.out.println(message);
+					}
+				}
+			}
+			iter = sessionUsers.iterator();
+			while(iter.hasNext()) {
+				MultiChatVO mvo = iter.next();
+				if(mvo.getRoomnum()==roomnum) {
+					summem++;
+					if(mvo.isReady()==true) {
+						ready++;
+					}
+				}
+			}
+			if(ready == summem) {
+				iter = sessionUsers.iterator();
+				while(iter.hasNext()) {
+					MultiChatVO vo = iter.next();
+					if(vo.getRoomnum()==roomnum) {
+						vo.getSession().getBasicRemote()
+						.sendText(buildJsonData("System",  "게임시작하겠습니다"));						
+					}
+				}
+				return;
+			}
+		}
 		if (username == null) {
 			/*
 			 * if(message.equals("")) { message="guest"; } //만약 guest가 아닌 중복된 아이디가 접근하려하면
@@ -110,18 +154,19 @@ public class WebSocketMutiChat {
 					///////////////////////////////
 					// 접속중인 인원 전원을 출력하기
 					System.out.println("현재 접속중인원");
+					System.out.println(username);
+					
 					while (iterator.hasNext()) {
 						MultiChatVO chvo = iterator.next();
 						if (chvo.getRoomnum() == Integer.parseInt(data[1])) {
 							for (CharVO vo : users) {
-								if (!vo.getChar_nickname().equals(username)) {
+								
 									chatVo.getSession().getBasicRemote()
 											.sendText(buildJsonData(username, vo.getChar_nickname(), vo.getBase_img()));
-								}
+									System.out.println(vo.getBase_img());
 							}
-							break;
 						}
-
+						break;
 					}
 
 					/////////////////////////////
@@ -163,10 +208,11 @@ public class WebSocketMutiChat {
 	}
 
 	public void sendToAllremove(String username, String message, String remove) throws IOException {
-		// username이 있으면 전체에게 이미지링크를 보낸다.
+		
 
 		Iterator<MultiChatVO> iterator = sessionUsers.iterator();
 		while (iterator.hasNext()) {
+			MultiChatVO vo = iterator.next();
 			if (iterator.next() != null) {
 				iterator.next().getSession().getBasicRemote().sendText(buildJsonData(username, message, remove));
 			}
@@ -183,27 +229,26 @@ public class WebSocketMutiChat {
 		System.out.println(userSession.getId() + "접속 종료...");
 
 		String delName = null;
+		int romnum = 0;
 		// 접속종료시 케릭터 session 삭제
 		Iterator<MultiChatVO> chatIter = sessionUsers.iterator();
 		while (chatIter.hasNext()) {
 			MultiChatVO chatVo = chatIter.next();
 			if (userSession.equals(chatVo.getSession())) {
 				delName = chatVo.getName();
+				romnum = chatVo.getRoomnum();
 				// sessionUsers.remove(chatVo);
-				chatIter.remove();
+				
 			}
 		}
+		System.out.println(romnum);
+			
 		Iterator<RoomVO> roomIter = room.iterator();
 		while (roomIter.hasNext()) {
 			RoomVO roomvo = roomIter.next();
 			if (roomvo.getRoom_host().equals(delName)) {
 				roomIter.remove();
 			}
-		}
-		IRoomService service = RoomServiceImpl.getService();
-
-		if (delName != null && service.selectRoom(delName) > 0) {
-			service.deleteRoom(delName);
 		}
 		// 캐릭터 collection 이미지 삭제
 		Iterator<CharVO> userChar = users.iterator();
@@ -213,9 +258,26 @@ public class WebSocketMutiChat {
 				userChar.remove();
 			}
 		}
-
-		sendToAll("System", "remove" + delName);
-
+		chatIter = sessionUsers.iterator();
+		while (chatIter.hasNext()) {
+			MultiChatVO chatVo = chatIter.next();
+			if (userSession.equals(chatVo.getSession())) {
+					chatIter.remove();
+			}
+		}
+		//모든인원에게 이미지삭제
+		chatIter = sessionUsers.iterator();
+		while(chatIter.hasNext()) {
+			MultiChatVO chatVo = chatIter.next();
+			if(chatVo.getRoomnum()==romnum)
+			{
+				chatIter.next().getSession().getBasicRemote().sendText(buildJsonData(delName));
+			}
+		}
+		//db데이터삭제
+		IRoomService service = RoomServiceImpl.getService();
+		
+		service.deleteRoom(delName);
 	}
 
 	/**
@@ -234,13 +296,29 @@ public class WebSocketMutiChat {
 	public String buildJsonData(String username, String message) {
 		Gson gson = new Gson();
 		Map<String, String> jsonMap = new HashMap<String, String>();
-		jsonMap.put("message", username + " : " + message);
+		if(message.equals("(ready취소)")||message.equals("(ready)"))
+		{
+			jsonMap.put("ready", message);
+			jsonMap.put("username", username);
+		}else {
+			jsonMap.put("message", username + " : " + message);			
+		}
 		String strJson = gson.toJson(jsonMap);
 		System.out.println("strJson = " + strJson);
 
 		return strJson;
 	}
 
+	public String buildJsonData(String username) {
+		Gson gson = new Gson();
+		Map<String, String> jsonMap = new HashMap<String, String>();
+		jsonMap.put("remove", "remove"+":"+username);
+		String strJson = gson.toJson(jsonMap);
+		System.out.println("remove = " + strJson);
+
+		return strJson;
+	}
+	
 	public String buildJsonData(String username, String message, String img) {
 		Gson gson = new Gson();
 		Map<String, String> jsonMap = new HashMap<String, String>();

@@ -30,14 +30,18 @@ public class CharacterDaoImpl implements ICharacterDao {
 	public CharVO selectChar(String mem_id) throws SQLException {
 		CharVO vo = new CharVO();
 		
+		if(mem_id=="") {
+			mem_id = "kjs";
+		}
 		
-		//System.out.println("여기까지 올까?>"+mem_id) ;
+		System.out.println("여기까지 올까?>"+mem_id) ;
 		
 		try {
+			System.out.println("mem_id : " + mem_id);
+			//vo = (CharVO)client.queryForObject("shop.selectChar2",mem_id);
+			System.out.println("vo : " + vo);
 			
-			vo = (CharVO)client.queryForObject("shop.selectChar",mem_id);
-			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
@@ -92,6 +96,39 @@ public class CharacterDaoImpl implements ICharacterDao {
 		} catch (SQLException e) {
 			cnt = 0;
 			isInsert = null;
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	@Override
+	public List<CharVO> isOn() {
+		List<CharVO> charvo = null;
+		try {
+			charvo = client.queryForList("character.isOn");
+		} catch (SQLException e) {
+			charvo = null;
+			e.printStackTrace();
+		}
+		return charvo;
+	}
+	@Override
+	public int onChar(String memId) {
+		int cnt = 0;
+		try {
+			cnt = client.update("character.onChar", memId);
+		} catch (SQLException e) {
+			cnt = 0;
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	@Override
+	public int offChar(String memId) {
+		int cnt = 0;
+		try {
+			cnt = client.update("character.offChar", memId);
+		} catch (SQLException e) {
+			cnt = 0;
 			e.printStackTrace();
 		}
 		return cnt;

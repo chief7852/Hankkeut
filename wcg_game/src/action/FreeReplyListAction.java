@@ -29,13 +29,14 @@ public class FreeReplyListAction implements IAction {
 		CommentVO vo = new CommentVO();
 		String board_no =  req.getParameter("board_no");
 		System.out.println(board_no);
-		
+		System.out.println("여기가어딘데 못오는거요 ?");
 		vo.setMem_id(userid);
 		IFreeService service = FreeServiceImpl.getService();
 		List<CommentVO> commentvo = service.listReply(board_no);
 		
 		
 		req.setAttribute("reply", commentvo);
+		
 		return "/freeboard/freeReplyForm.jsp";
 	}
 

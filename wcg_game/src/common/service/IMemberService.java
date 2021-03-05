@@ -40,4 +40,10 @@ public interface IMemberService {
 	// 전화번호 변경
 	public int updateTel(MemberVO vo);
 	
+	// 비회원 리스트 출력
+	public List<MemberVO> guestList();
+	
+	//영구정지할 회원 목록 
+	public List<MemberVO> memRemoveList();
+	
 }

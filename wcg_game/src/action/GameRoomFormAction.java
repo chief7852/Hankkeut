@@ -27,12 +27,13 @@ public class GameRoomFormAction implements IAction {
 //		System.out.println("EnterRoom.servlet 입장");
 		
 		int roomNo = Integer.parseInt(req.getParameter("room_vo"));
+		String check = req.getParameter("check");
 		
-//		System.out.println("EnterRoom roomNo : " + roomNo);
 		IRoomService service = RoomServiceImpl.getService();
 		RoomVO roomvo = (RoomVO) service.roomEnter(roomNo);
 		
 		req.setAttribute("hostRoomInfo", roomvo);
+		req.setAttribute("check", check);
 		
 		return "/game/gameRoom.jsp";
 	}

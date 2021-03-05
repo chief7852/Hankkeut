@@ -5,8 +5,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script src="../waitingGame_js/waitingGame.js"></script>  
      <script src = "../preference_js/preference.js"></script>
-	<!--      <bgsound src="../multichat/backMusic.mp3" loop=true autostart=true width=200 height=300> 
-		 <embed src="../multichat/backMusic.mp3" autoplay="true" autostart="true" loop="infinite">  -->
      
      <style>
      .btnD{
@@ -22,37 +20,15 @@
      .a{
      visibility:hidden
      }
+     body{
+	     background : white;
+	     color : black;
+     } 
+     .dark-mode{
+     	background-color : black;
+     	color : white;
+     }
      </style>
-   <script type="text/javascript">
-   //var playbackmusic = new Audio('../multichat/backMusic.mp3');
-   	$(function(){
-   		
-   		/* var playbackmusic = document.createElement("audio");
-   		
-   		playbackmusic.setAttribute('autoplay','autoplay');
-   		playbackmusic.setAttribute('src','../multichat/backMusic.mp3');
-   		playbackmusic.setAttribute('type','audio/mp3');
-   		 */
-   		//playbackmusic.innerHTML = "<autoplay src='../multichat/backMusic.mp3' type='audio/mp3'/>";
-		//var playbackmusic = new Audio('../multichat/backMusic.mp3');
-   		/* <audio id="backgroundMusic" autoplay src="../multichat/backMusic.mp3"> */
-   		$('#backmusicon').on('click',function(){
-   			 $('#aa').css('visibility',	'visible');
-   			playbackmusic = new Audio('../multichat/backMusic.mp3');
-   			playbackmusic.autoplay = true;
-   			playbackmusic.loop = true;
-   			 $('#result5').html(playbackmusic);
-   			 //palybackmusic.play();
-   			//playbackmusic 
-   			 
-   		})	
-   		$('#backmusoff').on('click',function(){
-   			 $('#aa').css('visibility',	'hidden');
-   			playbackmusic.autoplay = false;
-   			playbackmusic.pause();
-   		})
-   	})
-   </script>
 
 
 	<div id="result"> </div>
@@ -110,32 +86,25 @@
 					<div id="label">
 					<br>
 						<label>배경음악</label>
-						<br><br>
+						<br><br><br>
 						<label>효과음</label>
 						<br><br><br>
-						<label>요청거부</label>
-						<label>자동 레디</label>
-						<label>배경테마</label>
 					</div>
 					<div id="option">
 					<br>
 						<button id="backmusicon" type="button" class="btn btn-info">ON</button>
 						<button id="backmusoff" type="button" class="btn btn-info">OFF</button>
 						<input type="range" value="50" min="0" max="100" class="a" id="aa"><br>
-						<button type="button" class="btn btn-info">ON</button>
-						<button type="button" class="btn btn-info">OFF</button><br>
+						
+						<button id="effectsoundON"type="button" class="btn btn-info">ON</button>
+						<button id="ebackmusiconffectsoundOFF"type="button" class="btn btn-info">OFF</button><br>
 						<input type="range" value="50" min="0" max="100" class="a" id="bb"><br>
 						<br>
 					
-						<input type="checkbox">초대
-						<input type="checkbox">친구추가
-						<input type="checkbox">귓속말<br>
 						
-						<input type="checkbox">자동레디<br>
-						<button type="button" class="btnD">DARK</button>
-						<button type="button" class="btnW">WHITE</button>
 					</div>
 					<div id="result5"></div>
+					<div id="result6"></div>
 				</div>
 			</div>
 

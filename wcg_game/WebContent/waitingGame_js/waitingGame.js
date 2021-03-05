@@ -6,7 +6,7 @@ waitingRoomList = function() {
 			code = '';
 			$.each(res, function(i,v) {
 				code += `
-						<div class="col-sm-3 roomDiv" onclick="entrance(${v.room_no})" id="${v.room_no}">
+						<div class="col-sm-3 roomDiv" onclick="isPwCheck(${v.room_no})" id="${v.room_no}">
 						  <div class="well">
 						  	<input type="hidden" value="${v.room_no}">
 					        <h4>${v.room_no}</h4>
@@ -40,8 +40,58 @@ createRoom = function(url) {
 	});
 }
 
+isPwCheck = function(room_vo) {
+	console.log("room_vo : " + room_vo);
+	$.ajax({
+		url: "/wcggame/pwCheck.do",
+		method: "post",
+		data: {"room_vo": room_vo},
+		success : function(res){
+			//alert("pw : " + res.room_pass);
+			var pw = res.room_pass.trim();
+			console.log("pw : " + pw);
+			
+//			if(pw != null) {
+//				console.log("true");
+//			} else {
+//				console.log("fasle");
+//			}
+			if(pw == "null") {
+				//console.log("true");
+				entrance(room_vo);
+			} else {
+				//console.log("false");
+				inputPw(res.room_pass, room_vo);
+			}
+		},
+		error: function(xhr) {
+			alert("서버 상태 : " + xhr.status);
+		},
+		dataType: 'json'
+	});
+}
+
+inputPw = function(pass, room_vo) {
+	pw = parseInt(prompt("비밀번호 입력"));
+	
+	if(pass == pw) {
+		entrance(room_vo)
+	}
+}
 entrance = function(room_vo) {
-	location.href= "/wcggame/game/waitingGameInfo.ddit?room_vo="+room_vo;
+	//location.href= "/wcggame/game/waitingGameInfo.ddit?room_vo="+room_vo+"&check=" + check;
+	$.ajax({
+		url: "/wcggame/waitingGameInfo.do",
+		method: "post",
+		data: {"room_vo": room_vo},
+		success : function(res){
+			$('#view').html(res);
+		},
+		error: function(xhr) {
+			//alert("서버 상태 : " + xhr.status);
+		},
+		dataType: 'html'
+	});
 }
 
 wattingFriend = function() {

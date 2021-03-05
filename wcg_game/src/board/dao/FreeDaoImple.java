@@ -143,26 +143,31 @@ public class FreeDaoImple implements IFreeDao {
 		return nBoardVo;
 	}
 	@Override
-	public int updateReply(CommentVO vo) {
+	public int updateReply(CommentVO vo) {		
 		int cnt=0;
 		try {
-			cnt= smc.update("free.updateReply",vo);
+			cnt= smc.update("comment.updateReply",vo);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
 		return cnt;
 	}
+	
+	
 	@Override
 	public int deleteReply(int renum) {
-		int cnt=0;
+
+		int cnt = 0;
 		try {
-			cnt= smc.delete("free.deleteReply",renum);
+			cnt = smc.delete("comment.deleteReply", renum);
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 		return cnt;
 	}
+	
+
 
 }

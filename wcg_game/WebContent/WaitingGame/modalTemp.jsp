@@ -192,14 +192,21 @@ table {
 							시간</label> <label>게임 유형</label>
 					</div>
 					<div id="option">
-						<input type="text" name="room_name"><br> <input
-							type="password" name="room_pass"><br> <input
-							type="text" name="room_round"><br> <select
-							name="room_time" id="gStart">
+						<input type="text" name="room_name"><br> 
+						<input type="password" name="room_pass"><br> 
+						<!-- <input type="text" name="room_round"> -->
+						<select name="room_round" id="gRound">
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select><br>
+						<select name="room_time" id="gStart">
 							<option value="60">60초</option>
 							<option value="80">80초</option>
 							<option value="120">120초</option>
-						</select> <br> <select name="room_theme" id="gType">
+						</select><br>
+						<select name="room_theme" id="gType">
 							<option value="쿵쿵따">쿵쿵따</option>
 							<option value="끝말잇기">끝말잇기</option>
 						</select>

@@ -6,6 +6,7 @@ selectCharacter = function(id){
 		data : {"id" : id},
 		method: "post",  
 		success : function(res){
+			//alert("charSuccess??");
 			id = res.mem_id;
 			
 			ch_nickName = res.char_nickname;
@@ -13,10 +14,9 @@ selectCharacter = function(id){
 			itemPoint = parseInt(itemPoint) 
 			
 			if(itemPoint > res.char_point){
-				console.log("res.char_point"+res.char_point);
 				alert("포인트가 부족합니다");		
 			}else{
-				alert("아이템구매");
+				//alert("아이템구매");
 				updateBuyPoint(id,item);
 			}
 		},
@@ -28,8 +28,6 @@ selectCharacter = function(id){
 }
 
 selectId = function(id){
-	
-	
 	//id값 받아오는..
 	var itemPoint = $('#itempoint').val();
 	$.ajax({
@@ -39,8 +37,7 @@ selectId = function(id){
 		success : function(res){
 			id = res.mem_id;
 			char_nickname = res.char_nickname;	// 전역변수에 저장
-			console.log(">>" + char_nickname);
-		
+			
 		    selectMyCharacter(id);
 			selectMyNickname(id);
 			selectMyPoint(id);
@@ -73,7 +70,7 @@ selectCharacter = function(id){
 				console.log("res.char_point"+res.char_point);
 				alert("포인트가 부족합니닷");		
 			}else{
-				alert("아이템구매");
+				//alert("아이템구매");
 				updateBuyPoint(id,item);
 			}
 		},
@@ -100,8 +97,7 @@ selectMyCharacter = function(id){
 			code = '<td><img id="imges" width="200px" height="200px"  src="'+res.base_img+'"></td>';
 			
 			$('#myChShow').append().html(code);
-			console.log("id출력이 안되나,,,,제발..." + id);
-			console.log(res.link);
+			
 		},
 		error : function(xhr){
 			alert("상태:" + xhr.status);
@@ -118,9 +114,7 @@ selectMyNickname = function(id){
 		url : '/wcggame/SelectChar.do',
 		data : {"id" : id},
 		method : 'post',
-		success : function(res){
-			console.log("selectMyNickname");
-			
+		success : function(res){			
 			idx = res.mem_id;
 			code = '<td>'+res.char_nickname+'</td>';
 			
@@ -194,7 +188,7 @@ updateBuyPoint = function(id,item){
 		data : {"id" : id, "num" : item },
 		method : "post",
 		success : function(res){
-			alert(res.sw);
+			//alert(res.sw);
 			if(res.sw == "성공"){
 				buyItemINInventory();
 		 	 }
@@ -217,9 +211,8 @@ buyItemINInventory = function(){
 				data :{"item_no" : item_no, "char_nickname":ch_nickName},
 				method : 'post',
 		  	success : function(res){
-			
 				alert("아이템 구입이 완료되었습니다.")
-				},
+			},
 			error : function(xhr){
 				alert("상태 : " + xhr.status) // 200 400 500 
 				},
@@ -235,7 +228,6 @@ BuyItemINInvettorySelectAll = function(char_nickname){	//캐릭터닉네임을 �
 		//주는값-------------------------------
 		//--------------------------
 		success:function(res){
-			
 			showLinkedItemListAll(char_nickname);
 		},
 		error:function(xhr){
@@ -269,7 +261,7 @@ showLinkedItemListAll = function(char_nickname){
 			})
 			code += '</div>'
 				
-			$('#showItem').append().html(code);
+			$('#inventory #showItem').append().html(code);
 		},
 		error : function(xhr){
 			alert("상태:" + xhr.status);

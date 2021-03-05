@@ -111,6 +111,17 @@ public class MemberServiceImpl implements IMemberService {
 		return dao.updateTel(vo);
 	}
 
+	@Override
+	public List<MemberVO> guestList() {
+		return dao.guestList();
+	}
+
+	@Override
+	public List<MemberVO> memRemoveList() {
+		
+		return dao.memRemoveList();
+	}
+
 
 
 }

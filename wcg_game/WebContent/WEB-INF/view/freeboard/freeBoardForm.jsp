@@ -26,11 +26,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
    <%
 	freeBoardVO boardVo = (freeBoardVO) request.getAttribute("boardNum");
-
+   	String num =boardVo.getMem_id();
    String userId = (String)session.getAttribute("userid");
 %>
   <script type="text/javascript">
-  comment = {};
+ 
 
   replyListServer= function(but){
   	$.ajax({
@@ -51,8 +51,8 @@
   					          "<br><br> </p>";
   					        if(memId=="<%=userId%>"){
   					     recode+=	" <p class='p2'>" +
-  "<input id='rmodi' idx="+v.renum+" type='button' class='on rmodi' value='댓글수정'>"+
-  "<input id='addBtn3' type='button' class='on addBtn3' value='댓글삭제'>"+
+  "<input id='rmodi' idx="+v.conum+" idx2="+v.bonum+" type='button' class='on rmodi' value='댓글수정'>"+
+  "<input id='addBtn3' idx3="+v.conum+" type='button' class='on addBtn3' value='댓글삭제'>"+
   					        
   		  						"</p>";
   					        }
@@ -92,8 +92,24 @@
 			Form.submit();
 		});
 		
-		$('#pbdy').on('click',".rmodi",function(){
-			alert("성공??");
+		$('#pbdy').on('click',".addBtn3",function(){
+			reqply={}; 
+			
+			
+			vidx3 = $(this).attr('idx3');
+			
+			 reqply.conum =vidx3;
+			
+			deleteReply(this);
+		});
+		
+
+		
+	 	$('#pbdy').on('click',".rmodi",function(){
+	 		vidx = $(this).attr('idx');
+	 		vidx2 = $(this).attr('idx2');
+	 		
+			
 			$(this).prop('disabled',true);	
 			
 			if($('#modifyForm').css('display') != "none"){
@@ -116,7 +132,7 @@
 			
 		
 			
-		})
+		}) 
 		
 		replyReset = function(){
 			$('#modifyForm').parents('.rep').find('#rmodi').prop('disabled',false); //span 태그  = 댓글내용
@@ -133,40 +149,66 @@
 			//$(spancont).append(modifycont); //원래 span에 있었던 글내용
 		    $('body').append($('#modifyForm'));
 			
-		}
+		} 
 		
-		$('#modiok').on('click',function(){
+ 		$('#modiok').on('click',function(){
+ 			 comment = {};
+ 			
 			$(this).parents('.rep').find('#rmodi').prop('disabled' ,false);
 			
 			modicont = $('#modifyForm textarea').val()
 			
 			modicont = modicont.replace(/\n/g,"<br>");
 
-			//화면에서 수정하기 위해서 현재 수정폼의 부모를 찾는다  			
+						
 			spancont = $('#modifyForm').parent();
 			
 			
-			//modifyForm을 다시 body로 보내기 
+			 
 			$('body').append($('#modifyForm'));
 			$('#modifyForm').hide();
-			//화면에 수정한 내용을 출력 
+			
 			$(spancont).html(modicont); 
 			
 			//db에서 수정  -reply 객체를 이용해서  cont ,renum을 설정 
+			
 			comment.cont = modicont;
 			comment.renum = vidx;
-			updateReply()
-			
+			comment.bonum =vidx2;
 			console.log("cont=" + modicont)
 			console.log("renum=" + vidx)
 			
-			
-		}) 
+			updateReply()
+		
+		})  
+	});
+		
+		
+		
+			deleteReply = function(re){
+ 			$.ajax({
+ 				url :"<%=request.getContextPath()%>/free/freeReplyDelete.ddit",
+ 				
+ 				data:{"renum":vidx3},
+ 				dataType:'json',
+ 				success:function(res){
+ 					alert(res.sw);
+ 					$(re).parents('.rep').remove();
+ 				},
+ 				error : function(xhr){
+ 					alert("상태 : " +xhr.status);
+ 				}
+ 			})
+ 		} 
+		
+		
+		
 		
 		updateReply=function(){
 			$.ajax({
 				url:"<%=request.getContextPath()%>/free/freeReplyUpdate.ddit",				
-				data: reply, //reply객체 cont,renum이 저장
+				
+				data: comment, //reply객체 cont,renum이 저장
 				dataType:'json',
 				success:function(res){
 					 
@@ -179,8 +221,8 @@
 			})
 		}
 		
-		
-	});
+	
+	
 </script>
   
 <style>
@@ -259,9 +301,25 @@
 			
 		
 			<div class="bt_wrap">
-				<a href="<%=request.getContextPath()%>/free/freeUpdateForm.ddit?boardNum=<%=boardVo.getF_board_no()%>">수정</a>
-				<a href="<%=request.getContextPath()%>/free/freeList.ddit" class="on">목록</a>
+
+			<%System.out.println("여기가뜨는것이요 ?"+num); %>
+			<%
+				try{
+				String userId2 = (String) session.getAttribute("userid");
+				
+				if(userId2.equals(num)){
+			%>
+
+					<a href="<%=request.getContextPath()%>/free/freeUpdateForm.ddit?boardNum=<%=boardVo.getF_board_no()%>">수정</a>			
 				<a href="<%=request.getContextPath()%>/free/freeDelete.ddit?boardNum=<%=boardVo.getF_board_no()%>">삭제</a>
+			<%
+				}
+				} catch (Exception e) {
+
+					e.printStackTrace();
+				}
+			%>
+				<a href="<%=request.getContextPath()%>/free/freeList.ddit" class="on">목록</a>
 			</div>
 		</div>
 	</div>

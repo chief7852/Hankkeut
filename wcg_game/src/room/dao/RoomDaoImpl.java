@@ -96,6 +96,17 @@ public class RoomDaoImpl implements IRoomDao {
 		}
 		return cnt;
 	}
+	@Override
+	public String isPass(int room_vo) {
+		String roomPass = "";
+		try {
+			roomPass = (String) client.queryForObject("room.isRoomPass", room_vo);
+		} catch (SQLException e) {
+			roomPass = "";
+			e.printStackTrace();
+		}
+		return roomPass;
+	}
 	
 
 }

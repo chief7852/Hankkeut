@@ -23,5 +23,13 @@ public interface ICharacterService {
 	
 	// 캐릭터 생성
 	public int insertChar(CharVO vo);
-
+	
+	// 캐릭터 접속 여부
+	public List<CharVO> isOn();
+	
+	// 게임 접속 시 상태값 on
+	public int onChar(String memId);
+	
+	// 게임 접속 시 상태값 on
+	public int offChar(String memId);
 }

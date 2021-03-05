@@ -16,9 +16,10 @@
 					<span class="material-icons">face</span>
 				</button>
 			</li>
+			<li id="watingmove" class="li_width"><a data-toggle="tab" href="#inventory">인벤토리</a></li>
 			<li id="watingmove" class="active li_width"><a data-toggle="tab" href="#waiting">대기실</a></li>
 			<li class="li_width"><a data-toggle="modal" href="#createRoom">방 만들기</a></li>
-			<li  id="shopmove" class="li_width"><a data-toggle="tab">상점</a></li>
+			<li id="shopmove" class="li_width"><a data-toggle="tab" href="#shop">상점</a></li>
 			<li class="li_width"><a data-toggle="tab" href="#rank">랭킹</a></li>
 		</ul>
 	</div>

@@ -38,7 +38,11 @@ public interface IFreeDao {
 	
 	// 댓글 수정하기
 	public int updateReply(CommentVO vo);
-	// 댓글 삭제하기
-	public int deleteReply(int renum);
+	
+	 //댓글 삭제하기 
+	 public int deleteReply(int renum);
+	
+	
+	
 	
 }
