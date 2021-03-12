@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="character">
+
+	<select id="selectChar2" resultClass="charVO" parameterClass="String">
+		select * from characters where mem_id =#data#
+	</select>
+
+	<select id="selectChar" resultClass="charVO" parameterClass="String">
+		select *
+		from characters where mem_id = #mem_id#
+	</select>
+	
+	<select id="selectchetChar" resultClass="charVO" parameterClass="String">
+		select *
+		from  characters where char_nickname = #nickname#
+	</select>
+	
+	<update parameterClass="String" id="changeIMG">
+		update CHARACTERS
+		set BASE_IMG = '../img/closeItemgirlIMG.png'
+		where mem_id = #mem_id# 
+	</update>
+	
+	<select id="selectAll" resultClass="CharVO">
+		select *
+		from characters
+		where not char_nickname like 'guest%'
+		order by char_level desc , char_exp desc
+	</select>
+   
+	<insert id="insertChar" parameterClass="charVO">
+		insert into characters
+		(char_nickname, mem_id, char_level, char_exp, char_win, char_lose, char_point, char_rank, char_login,base_img)
+		values(
+			#char_nickname#,
+			#mem_id#,
+			1,0,0,0,100,0,'on',
+			#base_img#			
+		)
+	</insert>
+	
+	<select id="isOn" resultClass="charVO">
+		select mem_id 
+          from characters 
+         where mem_id like 'guest%' and char_login = 'off'
+	</select>
+	
+	<update id="onChar" parameterClass="String">
+		update characters set char_login = 'on' where mem_id = #mem_id#
+	</update>
+	<update id="offChar" parameterClass="String">
+		update characters set char_login = 'off' where mem_id = #mem_id#
+	</update>
+	
+	<delete id="delChar" parameterClass="String">
+		delete from characters where mem_id = #mem_id#
+	</delete>
+</sqlMap>

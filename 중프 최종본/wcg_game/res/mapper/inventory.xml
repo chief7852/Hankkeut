@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="inventory">
+
+	<insert id="insertInventory" parameterClass="inventoryVO">
+		insert into INVENTORY 
+		
+					(
+					in_no,
+					item_no,
+					char_nickname,
+					in_allow
+					)
+					
+		values (
+		
+		INVENTORY_seq.NEXTVAL,
+				#item_no#,
+				#char_nickname#, 
+				0
+				
+				)
+<!-- 				
+		 <selectKey keyProperty="in_no" resultClass="string">
+				select in_no 
+				from INVENTORY
+				where in_no= #in_no#
+		</selectKey> -->
+		
+	</insert>
+	
+	<select id="selectAllItemInInventory" resultClass="InventoryVO">
+		select *
+		from inventory
+	</select>
+	
+	
+	<select id="selectLink" resultClass="shopVO" parameterClass="String">
+	
+		select a.ITEM_LINK
+	    from shop a
+	    
+	    inner join INVENTORY b on  a.ITEM_NO = b.ITEM_NO
+	        
+	    where b.char_nickname  = #CHAR_NICKNAME#
+	    
+	</select>
+	
+	
+
+</sqlMap>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

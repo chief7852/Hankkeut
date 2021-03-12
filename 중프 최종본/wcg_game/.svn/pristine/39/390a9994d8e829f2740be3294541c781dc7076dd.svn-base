@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="preference">
+
+	<update id="selectAutoready" parameterClass="map">
+   
+   	   update preference
+	   set autoready = #num#
+	   where mem_id = #mem_id#
+   
+   
+   </update>
+	
+	<select id="isFriendMess" parameterClass="String" resultClass="preferenceVO">
+		select * from preference where mem_id = #mem_id#
+	</select>
+	
+	<insert id="insertPre" parameterClass="String">
+		insert into preference values(
+			#mem_id#,
+			1,
+			1,
+			1,
+			1,
+			1,
+			0,
+			1
+		) 
+	</insert>
+	
+	<delete id="delPre" parameterClass="String">
+		delete from preference where mem_id = #mem_id#
+	</delete>
+</sqlMap>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/wcggame/css/loginCSS.css">
+<script type="text/javascript" src="../home_js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('.center .container .nav li').on('click', function() {
+			liAttr = $(this).attr('id');
+			if (liAttr == 'findUserPW') {
+				$('#forgotIDForm').css("display", 'none');
+				$('#forgotPWForm').css("display", 'block');
+				$('#forgotPWForm').css(".container", 'height: 100px');
+			} else if (liAttr == 'findUserId') {
+				$('#forgotIDForm').css("display", 'block');
+				$('#forgotPWForm').css("display", 'none');
+			}
+		});
+		$('#back').on('click', function() {
+			idform = ('#forgotIDForm').get(0);
+			idform.action("/wcggame/index.ddit");
+			idform.submit();
+			
+			pwform = ('#forgotPWForm').get(0);
+			pwform.action("/wcggame/index.ddit");
+			pwform.submit();			
+		})
+	});
+</script>
+<style type="text/css">
+#forgotPWForm {
+	display: none;
+	
+}
+
+</style>
+</head>
+<body>
+<header id="header" class="header">
+	<em class="logo_area">
+	    <!--로고 링크-->
+	</em>
+</header>
+	<div class="center">
+		<div class="container">
+			<ul class="nav nav-pills">
+				<li id="findUserId" class="active"><a href="#forgotID" data-toggle="tab">아이디찾기</a></li>
+				<li id="findUserPW"><a href="#forgotPW" data-toggle="tab">비밀번호찾기</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<form id="forgotIDForm" action="/wcggame/login/forgot.ddit">
+					<div id="forgotID" class="tab-pane fade in active data">
+						<label>이메일 입력</label>
+						<input type="text" class="form-control" name="mem_mail"> 
+					</div>
+					<div class="btn">
+						<div class="inner"></div>
+						<button type="submit">전송</button>
+						<button type="button" id="back">뒤로가기</button>
+					</div>
+				</form>
+
+				<form id="forgotPWForm" action="/wcggame/login/forgot.ddit">
+					<div id="forgotPW" class="tab-pane fade">
+						<div class="data">
+							<label>아이디 입력</label>
+							<input type="text" class="form-control" name="mem_id">
+						</div>
+						<div class="data">
+							<label>이메일 입력</label>
+							<input type="text" class="form-control" name="mem_mail"> 
+						</div>
+						<div class="btn">
+							<div class="inner"></div>
+							<button type="submit">전송</button>
+							<button type="button" id="back">뒤로가기</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+		<!-- <div class="container">
+		<label for="show" class="close-btn fas fa-times" title="close"></label>
+		<div class="text">한끝 로그인</div>
+		<form action="#">
+			<div class="data">
+				<label>ID</label> <input type="text" name="mem_id" required>
+			</div>
+			<div class="data">
+				<label>Password</label> <input type="password" name="mem_pass" required>
+			</div>
+			<div class="forgot-pass">
+				<a href="/wcggame/home_sign/forgot.html">Forgot Password?</a>
+			</div>
+			<div class="btn">
+				<div class="inner"></div>
+				<button type="submit">login</button>
+			</div>
+			<div class="signup-link">
+				Not a member? <a href="/wcggame/home_sign/sign_up.html">SignUp</a>
+			</div>
+		</form>
+	</div> -->
+	</div>
+</body>
+</html>

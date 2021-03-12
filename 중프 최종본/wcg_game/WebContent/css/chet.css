@@ -1,0 +1,495 @@
+.slideUpBtn {
+    padding: 12px 24px;
+    background-color: transparent;
+    border: 2px solid hsl(243, 80%, 62%);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(1,.15,.34,.92)
+}
+
+.slideUpBtn span {
+    display: inline-block;
+    transition: inherit;
+    color: hsl(243, 80%, 62%);
+}
+
+.slideUpBtn:hover span {
+    opacity: 0;
+    transform: translateY(-100%)
+}.slideUpBtn {
+    padding: 12px 24px;
+    background-color: transparent;
+    border: 2px solid hsl(243, 80%, 62%);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(1,.15,.34,.92)
+}
+
+.slideUpBtn span {
+    display: inline-block;
+    transition: inherit;
+    color: hsl(243, 80%, 62%);
+}
+
+.slideUpBtn:hover span {
+    opacity: 0;
+    transform: translateY(-100%)
+}
+
+.slideUpBtn::before {
+    content: "";
+    background-color: hsl(243, 80%, 62%);;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateY(100%);
+    transition: inherit;
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(1,.15,.34,.92)
+}
+
+.slideUpBtn::after {
+    content: 'Hover me';
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: inherit;
+    transform: translateY(100%);
+    width: 100%;
+
+}
+
+.slideUpBtn:hover::before {
+    transform: translateY(0) scale(3);
+    transition-delay: .025s;
+}
+
+.slideUpBtn:hover::after {
+    opacity: 1;
+    color: hsl(222, 100%, 95%);
+    transform: translateY(0);
+}
+
+@-webkit-keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+.tracking-in-contract-bck {
+	-webkit-animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+body {
+	text-align: right;
+}
+
+nav {
+	border-bottom: 1px solid grey;
+	height: 41px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+#header div {
+	display: inline-block;
+	border: 1px solid red;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+#roomNo {
+	width: 250px;
+}
+
+#title {
+	width: 690px;
+}
+
+#theme {
+	width: 250px;
+}
+
+#getAllow {
+	width: 250px;
+}
+
+div {
+	text-align: center;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+#recommendWord {
+	vertical-align: middle;
+	border: 1px solid red;
+	height: 100px;
+}
+
+#answer {
+	box-sizing: border-box;
+	text-align: center;
+	display: inline-block;
+	/* display: grid;
+		grid-template-columns : 80% 20%; */
+}
+
+#answer #answerBox {
+	box-sizing: border-box;
+	display: inline-block;
+	text-align: center;
+	height: 100%;
+	margin-right: 200px;
+}
+
+#progressBar {
+	width: 400px;
+}
+
+#myProgress {
+	width: 100%;
+	background-color: #ddd;
+	border: 1px solid lightgrey;
+	/* width: 400px; */
+}
+
+#roundTime {
+	width: 70%;
+	height: 30px;
+	/* background-color: #4CAF50; */
+}
+
+#totalTime {
+	width: 80%;
+	height: 30px;
+	background-color: pink;
+}
+
+#bgBox {
+	position: relative;
+	width: 400px;
+	height: 180px;
+}
+
+.jb-image img {
+	width: 400px;
+	height: 180px;
+	vertical-align: middle;
+}
+
+.jb-text {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 5px 10px;
+}
+
+#answer #roundCnt {
+	display: inline-block;
+}
+
+#roundBox {
+	position: relative;
+	width: 380px;
+	height: 180px;
+}
+
+.round-img img {
+	width: 300px;
+	height: 180px;
+	vertical-align: middle;
+}
+
+.round-text {
+	padding: 5px 10px;
+	text-align: center;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#records {
+	height: 65px;
+	border-top: 1px solid lightgrey;
+}
+
+.recordBox {
+	border: 1px solid black;
+	float: left;
+}
+
+#charaters {
+	border-top: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
+}
+
+#charaters img {
+	width: 200px;
+	height: 150px;
+}
+
+.slideUpBtn::before {
+    content: "";
+    background-color: hsl(243, 80%, 62%);;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateY(100%);
+    transition: inherit;
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(1,.15,.34,.92)
+}
+
+.slideUpBtn::after {
+    content: 'Hover me';
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: inherit;
+    transform: translateY(100%);
+    width: 100%;
+
+}
+
+.slideUpBtn:hover::before {
+    transform: translateY(0) scale(3);
+    transition-delay: .025s;
+}
+
+.slideUpBtn:hover::after {
+    opacity: 1;
+    color: hsl(222, 100%, 95%);
+    transform: translateY(0);
+}
+
+@-webkit-keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+.tracking-in-contract-bck {
+	-webkit-animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+body {
+	text-align: right;
+}
+
+nav {
+	border-bottom: 1px solid grey;
+	height: 41px;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+#header div {
+	display: inline-block;
+	border: 1px solid red;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+#roomNo {
+	width: 250px;
+}
+
+#title {
+	width: 690px;
+}
+
+#theme {
+	width: 250px;
+}
+
+#getAllow {
+	width: 250px;
+}
+
+div {
+	text-align: center;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+#recommendWord {
+	vertical-align: middle;
+	border: 1px solid red;
+	height: 100px;
+}
+
+#answer {
+	box-sizing: border-box;
+	text-align: center;
+	display: inline-block;
+	/* display: grid;
+		grid-template-columns : 80% 20%; */
+}
+
+#answer #answerBox {
+	box-sizing: border-box;
+	display: inline-block;
+	text-align: center;
+	height: 100%;
+	margin-right: 200px;
+}
+
+#progressBar {
+	width: 400px;
+}
+
+#myProgress {
+	width: 100%;
+	background-color: #ddd;
+	border: 1px solid lightgrey;
+	/* width: 400px; */
+}
+
+#roundTime {
+	width: 70%;
+	height: 30px;
+	/* background-color: #4CAF50; */
+}
+
+#totalTime {
+	width: 80%;
+	height: 30px;
+	background-color: pink;
+}
+
+#bgBox {
+	position: relative;
+	width: 400px;
+	height: 180px;
+}
+
+.jb-image img {
+	width: 400px;
+	height: 180px;
+	vertical-align: middle;
+}
+
+.jb-text {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 5px 10px;
+}
+
+#answer #roundCnt {
+	display: inline-block;
+}
+
+#roundBox {
+	position: relative;
+	width: 380px;
+	height: 180px;
+}
+
+.round-img img {
+	width: 300px;
+	height: 180px;
+	vertical-align: middle;
+}
+
+.round-text {
+	padding: 5px 10px;
+	text-align: center;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#records {
+	height: 65px;
+	border-top: 1px solid lightgrey;
+}
+
+.recordBox {
+	border: 1px solid black;
+	float: left;
+}
+
+#charaters {
+	border-top: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
+}
+
+#charaters img {
+	width: 200px;
+	height: 150px;
+}

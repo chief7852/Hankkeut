@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="friend">
+	<select id="selectByfriend" parameterClass="map" resultClass="friendVO">
+		select * from friend where mem_id = #memId# and friend_id = #friendId#
+	</select>
+	
+	<insert id="insertTarget" parameterClass="map">
+		insert into friend_target(mem_id, target_id, target_date, target_num)
+		values(
+			#memId#,
+			#friendId#,
+			sysdate,
+			ftarget_seq.nextVal
+			
+		)
+	</insert>
+	
+	<select id="selectTarget" parameterClass="String" resultClass="targetVO">
+		select * from friend_target where target_id = #mem_id#
+	</select>
+	
+	<insert id="insertFriend" parameterClass="map">
+		insert into friend values(
+			#memId#,
+			#friendId#,
+			friend_seq.nextVal
+		)
+	</insert>
+	<insert id="insertFriend2" parameterClass="map">
+		insert into friend values(
+			#memId#,
+			#friendId#,
+			friend_seq.nextVal
+		)
+	</insert>
+	
+	<update id="updateFriendStatue" parameterClass="map">
+		update friend_target set target_allow = 'true'
+		 where mem_id = #friendId# and target_id = #memId#
+	</update>
+	
+	<delete id="deleteTarget" parameterClass="map">
+		delete from friend_target
+		 where mem_id = #friendId# and target_id = #memId# and target_allow = 'true'
+	</delete>
+	
+		
+	<select id="selectFriend" parameterClass="String" resultClass="friendVO">
+		select * from friend where mem_id = #mem_id#
+	</select>
+	
+	<delete id="deleteFriend" parameterClass="map">
+		delete from friend where mem_id = #memId# and friend_id = #friendId#
+	</delete>
+	<delete id="deleteFriend2" parameterClass="map">
+		delete from friend where mem_id = #friendId# and friend_id = #memId#
+	</delete>
+</sqlMap>

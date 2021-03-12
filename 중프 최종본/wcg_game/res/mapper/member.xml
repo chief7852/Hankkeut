@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member">
+	<select id="selectById" parameterClass="String" resultClass="String">
+	select mem_id from member where mem_id = #data#
+	</select>
+	
+	<insert id="insertMember" parameterClass="memberVO">
+		insert into member(
+		mem_id,
+		mem_pass,
+		gender,
+		mem_bir,
+		mem_mail,
+		mem_add1,
+		mem_add2,
+		zip_code,
+		mem_hp
+		) values (
+		#mem_id#,
+		#mem_pass#,
+		#gender#,
+		sysdate,
+		#mem_mail#,
+		#mem_add1#,
+		#mem_add2#,
+		#zip_code#,
+		#mem_hp#
+		)
+	<selectKey keyProperty="mem_id" resultClass="String">
+    	select mem_id from member where mem_id = #mem_id#
+    </selectKey>
+
+	</insert>
+	
+	<select id="loginMember" resultClass="String" parameterClass="memberVO">
+	select mem_id, mem_pass from member where mem_id = #mem_id# and mem_pass = #mem_pass#
+	</select>
+	
+	<select id="isMember" parameterClass="MemberVO" resultClass="MemberVO">
+		select * from member where mem_mail = #mem_mail#
+	</select>
+	<!-- 비밀번호 찾기를 통해 임시비밀번호가 변경 된 경우 -->
+	<update id="updatePass" parameterClass="MemberVO">
+		update member set mem_pass = #mem_pass# where mem_mail = #mem_mail#
+	</update>
+	
+	<select id="isPassWord" parameterClass="MemberVO" resultClass="int">
+		select count(*) from member where mem_id = #mem_id# and mem_pass = #mem_pass#
+	</select>
+	<update id="updatePW" parameterClass="MemberVO">
+		update member set mem_pass = #mem_pass# where mem_id = #mem_id#
+	</update>
+	
+	<update id="updateAddr" parameterClass="MemberVO">
+		update member set mem_add1 = #mem_add1#, mem_add2 = #mem_add2#, zip_code = #zip_code# where mem_id = #mem_id#
+	</update>
+	
+	<update id="updateTel" parameterClass="MemberVO">
+		update member set mem_hp = #mem_hp# where mem_id = #mem_id#
+	</update>
+	
+	<delete id="deleteMember" parameterClass="MemberVO">
+		delete from member where mem_id = #mem_id# and mem_pass = #mem_pass#
+	</delete>
+	
+	<select id="guestList" resultClass="MemberVO">
+		select * from member where mem_id like 'guest%'
+	</select>
+	
+	<select id="memRemoveList" resultClass="MemberVO">
+		select MEM_ID,GENDER,MEM_MAIL,MEM_HP from MEMBER
+	</select>
+	
+	<delete id="deleteMember2" parameterClass="String">
+		delete from member where mem_id = #mem_id#
+	</delete>
+	
+</sqlMap>
